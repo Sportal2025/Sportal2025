@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Certificate | Sportal Corporate</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="container nav">
+            <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.8rem; text-decoration: none;">
+                <div class="logo-container">
+                    <img src="/logo.jpg" alt="Sportal Corporate Logo" style="height: 48px; border-radius: 8px;">
+                </div>
+                <div style="line-height: 1; display: flex; flex-direction: column;">
+                    <span style="font-size: 1.25rem;">Sportal</span>
+                    <span style="color: var(--color-accent); font-size: 1.25rem;">Corporate</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/courses.html" class="nav-link">Courses</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container"
+        style="padding-top: 140px; padding-bottom: 80px; min-height: 80vh; display: flex; flex-direction: column; align-items: center;">
+        <h1 class="section-title text-center" style="margin-bottom: 1rem;">Certificate Verification</h1>
+        <p class="text-center" style="color: var(--text-muted); max-width: 600px; margin-bottom: 3rem;">
+            Authenticate a Sportal Corporate certification. Enter the unique Certificate ID provided on the document.
+        </p>
+
+        <div class="glass-card" style="padding: 3rem; width: 100%; max-width: 500px; text-align: center;">
+            <div style="margin-bottom: 2rem;">
+                <i class="fa-solid fa-shield-halved" style="font-size: 4rem; color: var(--color-primary);"></i>
+            </div>
+            <div class="form-group" style="margin-bottom: 1.5rem; text-align: left;">
+                <label for="cert-id"
+                    style="display: block; margin-bottom: 0.5rem; color: var(--text-light);">Certificate ID</label>
+                <input type="text" id="cert-id" placeholder="e.g. SPORT-2024"
+                    style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: white; font-size: 1.1rem;">
+            </div>
+            <button id="verify-btn" class="btn btn-primary" style="width: 100%;">Verify Now</button>
+            <div id="result-message" style="margin-top: 1.5rem; min-height: 20px;"></div>
+        </div>
+
+        <!-- Success Result (Hidden by default) -->
+        <div id="success-result" class="glass-card"
+            style="margin-top: 2rem; padding: 2rem; width: 100%; max-width: 700px; display: none; border-left: 4px solid #25D366; animation: slideUp 0.5s ease;">
+            <div style="display: flex; gap: 1.5rem; align-items: center;">
+                <div
+                    style="width: 80px; height: 80px; background: rgba(37, 211, 102, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <i class="fa-solid fa-check" style="font-size: 2.5rem; color: #25D366;"></i>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem;">Certificate Verified</h3>
+                    <p style="color: var(--text-light); margin-bottom: 0.2rem;"><strong>Holder:</strong> <span
+                            id="res-name">John Doe</span></p>
+                    <p style="color: var(--text-light); margin-bottom: 0.2rem;"><strong>Course:</strong> <span
+                            id="res-course">Diploma in Sports Analytics</span></p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Issued: <span id="res-date">Dec 15,
+                            2024</span> | Status: <span style="color: #25D366; font-weight: bold;">Active</span></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" style="padding: 2rem 0;">
+        <div class="container text-center">
+            <p style="color: var(--text-muted);">&copy; 2024 Sportal Corporate</p>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+    <script>
+        document.getElementById('verify-btn').addEventListener('click', () => {
+            const id = document.getElementById('cert-id').value.trim().toUpperCase();
+            const resultDiv = document.getElementById('success-result');
+            const msgDiv = document.getElementById('result-message');
+
+            msgDiv.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Verifying...';
+            msgDiv.style.color = 'var(--text-muted)';
+            resultDiv.style.display = 'none';
+
+            setTimeout(() => {
+                if (id === 'SPORT-2024') {
+                    msgDiv.innerHTML = '';
+                    resultDiv.style.display = 'block';
+                    // Confetti trigger could go here
+                } else {
+                    msgDiv.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Invalid Certificate ID. Please check and try again.';
+                    msgDiv.style.color = '#ef4444';
+                }
+            }, 1000);
+        });
+    </script>
+    <style>
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body>
+
+</html>
