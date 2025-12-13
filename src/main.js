@@ -121,6 +121,10 @@ if (typeof gsap !== 'undefined') {
 function playHeroAnimations() {
   if (typeof gsap !== 'undefined') {
     const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    // Set initial state via GSAP (hides them immediately before animation starts)
+    gsap.set("#greeting, .reveal-text", { opacity: 0, y: 50 });
+
     heroTimeline
       .to("#greeting", { opacity: 1, y: 0, duration: 1 })
       .to(".reveal-text", {
@@ -129,13 +133,8 @@ function playHeroAnimations() {
         stagger: 0.15,
         duration: 0.8
       }, "-=0.5");
-  } else {
-    // Fallback
-    document.querySelectorAll('#greeting, .reveal-text').forEach(el => {
-      el.style.opacity = 1;
-      el.style.transform = 'translateY(0)';
-    });
   }
+  // Else: Do nothing. They are already visible via CSS.
 }
 
 

@@ -1299,3 +1299,10 @@ body.light-mode .step-connector {
     visibility: visible !important;
   }
 }
+
+/* --- SAFETY VISIBILITY --- */
+/* Ensure Hero Text is visible by default (CSS first approach) */
+#greeting, .reveal-text {
+  opacity: 1;
+  transform: translateY(0);
+}
