@@ -1285,3 +1285,17 @@ body.light-mode .step-connector {
     visibility: hidden;
   }
 }
+
+/* --- EMERGENCY RESCUE: Force Content Visible --- */
+/* If JS dies, this reveals the content after 4s */
+#greeting, .reveal-text, .bento-item, .service-card, .footer {
+  animation: forceReveal 1s ease 4s forwards !important;
+}
+
+@keyframes forceReveal {
+  to {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+}
