@@ -828,3 +828,17 @@ gsap.to('.scroll-progress', {
     scrub: 0.3 // Smooth scrubbing
   }
 });
+
+/* --- SAFETY NET: Force Hide Preloader --- */
+// If for any reason GSAP fails or logic hangs, this ensures the user gets in.
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const preloader = document.querySelector('.preloader');
+        if(preloader && getComputedStyle(preloader).opacity !== '0') {
+            preloader.style.transition = 'opacity 0.5s ease';
+            preloader.style.opacity = '0';
+            preloader.style.pointerEvents = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    }, 4000); // 4 seconds max wait
+});
