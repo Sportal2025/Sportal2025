@@ -1271,3 +1271,17 @@ body.light-mode .step-connector {
   pointer-events: none;
   transition: width 0.1s ease-out; /* Smooth catch-up */
 }
+
+/* --- EMERGENCY FIX: CSS-Only Preloader Removal --- */
+/* Forces preloader to vanish after 3s even if JS fails */
+.preloader {
+  animation: forceHide 0.5s ease 3.5s forwards;
+}
+
+@keyframes forceHide {
+  to {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+}
