@@ -27,24 +27,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // --- 1. Award-Winning Features Initialization ---
 
-// A. Lenis Smooth Scroll
-const lenis = new Lenis({
-  duration: 1.2,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  direction: 'vertical',
-  gestureDirection: 'vertical',
-  smooth: true,
-  mouseMultiplier: 1,
-  smoothTouch: false,
-  touchMultiplier: 2,
-});
+// A. Lenis Smooth Scroll (Defensive)
+if (typeof Lenis !== 'undefined') {
+  try {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+      mouseMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+    });
 
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  } catch (e) {
+    console.warn("Lenis init failed:", e);
+  }
+} else {
+  console.warn("Lenis not loaded - Fallback to CSS scroll");
+  document.documentElement.style.scrollBehavior = 'smooth';
 }
-
-requestAnimationFrame(raf);
 
 // B. Custom Cursor
 const cursorDot = document.querySelector('.cursor-dot');
@@ -85,44 +93,57 @@ document.querySelectorAll('a, button, .bento-item').forEach(el => {
   });
 });
 
-// C. Cinematic Preloader
-const preloaderTimeline = gsap.timeline();
+// C. Cinematic Preloader (Defensive GSAP)
+if (typeof gsap !== 'undefined') {
+  const preloaderTimeline = gsap.timeline();
+  // Prevent scrolling
+  document.body.style.overflow = 'hidden';
 
-// Prevent scrolling during preload
-document.body.style.overflow = 'hidden';
-// Animate progress bar (simulated)
-// Using setTimeout to allow browser simple render cycle
-setTimeout(() => {
-  const progress = document.querySelector('.loader-progress');
-  if (progress) progress.style.width = '100%';
-}, 100);
+  // Progress Bar Simulation
+  setTimeout(() => {
+    const progress = document.querySelector('.loader-progress');
+    if (progress) progress.style.width = '100%';
+  }, 100);
 
-
-// Sequence
-preloaderTimeline
-  .to(".preloader", {
-    y: "-100%",
-    duration: 1.2,
-    ease: "power4.inOut",
-    delay: 1.5, // Wait for progress bar
-    onComplete: () => {
-      document.body.style.overflow = 'auto'; // Re-enable scroll
-      // Trigger Hero Animations AFTER preloader
-      playHeroAnimations();
-    }
-  });
+  preloaderTimeline
+    .to(".preloader", {
+      y: "-100%",
+      duration: 1.2,
+      ease: "power4.inOut",
+      delay: 1.5,
+      onComplete: () => {
+        document.body.style.overflow = 'auto';
+        playHeroAnimations();
+      }
+    });
+} else {
+  // GSAP Missing - Instant Hide
+  console.warn("GSAP not loaded");
+  const pre = document.querySelector('.preloader');
+  if (pre) pre.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
 
 // Moved Hero Animation to function to be called after preloader
+// Moved Hero Animation to function to be called after preloader
 function playHeroAnimations() {
-  const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
-  heroTimeline
-    .to("#greeting", { opacity: 1, y: 0, duration: 1 })
-    .to(".reveal-text", {
-      opacity: 1,
-      y: 0,
-      stagger: 0.15,
-      duration: 0.8
-    }, "-=0.5");
+  if (typeof gsap !== 'undefined') {
+    const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+    heroTimeline
+      .to("#greeting", { opacity: 1, y: 0, duration: 1 })
+      .to(".reveal-text", {
+        opacity: 1,
+        y: 0,
+        stagger: 0.15,
+        duration: 0.8
+      }, "-=0.5");
+  } else {
+    // Fallback
+    document.querySelectorAll('#greeting, .reveal-text').forEach(el => {
+      el.style.opacity = 1;
+      el.style.transform = 'translateY(0)';
+    });
+  }
 }
 
 
@@ -256,30 +277,38 @@ if (modal) {
 }
 
 // --- Stats Counter Animation ---
-gsap.registerPlugin(ScrollTrigger);
-const stats = document.querySelectorAll('.stat-number');
-stats.forEach(stat => {
-  const target = +stat.getAttribute('data-target');
-  const text = stat.innerText;
-  const isPercent = text.includes('%');
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+  const stats = document.querySelectorAll('.stat-number');
+  stats.forEach(stat => {
+    const target = +stat.getAttribute('data-target');
+    const text = stat.innerText;
+    const isPercent = text.includes('%');
 
-  ScrollTrigger.create({
-    trigger: stat,
-    start: 'top 90%',
-    once: true,
-    onEnter: () => {
-      const counter = { val: 0 };
-      gsap.to(counter, {
-        val: target,
-        duration: 2.5,
-        ease: 'power3.out',
-        onUpdate: () => {
-          stat.innerText = Math.floor(counter.val) + (isPercent ? '%' : '+');
-        }
-      });
-    }
+    ScrollTrigger.create({
+      trigger: stat,
+      start: 'top 90%',
+      once: true,
+      onEnter: () => {
+        const counter = { val: 0 };
+        gsap.to(counter, {
+          val: target,
+          duration: 2.5,
+          ease: 'power3.out',
+          onUpdate: () => {
+            stat.innerText = Math.floor(counter.val) + (isPercent ? '%' : '+');
+          }
+        });
+      }
+    });
   });
-});
+} else {
+  // Fallback: just show the numbers
+  document.querySelectorAll('.stat-number').forEach(stat => {
+    const target = stat.getAttribute('data-target');
+    if (target) stat.innerText = target + "+";
+  });
+}
 
 // Handle Form Submission
 if (leadForm) {
@@ -716,26 +745,26 @@ window.addEventListener('load', () => {
 
 /* --- Exit Intent Popup --- */
 document.addEventListener('mouseleave', (e) => {
-    if (e.clientY < 0 && !sessionStorage.getItem('exitIntentShown')) {
-        // Find existing modal setup
-        const modal = document.getElementById('contact-modal');
-        if (modal) {
-            // Update title for urgency
-            const title = modal.querySelector('.modal-title');
-            if (title) {
-                // Save original title
-                if (!title.dataset.original) title.dataset.original = title.innerText;
-                title.innerText = "Wait! Don't Miss Your Chance";
-            }
-            
-            // Show modal (reuse existing open logic if accessible, or simple display)
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('active'), 10);
-            
-            // Mark as showed
-            sessionStorage.setItem('exitIntentShown', 'true');
-        }
+  if (e.clientY < 0 && !sessionStorage.getItem('exitIntentShown')) {
+    // Find existing modal setup
+    const modal = document.getElementById('contact-modal');
+    if (modal) {
+      // Update title for urgency
+      const title = modal.querySelector('.modal-title');
+      if (title) {
+        // Save original title
+        if (!title.dataset.original) title.dataset.original = title.innerText;
+        title.innerText = "Wait! Don't Miss Your Chance";
+      }
+
+      // Show modal (reuse existing open logic if accessible, or simple display)
+      modal.style.display = 'flex';
+      setTimeout(() => modal.classList.add('active'), 10);
+
+      // Mark as showed
+      sessionStorage.setItem('exitIntentShown', 'true');
     }
+  }
 });
 
 /* --- Language Toggle Logic --- */
@@ -744,32 +773,32 @@ const langText = document.getElementById('lang-text');
 let currentLang = localStorage.getItem('sportal_lang') || 'en';
 
 function updateLanguage(lang) {
-    const elements = document.querySelectorAll('[data-en]');
-    elements.forEach(el => {
-        if (el.dataset[lang]) {
-            el.innerText = el.dataset[lang];
-        }
-    });
-    
-    // Update Button Text
-    if (langToggleBtn && langText) {
-        langText.innerText = lang === 'en' ? 'HI' : 'EN';
-        langToggleBtn.setAttribute('aria-label', lang === 'en' ? 'Switch to Hindi' : 'Switch to English');
+  const elements = document.querySelectorAll('[data-en]');
+  elements.forEach(el => {
+    if (el.dataset[lang]) {
+      el.innerText = el.dataset[lang];
     }
+  });
 
-    localStorage.setItem('sportal_lang', lang);
-    currentLang = lang;
+  // Update Button Text
+  if (langToggleBtn && langText) {
+    langText.innerText = lang === 'en' ? 'HI' : 'EN';
+    langToggleBtn.setAttribute('aria-label', lang === 'en' ? 'Switch to Hindi' : 'Switch to English');
+  }
+
+  localStorage.setItem('sportal_lang', lang);
+  currentLang = lang;
 }
 
 // Initialize
 if (langToggleBtn) {
-    // Set initial state
-    if (currentLang === 'hi') updateLanguage('hi');
+  // Set initial state
+  if (currentLang === 'hi') updateLanguage('hi');
 
-    langToggleBtn.addEventListener('click', () => {
-        const newLang = currentLang === 'en' ? 'hi' : 'en';
-        updateLanguage(newLang);
-    });
+  langToggleBtn.addEventListener('click', () => {
+    const newLang = currentLang === 'en' ? 'hi' : 'en';
+    updateLanguage(newLang);
+  });
 }
 
 /* --- Theme Toggle Logic --- */
@@ -778,43 +807,43 @@ const themeIcon = document.getElementById('theme-icon');
 let currentTheme = localStorage.getItem('sportal_theme') || 'dark';
 
 function updateTheme(theme) {
-    if (theme === 'light') {
-        document.body.classList.add('light-mode');
-        themeIcon.className = 'fa-solid fa-moon'; // Icon closes light mode
-        // Update nav buttons color for visibility
-        if(themeToggleBtn) themeToggleBtn.style.color = '#0f172a';
-        if(themeToggleBtn) themeToggleBtn.style.borderColor = 'rgba(0,0,0,0.2)';
-        
-        const langBtn = document.getElementById('lang-toggle');
-        if(langBtn) {
-            langBtn.style.color = '#0f172a';
-            langBtn.style.borderColor = 'rgba(0,0,0,0.2)';
-        }
-    } else {
-        document.body.classList.remove('light-mode');
-        themeIcon.className = 'fa-solid fa-sun'; // Icon opens light mode
-        
-        if(themeToggleBtn) themeToggleBtn.style.color = 'white';
-        if(themeToggleBtn) themeToggleBtn.style.borderColor = 'rgba(255,255,255,0.2)';
-        
-        const langBtn = document.getElementById('lang-toggle');
-        if(langBtn) {
-            langBtn.style.color = 'white';
-            langBtn.style.borderColor = 'rgba(255,255,255,0.2)';
-        }
+  if (theme === 'light') {
+    document.body.classList.add('light-mode');
+    themeIcon.className = 'fa-solid fa-moon'; // Icon closes light mode
+    // Update nav buttons color for visibility
+    if (themeToggleBtn) themeToggleBtn.style.color = '#0f172a';
+    if (themeToggleBtn) themeToggleBtn.style.borderColor = 'rgba(0,0,0,0.2)';
+
+    const langBtn = document.getElementById('lang-toggle');
+    if (langBtn) {
+      langBtn.style.color = '#0f172a';
+      langBtn.style.borderColor = 'rgba(0,0,0,0.2)';
     }
-    localStorage.setItem('sportal_theme', theme);
-    currentTheme = theme;
+  } else {
+    document.body.classList.remove('light-mode');
+    themeIcon.className = 'fa-solid fa-sun'; // Icon opens light mode
+
+    if (themeToggleBtn) themeToggleBtn.style.color = 'white';
+    if (themeToggleBtn) themeToggleBtn.style.borderColor = 'rgba(255,255,255,0.2)';
+
+    const langBtn = document.getElementById('lang-toggle');
+    if (langBtn) {
+      langBtn.style.color = 'white';
+      langBtn.style.borderColor = 'rgba(255,255,255,0.2)';
+    }
+  }
+  localStorage.setItem('sportal_theme', theme);
+  currentTheme = theme;
 }
 
 if (themeToggleBtn) {
-    // Init type
-    if (currentTheme === 'light') updateTheme('light');
+  // Init type
+  if (currentTheme === 'light') updateTheme('light');
 
-    themeToggleBtn.addEventListener('click', () => {
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        updateTheme(newTheme);
-    });
+  themeToggleBtn.addEventListener('click', () => {
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    updateTheme(newTheme);
+  });
 }
 
 /* --- Scroll Progress Bar Animation --- */
@@ -832,13 +861,13 @@ gsap.to('.scroll-progress', {
 /* --- SAFETY NET: Force Hide Preloader --- */
 // If for any reason GSAP fails or logic hangs, this ensures the user gets in.
 window.addEventListener('load', () => {
-    setTimeout(() => {
-        const preloader = document.querySelector('.preloader');
-        if(preloader && getComputedStyle(preloader).opacity !== '0') {
-            preloader.style.transition = 'opacity 0.5s ease';
-            preloader.style.opacity = '0';
-            preloader.style.pointerEvents = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    }, 4000); // 4 seconds max wait
+  setTimeout(() => {
+    const preloader = document.querySelector('.preloader');
+    if (preloader && getComputedStyle(preloader).opacity !== '0') {
+      preloader.style.transition = 'opacity 0.5s ease';
+      preloader.style.opacity = '0';
+      preloader.style.pointerEvents = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  }, 4000); // 4 seconds max wait
 });
