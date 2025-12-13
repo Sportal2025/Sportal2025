@@ -269,37 +269,52 @@ if (modal) {
 
 // --- Stats Counter Animation ---
 if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-  const stats = document.querySelectorAll('.stat-number');
-  stats.forEach(stat => {
-    const target = +stat.getAttribute('data-target');
-    const text = stat.innerText;
-    const isPercent = text.includes('%');
+  try {
+    gsap.registerPlugin(ScrollTrigger);
+    const stats = document.querySelectorAll('.stat-number');
+    stats.forEach(stat => {
+      const target = +stat.getAttribute('data-target');
+      const text = stat.innerText;
+      const isPercent = text.includes('%');
 
-    ScrollTrigger.create({
-      trigger: stat,
-      start: 'top 90%',
-      once: true,
-      onEnter: () => {
-        const counter = { val: 0 };
-        gsap.to(counter, {
-          val: target,
-          duration: 2.5,
-          ease: 'power3.out',
-          onUpdate: () => {
-            stat.innerText = Math.floor(counter.val) + (isPercent ? '%' : '+');
-          }
-        });
-      }
+      ScrollTrigger.create({
+        trigger: stat,
+        start: 'top 95%', // Trigger earlier
+        once: true,
+        onEnter: () => {
+          const counter = { val: 0 };
+          gsap.to(counter, {
+            val: target,
+            duration: 2.5,
+            ease: 'power3.out',
+            onUpdate: () => {
+              stat.innerText = Math.floor(counter.val) + (isPercent ? '%' : '+');
+            }
+          });
+        }
+      });
     });
-  });
+  } catch (err) {
+    console.error("Stats Animation Error", err);
+    // Fallback in catch
+    enableStatsFallback();
+  }
 } else {
-  // Fallback: just show the numbers
+  // GSAP Missing Fallback
+  enableStatsFallback();
+}
+
+function enableStatsFallback() {
   document.querySelectorAll('.stat-number').forEach(stat => {
     const target = stat.getAttribute('data-target');
-    if (target) stat.innerText = target + "+";
+    if (target && (stat.innerText === '0+' || stat.innerText === '0%')) {
+      stat.innerText = target + (stat.innerHTML.includes('%') ? '%' : '+');
+    }
   });
 }
+
+// Global Safety: Ensure stats are visible after 3s no matter what
+setTimeout(enableStatsFallback, 3000);
 
 // Handle Form Submission
 if (leadForm) {
