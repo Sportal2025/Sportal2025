@@ -1,62 +1,28 @@
 import './style.css'
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from '@studio-freight/lenis';
 
-// Simple scroll interaction for header
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
+gsap.registerPlugin(ScrollTrigger);
+
+// A. Lenis Smooth Scroll
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  direction: 'vertical',
+  gestureDirection: 'vertical',
+  smooth: true,
+  mouseMultiplier: 1,
+  smoothTouch: false,
+  touchMultiplier: 2,
 });
 
-// Smooth Scroll for Anchor Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
-  });
-});
-
-
-// --- 1. Award-Winning Features Initialization ---
-
-// A. Lenis Smooth Scroll (Defensive)
-if (typeof Lenis !== 'undefined') {
-  try {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false,
-      touchMultiplier: 2,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-  } catch (e) {
-    console.warn("Lenis init failed:", e);
-  }
-} else {
-  console.warn("Lenis not loaded - Fallback to CSS scroll");
-  document.documentElement.style.scrollBehavior = 'smooth';
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
 }
 
-// B. Custom Cursor
-const cursorDot = document.querySelector('.cursor-dot');
-const cursorOutline = document.querySelector('.cursor-outline');
+requestAnimationFrame(raf);
 
 window.addEventListener('mousemove', (e) => {
   const posX = e.clientX;
