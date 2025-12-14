@@ -763,14 +763,34 @@ function showResult() {
         <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: #fff;">${result.title}</h2>
         <p style="font-size: 1.2rem; color: #cbd5e1; max-width: 500px; margin: 0 auto 2.5rem;">${result.desc}</p>
         
-        <button class="btn btn-primary magnetic-btn js-open-modal" id="get-plan-btn" style="margin: 0 auto;">
-          <span class="btn-text">Get My Career Plan</span>
-          <span class="btn-sheen"></span>
-          <i class="fa-solid fa-file-arrow-down btn-icon"></i>
-        </button>
+        <div style="display:flex; gap:1rem; justify-content:center; margin-top:1rem;">
+          <button class="btn btn-primary magnetic-btn js-open-modal" id="get-plan-btn">
+            <span class="btn-text">Get My Career Plan</span>
+            <span class="btn-sheen"></span>
+            <i class="fa-solid fa-file-arrow-down btn-icon"></i>
+          </button>
+          
+          <button class="btn btn-secondary magnetic-btn" id="share-linkedin-btn" style="border:1px solid rgba(255,255,255,0.2);">
+             <span class="btn-text">Share Result</span>
+             <i class="fa-brands fa-linkedin btn-icon" style="color:#0a66c2;"></i>
+          </button>
+        </div>
       </div>
     `;
 
+      // Re-initialize magnetic on new buttons
+      const newBtns = quizContent.querySelectorAll(".magnetic-btn");
+      newBtns.forEach(el => { /* reuse global magnetic logic if extracted, or simple fallback */ });
+
+      // Share Logic
+      const shareBtn = $("#share-linkedin-btn");
+      if (shareBtn) {
+        shareBtn.addEventListener("click", () => {
+          const text = `I just got matched as a ${result.title} by Sportal Corporate's AI Career Quiz! 🚀 Find your sports career path here: https://sportalcorporate.netlify.app`;
+          const url = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(text)}`;
+          window.open(url, '_blank');
+        });
+      }
       gsap.fromTo(quizContent, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" });
 
       // Re-attach modal trigger manually if needed (though global listener should catch .js-open-modal, dynamic elements sometimes need help or bubbling is fine)
