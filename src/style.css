@@ -112,7 +112,8 @@ p {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #000;
+  background: #020617;
+  /* Slate 950 */
   z-index: 9999;
   display: flex;
   flex-direction: column;
@@ -123,6 +124,23 @@ p {
 
 .loader-logo {
   overflow: hidden;
+}
+
+.text-glow {
+  animation: glowPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  from {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1), 0 0 20px rgba(245, 158, 11, 0.1);
+    opacity: 0.8;
+  }
+
+  to {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 30px rgba(245, 158, 11, 0.6);
+    opacity: 1;
+    transform: scale(1.02);
+  }
 }
 
 .loader-logo span {
@@ -140,6 +158,7 @@ p {
   height: 2px;
   background: var(--color-accent);
   transition: width 1.5s ease-in-out;
+  box-shadow: 0 0 15px var(--color-accent);
 }
 
 @keyframes revealUp {
