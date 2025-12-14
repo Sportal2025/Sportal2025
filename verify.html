@@ -216,7 +216,7 @@
 
     <!-- Verification Logic (Clean + Extensible) -->
     <script>
-        // Mock database (replace later with API/Sheet)
+        // Mock database
         const CERT_DB = {
             "SPORT-2024": {
                 name: "John Doe",
@@ -240,7 +240,11 @@
         }
 
         function verify() {
-            const id = (input.value || '').trim().toUpperCase();
+            // Robust cleaning
+            const rawId = input.value || '';
+            // Remove all non-alphanumeric chars for loose matching (optional) or just trim
+            const id = rawId.trim().toUpperCase();
+
             resultDiv.style.display = 'none';
 
             if (!id) {
@@ -252,17 +256,31 @@
             setMessage('<i class="fa-solid fa-spinner fa-spin"></i> Verifying...', 'var(--text-muted)');
 
             setTimeout(() => {
-                const cert = CERT_DB[id];
+                try {
+                    // Robust lookup: Check exact match first
+                    let cert = CERT_DB[id];
 
-                if (cert) {
-                    setMessage('');
-                    resName.textContent = cert.name;
-                    resCourse.textContent = cert.course;
-                    resDate.textContent = cert.date;
-                    resultDiv.style.display = 'block';
-                } else {
+                    // Fallback: Check if any key matches trimmed/cleaned version if exact fails
+                    if (!cert) {
+                        const foundKey = Object.keys(CERT_DB).find(k => k.trim().toUpperCase() === id);
+                        if (foundKey) cert = CERT_DB[foundKey];
+                    }
+
+                    if (cert) {
+                        setMessage('');
+                        resName.textContent = cert.name;
+                        resCourse.textContent = cert.course;
+                        resDate.textContent = cert.date;
+                        resultDiv.style.display = 'block';
+                    } else {
+                        setMessage(
+                            `<i class="fa-solid fa-circle-xmark"></i> Invalid Certificate ID. Please check and try again.`,
+                            '#ef4444'
+                        );
+                    }
+                } catch (err) {
                     setMessage(
-                        '<i class="fa-solid fa-circle-xmark"></i> Invalid Certificate ID. Please check and try again.',
+                        `<i class="fa-solid fa-bug"></i> Error: ${err.message}`,
                         '#ef4444'
                     );
                 }
