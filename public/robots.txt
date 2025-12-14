@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sportalcorporate.com/sitemap.xml
+Sitemap: https://sportalcorporate.org/sitemap.xml
