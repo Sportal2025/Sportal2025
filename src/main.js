@@ -766,7 +766,6 @@ function showResult() {
         <div style="display:flex; gap:1rem; justify-content:center; margin-top:1rem;">
           <button class="btn btn-primary magnetic-btn js-open-modal" id="get-plan-btn">
             <span class="btn-text">Get My Career Plan</span>
-            <span class="btn-sheen"></span>
             <i class="fa-solid fa-file-arrow-down btn-icon"></i>
           </button>
           
@@ -805,10 +804,7 @@ if (document.readyState === "loading") {
 } else {
   initQuiz();
 }
-      // Our global listener is on 'document', so it should work for dynamically added elements too!
-    }
-  });
-}
+
 
 // Run cookie init
 if (document.readyState === "loading") {
