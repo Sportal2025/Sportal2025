@@ -1699,3 +1699,103 @@ body.light-mode .step-connector {
 .btn-cookie-accept:hover {
   background: var(--color-accent);
 }
+
+/* --- God Mode: Native View Transitions --- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+::view-transition-old(root) {
+  animation-name: slide-out;
+}
+
+::view-transition-new(root) {
+  animation-name: slide-in;
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* --- Social Proof Toast --- */
+.social-proof-toast {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(15, 23, 42, 0.85);
+  /* Slightly transparent dark */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid var(--color-primary);
+  /* Primary accent */
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  z-index: 9900;
+  /* Below cookie banner */
+  transform: translateX(-150%);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Bouncy in */
+  max-width: 320px;
+  pointer-events: none;
+  /* Let clicks pass initially */
+}
+
+.social-proof-toast.visible {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.sp-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-dark);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--color-accent);
+}
+
+.sp-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.sp-name {
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.sp-action {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
