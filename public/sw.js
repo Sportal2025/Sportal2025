@@ -1,48 +1,48 @@
-const CACHE_NAME = 'sportal-v1';
+const CACHE_NAME = "sportal-v2";
+
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/courses.html',
-    '/quiz.html',
-    '/src/style.css',
-    '/src/main.js',
-    '/logo.jpg'
+  "/",
+  "/index.html",
+  "/manifest.json",
+  "/logo-final.jpg",
+  "/founder.jpg",
+  "/og-image.jpg"
 ];
 
-self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => {
-                console.log('Opened cache');
-                return cache.addAll(urlsToCache);
-            })
-    );
+self.addEventListener("install", (event) => {
+  self.skipWaiting();
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
+  );
 });
 
-self.addEventListener('fetch', event => {
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((names) =>
+      Promise.all(names.map((n) => (n !== CACHE_NAME ? caches.delete(n) : null)))
+    )
+  );
+  self.clients.claim();
+});
+
+// Network-first for HTML so updates deploy properly
+self.addEventListener("fetch", (event) => {
+  const req = event.request;
+  const accept = req.headers.get("accept") || "";
+
+  if (accept.includes("text/html")) {
     event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                // Cache hit - return response
-                if (response) {
-                    return response;
-                }
-                return fetch(event.request);
-            })
-    );
-});
-
-self.addEventListener('activate', event => {
-    const cacheWhitelist = [CACHE_NAME];
-    event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cacheName => {
-                    if (cacheWhitelist.indexOf(cacheName) === -1) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
+      fetch(req)
+        .then((res) => {
+          const copy = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
+          return res;
         })
+        .catch(() => caches.match(req))
     );
+    return;
+  }
+
+  // Cache-first for assets
+  event.respondWith(caches.match(req).then((cached) => cached || fetch(req)));
 });
