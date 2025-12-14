@@ -598,3 +598,169 @@ if (progressEl) {
     },
   });
 }
+
+/* -----------------------------
+   AI Quiz Logic (Career Matcher)
+----------------------------- */
+const quizData = [
+  {
+    question: "What drives you most in sports?",
+    options: [
+      { text: "Understanding the numbers behind the game", type: "Analyst", weight: 3 },
+      { text: "Leading a team to victory", type: "Manager", weight: 3 },
+      { text: "Optimizing human performance & health", type: "Health", weight: 3 },
+      { text: "Creating new sports products/leagues", type: "Entrepreneur", weight: 3 },
+    ]
+  },
+  {
+    question: "Which task sounds most exciting?",
+    options: [
+      { text: "Analyzing player statistics for a draft", type: "Analyst", weight: 2 },
+      { text: "Organizing a major tournament", type: "Manager", weight: 2 },
+      { text: "Designing a training recovery program", type: "Health", weight: 2 },
+      { text: "Pitching a sports startup idea", type: "Entrepreneur", weight: 2 },
+    ]
+  },
+  {
+    question: "You have a free hour. You watch:",
+    options: [
+      { text: "A documentary on sports data science", type: "Analyst", weight: 1 },
+      { text: "A press conference by a top CEO/Coach", type: "Manager", weight: 1 },
+      { text: "A video on biomechanics/nutrition", type: "Health", weight: 1 },
+      { text: "Shark Tank (Sports Edition)", type: "Entrepreneur", weight: 1 },
+    ]
+  },
+  {
+    question: "Your ideal workspace is:",
+    options: [
+      { text: "Dual monitors, analyzing data feeds", type: "Analyst", weight: 2 },
+      { text: "A boardroom or sideline, directing strategy", type: "Manager", weight: 2 },
+      { text: "A lab, gym, or rehabilitation center", type: "Health", weight: 2 },
+      { text: "Anywhere, as long as I'm building my vision", type: "Entrepreneur", weight: 2 },
+    ]
+  }
+];
+
+const scores = { Analyst: 0, Manager: 0, Health: 0, Entrepreneur: 0 };
+let currentQuestionIndex = 0;
+
+function initQuiz() {
+  const quizContent = $("#quiz-content");
+  if (!quizContent) return;
+
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const quizContent = $("#quiz-content");
+  const progress = $("#quiz-progress-bar");
+  const currentQ = quizData[currentQuestionIndex];
+
+  // Animation out
+  gsap.to(quizContent, {
+    opacity: 0, y: -10, duration: 0.3, onComplete: () => {
+      // Render
+      const progressPct = ((currentQuestionIndex) / quizData.length) * 100;
+      if (progress) progress.style.width = `${progressPct}%`;
+
+      quizContent.innerHTML = `
+      <h2 style="font-size: 1.8rem; margin-bottom: 2rem; min-height: 60px;">${currentQ.question}</h2>
+      <div class="quiz-options-grid" style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        ${currentQ.options.map((opt, i) => `
+          <button class="btn quiz-option-btn glass-card" data-index="${i}" style="width:100%; text-align:left; padding: 1.5rem; justify-content: flex-start; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--text-muted); margin-right: 1rem; flex-shrink: 0; display:flex; align-items:center; justify-content:center;">
+              <div class="dot" style="width: 12px; height: 12px; border-radius: 50%; background: var(--color-primary); opacity: 0; transition: 0.2s;"></div>
+            </div>
+            <span style="font-size: 1.1rem;">${opt.text}</span>
+          </button>
+        `).join("")}
+      </div>
+    `;
+
+      // Animation in
+      gsap.fromTo(quizContent, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 });
+
+      // Event listeners
+      $$(".quiz-option-btn").forEach(btn => {
+        btn.addEventListener("click", handleAnswer);
+      });
+    }
+  });
+}
+
+function handleAnswer(e) {
+  const btn = e.currentTarget;
+  const optIndex = btn.getAttribute("data-index");
+  const option = quizData[currentQuestionIndex].options[optIndex];
+
+  // Visual feedback
+  btn.style.borderColor = "var(--color-primary)";
+  btn.style.background = "rgba(168, 85, 247, 0.1)"; // primary color tint
+  $(".dot", btn).style.opacity = "1";
+
+  // Score update
+  scores[option.type] += option.weight;
+
+  // Next step
+  currentQuestionIndex++;
+  setTimeout(() => {
+    if (currentQuestionIndex < quizData.length) {
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }, 400);
+}
+
+function showResult() {
+  const quizContent = $("#quiz-content");
+  const progress = $("#quiz-progress-bar");
+
+  if (progress) progress.style.width = "100%";
+
+  // Determine winner
+  const winner = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+
+  const resultsData = {
+    Analyst: { title: "Sports Data Analyst", desc: "You see the hidden patterns in the game. Your analytical mind is perfect for Moneyball-style strategy.", icon: "fa-solid fa-chart-line" },
+    Manager: { title: "Sports Manager/Agent", desc: "You are a natural leader. You understand people, business, and strategy.", icon: "fa-solid fa-user-tie" },
+    Health: { title: "Sports Scientist", desc: "You care about optimizing human potential. A career in physiology or nutrition awaits.", icon: "fa-solid fa-heart-pulse" },
+    Entrepreneur: { title: "Sports Innovator", desc: "You want to change the game. You are destined to build the next big thing in sports.", icon: "fa-solid fa-lightbulb" }
+  };
+
+  const result = resultsData[winner];
+
+  gsap.to(quizContent, {
+    opacity: 0, y: -10, duration: 0.3, onComplete: () => {
+      quizContent.innerHTML = `
+      <div style="text-align: center; padding: 2rem;">
+        <div style="width: 80px; height: 80px; background: rgba(37, 211, 102, 0.1); border-radius: 50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom: 1.5rem;">
+          <i class="${result.icon}" style="font-size: 2.5rem; color: var(--color-primary);"></i>
+        </div>
+        <h3 style="font-size: 1.5rem; color: var(--text-muted); margin-bottom: 0.5rem;">Your Ideal Match:</h3>
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: #fff;">${result.title}</h2>
+        <p style="font-size: 1.2rem; color: #cbd5e1; max-width: 500px; margin: 0 auto 2.5rem;">${result.desc}</p>
+        
+        <button class="btn btn-primary magnetic-btn js-open-modal" id="get-plan-btn" style="margin: 0 auto;">
+          <span class="btn-text">Get My Career Plan</span>
+          <span class="btn-sheen"></span>
+          <i class="fa-solid fa-file-arrow-down btn-icon"></i>
+        </button>
+      </div>
+    `;
+
+      gsap.fromTo(quizContent, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" });
+
+      // Re-attach modal trigger manually if needed (though global listener should catch .js-open-modal, dynamic elements sometimes need help or bubbling is fine)
+      // Our global listener is on 'document', so it should work for dynamically added elements too!
+    }
+  });
+}
+
+// Init
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initQuiz);
+} else {
+  initQuiz();
+}
+

@@ -3,37 +3,40 @@
 /* Futuristic Header Font */
 
 :root {
-  /* Royal Gold & Obsidian Palette */
-  --bg-dark: #050505;
-  /* Deepest Obsidian */
-  --bg-card: rgba(23, 23, 23, 0.6);
-  /* Charcoal Glass */
+  /* Royal Gold & Obsidian Palette - Premium Upgrade */
+  --bg-dark: #020617;
+  /* Slate 950 - Deeper, richer black/blue */
+  --bg-card: rgba(15, 23, 42, 0.6);
+  /* Slate 900 glass */
 
-  --color-primary: #D97706;
-  /* Amber 600 - Royal Gold Base */
-  --color-accent: #F59E0B;
-  /* Amber 500 - Bright Gold */
-  --color-glow: #FBBF24;
-  /* Amber 400 - Golden Glow */
+  --color-primary: #f59e0b;
+  /* Amber 500 - Vibrant Gold */
+  --color-accent: #d97706;
+  /* Amber 600 - Deep Gold */
+  --color-glow: #fbbf24;
+  /* Amber 400 - Bright Glow */
+  --color-text-main: #f8fafc;
+  /* Slate 50 */
+  --color-text-muted: #94a3b8;
+  /* Slate 400 */
 
-  --color-text-light: #fafafa;
-  /* Neutral 50 */
-  --color-text-muted: #a3a3a3;
-  /* Neutral 400 */
-
-  --glass-bg: rgba(255, 215, 0, 0.02);
-  /* Subtle Gold Tint */
-  --glass-border: rgba(255, 215, 0, 0.1);
-  /* Gold Border */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.1);
 
   --font-main: 'Inter', sans-serif;
   --font-display: 'Outfit', sans-serif;
 
-  --glass-backdrop: blur(20px);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-  --border-radius-lg: 24px;
+  --glass-backdrop: blur(24px);
+  --glass-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 0 var(--glass-highlight);
+  /* Top highlight for depth */
 
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --border-radius-lg: 24px;
+  --transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* Smoother, weightier feel */
 }
 
 * {
@@ -45,10 +48,45 @@
 body {
   font-family: var(--font-main);
   background-color: var(--bg-dark);
-  color: var(--color-text-light);
-  line-height: 1.6;
+  color: var(--color-text-main);
+  line-height: 1.7;
+  /* Increased for readability */
   overflow-x: hidden;
   position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography 3.0 Refined */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  /* Tighter corporate feel */
+  color: white;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: -0.03em;
+}
+
+p {
+  letter-spacing: -0.01em;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
 }
 
 
@@ -433,28 +471,34 @@ img {
 
 .bento-item {
   opacity: 0;
-  /* Hidden initially for GSAP - will be revealed by scroll trigger */
+  /* Hidden initially for GSAP */
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
+  border-top: 1px solid var(--glass-highlight);
+  /* Top light source */
+  border-left: 1px solid var(--glass-highlight);
+  /* Left light source */
   border-radius: 24px;
-  /* More rounded for Design 3.0 */
-  padding: 2rem;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  /* Removed slow transform transition to let GSAP handle 3D tilt smoothly */
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  padding: 2.5rem;
+  /* More breathing room */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.2);
 }
 
 .bento-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
-  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-8px) scale(1.01);
+  /* Noticeable lift */
+  background: rgba(255, 255, 255, 0.05);
+  /* Brighter on hover */
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Specialized Bento Spans */
@@ -575,26 +619,32 @@ img {
 }
 
 /* --- Header --- */
+/* --- Header --- */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   z-index: 1000;
   transition: var(--transition);
-  background: rgba(5, 5, 5, 0.6);
-  /* Darker base for Obsidian theme */
-  /* Semi-transparent base */
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 215, 0, 0.05);
-  /* Gold tint border */
+  background: transparent;
 }
 
 .header.scrolled {
-  padding: 0.75rem 0;
+  padding: 0.8rem 0;
   background: rgba(2, 6, 23, 0.85);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  /* Darker, richer */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav {
@@ -700,11 +750,10 @@ img {
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding-top: 5rem;
+  padding-top: 6rem;
 }
 
-/* Mesh Gradient Animation */
-/* Mesh Gradient Animation */
+/* Premium Mesh Gradient */
 .hero-bg {
   position: absolute;
   top: -50%;
@@ -712,32 +761,41 @@ img {
   width: 200%;
   height: 200%;
   background:
-    radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.2), transparent 40%),
-    radial-gradient(circle at 20% 80%, rgba(251, 191, 36, 0.15), transparent 30%),
-    radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.15), transparent 40%);
-  animation: rotateMesh 20s linear infinite;
+    radial-gradient(circle at 40% 40%, rgba(245, 158, 11, 0.15), transparent 40%),
+    /* Gold */
+    radial-gradient(circle at 70% 60%, rgba(217, 119, 6, 0.12), transparent 40%),
+    /* Deep Amber */
+    radial-gradient(circle at 20% 80%, rgba(15, 23, 42, 1), transparent 50%);
+  /* Dark Depth */
+  animation: rotateMesh 25s linear infinite;
   z-index: -1;
-  filter: blur(40px);
+  filter: blur(80px);
+  /* Increased blur for smoother look */
+  opacity: 0.8;
 }
 
 @keyframes rotateMesh {
   0% {
-    transform: rotate(0deg);
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.1);
   }
 
   100% {
-    transform: rotate(360deg);
+    transform: rotate(360deg) scale(1);
   }
 }
 
-@keyframes scrollMarquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
+/* Gradient Text Effect */
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 30%, var(--color-glow) 70%, var(--color-primary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 0.1em;
+  /* Prevent descender clipping */
 }
 
 /* --- Consumer-Facing Pathways --- */
@@ -1049,6 +1107,7 @@ a {
     display: none;
   }
 }
+
 /* --- Career Quiz Styles --- */
 .quiz-teaser-section {
   padding: 4rem 2rem;
@@ -1179,8 +1238,15 @@ a {
 }
 
 @keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .result-card {
@@ -1216,7 +1282,7 @@ a {
 /* --- Video Cards --- */
 .video-card:hover {
   transform: translateY(-10px) !important;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
 .video-card:hover .video-bg {
@@ -1225,7 +1291,8 @@ a {
 
 .video-card:hover .play-btn {
   transform: translate(-50%, -50%) scale(1.1);
-  background: rgba(217, 119, 6, 0.8); /* Primary color */
+  background: rgba(217, 119, 6, 0.8);
+  /* Primary color */
   border-color: var(--color-primary);
 }
 
@@ -1235,27 +1302,32 @@ a {
 
 /* --- Light Mode Overrides --- */
 body.light-mode {
-  --bg-dark: #f0f9ff; /* Very slight blue tint white */
+  --bg-dark: #f0f9ff;
+  /* Very slight blue tint white */
   --bg-card: rgba(255, 255, 255, 0.8);
-  --color-text-light: #0f172a; /* Slate 900 */
-  --color-text-muted: #334155; /* Slate 700 */
-  --glass-bg: rgba(217, 119, 6, 0.05); /* Subtler gold tint */
+  --color-text-light: #0f172a;
+  /* Slate 900 */
+  --color-text-muted: #334155;
+  /* Slate 700 */
+  --glass-bg: rgba(217, 119, 6, 0.05);
+  /* Subtler gold tint */
   --glass-border: rgba(217, 119, 6, 0.2);
   --glass-shadow: 0 8px 32px 0 rgba(217, 119, 6, 0.1);
 }
 
 body.light-mode .header {
-    background: rgba(240, 249, 255, 0.8);
+  background: rgba(240, 249, 255, 0.8);
 }
 
 body.light-mode .header.scrolled {
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 body.light-mode .step-connector {
-    color: var(--color-primary); /* Needs to be visible on light bg */
-    opacity: 0.5;
+  color: var(--color-primary);
+  /* Needs to be visible on light bg */
+  opacity: 0.5;
 }
 
 /* --- Scroll Progress Bar --- */
@@ -1266,10 +1338,12 @@ body.light-mode .step-connector {
   width: 0%;
   height: 4px;
   background: linear-gradient(to right, var(--color-primary), var(--color-accent));
-  z-index: 9999; /* Topmost */
+  z-index: 9999;
+  /* Topmost */
   box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
   pointer-events: none;
-  transition: width 0.1s ease-out; /* Smooth catch-up */
+  transition: width 0.1s ease-out;
+  /* Smooth catch-up */
 }
 
 /* --- EMERGENCY FIX: CSS-Only Preloader Removal --- */
@@ -1288,7 +1362,11 @@ body.light-mode .step-connector {
 
 /* --- EMERGENCY RESCUE: Force Content Visible --- */
 /* If JS dies, this reveals the content after 4s */
-#greeting, .reveal-text, .bento-item, .service-card, .footer {
+#greeting,
+.reveal-text,
+.bento-item,
+.service-card,
+.footer {
   animation: forceReveal 1s ease 4s forwards !important;
 }
 
@@ -1302,7 +1380,8 @@ body.light-mode .step-connector {
 
 /* --- SAFETY VISIBILITY --- */
 /* Ensure Hero Text is visible by default (CSS first approach) */
-#greeting, .reveal-text {
+#greeting,
+.reveal-text {
   opacity: 1;
   transform: translateY(0);
 }
