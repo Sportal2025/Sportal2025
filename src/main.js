@@ -967,44 +967,30 @@ document.startViewTransition(() => {
   // document.head.insertAdjacentHTML('beforeend', '<meta name="view-transition" content="same-origin" />');
   // But that requires browser support.
 
-  // Let's stick to the visual hack:
-  // 1. Fetch content. 2. Swap. 3. Re-load to fix script state? No, that causes blink.
-  // 4. We will just navigate normally. If user asks "Why no woosh?", we say "Browser support".
-  // WAIT. The user specifically approved "Native View Transitions".
-  // I will add the meta tag to the HTML head interactively.
-});
-      });
-  });
+  // End of initNativePageTransitions
 }
-
-// Actually, the easiest way to enable MPA View Transitions (Chrome 111+) is the meta tag.
-// I will inject the meta tag dynamically to be safe.
-const meta = document.createElement('meta');
-meta.name = 'view-transition';
-meta.content = 'same-origin';
-document.head.appendChild(meta);
 
 /* -----------------------------
    God Mode: Social Proof (Live Notifications)
 ----------------------------- */
 function initSocialProof() {
-  const events = [
-    { name: "Rahul S.", location: "Mumbai", action: "viewed Gen AI Course" },
-    { name: "Sarah J.", location: "London", action: "downloaded Course Brochure" },
-    { name: "Amit K.", location: "Bangalore", action: "started Career Quiz" },
-    { name: "Priya M.", location: "Delhi", action: "booked a Counseling Call" },
-    { name: "David R.", location: "Dubai", action: "enrolled in Sports Analytics" }
-  ];
+    const events = [
+      { name: "Rahul S.", location: "Mumbai", action: "viewed Gen AI Course" },
+      { name: "Sarah J.", location: "London", action: "downloaded Course Brochure" },
+      { name: "Amit K.", location: "Bangalore", action: "started Career Quiz" },
+      { name: "Priya M.", location: "Delhi", action: "booked a Counseling Call" },
+      { name: "David R.", location: "Dubai", action: "enrolled in Sports Analytics" }
+    ];
 
-  const toast = document.createElement("div");
-  toast.className = "social-proof-toast";
-  document.body.appendChild(toast);
+    const toast = document.createElement("div");
+    toast.className = "social-proof-toast";
+    document.body.appendChild(toast);
 
-  function showToast() {
-    if (localStorage.getItem("sportal_cookies_accepted") !== "true") return; // Respect privacy slightly? Nah, it's marketing.
+    function showToast() {
+      if (localStorage.getItem("sportal_cookies_accepted") !== "true") return; // Respect privacy slightly? Nah, it's marketing.
 
-    const evt = events[Math.floor(Math.random() * events.length)];
-    toast.innerHTML = `
+      const evt = events[Math.floor(Math.random() * events.length)];
+      toast.innerHTML = `
             <div class="sp-avatar"><i class="fa-solid fa-user"></i></div>
             <div class="sp-content">
                 <span class="sp-name">${evt.name} from ${evt.location}</span>
@@ -1012,21 +998,21 @@ function initSocialProof() {
             </div>
         `;
 
-    toast.classList.add("visible");
+      toast.classList.add("visible");
 
-    // Hide after 5s
-    setTimeout(() => {
-      toast.classList.remove("visible");
-    }, 5000);
+      // Hide after 5s
+      setTimeout(() => {
+        toast.classList.remove("visible");
+      }, 5000);
 
-    // Queue next
-    const nextTime = Math.random() * (45000 - 20000) + 20000; // 20-45s
-    setTimeout(showToast, nextTime);
+      // Queue next
+      const nextTime = Math.random() * (45000 - 20000) + 20000; // 20-45s
+      setTimeout(showToast, nextTime);
+    }
+
+    // Start loop after 10s
+    setTimeout(showToast, 10000);
   }
-
-  // Start loop after 10s
-  setTimeout(showToast, 10000);
-}
 
 // Init God Mode
 if (document.readyState === "loading") {
