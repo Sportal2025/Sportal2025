@@ -183,17 +183,39 @@ if (bentoItems.length) {
 /* -----------------------------
    Magnetic buttons
 ----------------------------- */
-$$(".magnetic-btn").forEach((btn) => {
-  btn.addEventListener("mousemove", (e) => {
-    const rect = btn.getBoundingClientRect();
+/* -----------------------------
+   Magnetic Interactions (Masterpiece)
+----------------------------- */
+const magneticElements = $$(".magnetic-btn, .nav-link, .modal-close, .bento-icon");
+
+magneticElements.forEach((el) => {
+  el.addEventListener("mousemove", (e) => {
+    const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
 
-    gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.3, ease: "power2.out" });
+    // Stronger pull for masterpiece feel
+    gsap.to(el, {
+      x: x * 0.5,
+      y: y * 0.5,
+      duration: 0.4,
+      ease: "power2.out"
+    });
+
+    // Also move children slightly for depth (Parallax)
+    const icon = el.querySelector("i") || el.querySelector(".btn-icon");
+    if (icon) {
+      gsap.to(icon, { x: x * 0.2, y: y * 0.2, duration: 0.4 });
+    }
   });
 
-  btn.addEventListener("mouseleave", () => {
-    gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.5)" });
+  el.addEventListener("mouseleave", () => {
+    // Elastic snapback
+    gsap.to(el, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1.2, 0.4)" });
+    const icon = el.querySelector("i") || el.querySelector(".btn-icon");
+    if (icon) {
+      gsap.to(icon, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1.2, 0.4)" });
+    }
   });
 });
 
