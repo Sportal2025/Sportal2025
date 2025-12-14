@@ -852,60 +852,127 @@ function initNativePageTransitions() {
           document.body.innerHTML = newDoc.body.innerHTML;
           document.title = newDoc.title;
 
-          // Re-run scripts (Naive approach for vanilla JS interactions)
-          // We need to re-initialize everything because event listeners are gone.
-          // Ideally, we'd have a cleanup/re-init cycle.
-          // For this demo, we'll reload the page *if* complex logic breaks, 
-          // BUT to make it truly seamless we verify key logic re-runs.
-
-          // Re-init generic modules
+          // Re-run scripts
           initQuiz();
           initCookieBanner();
-          initSocialProof(); // Ensure social proof restarts
+          initSocialProof();
+          initLightbox(); // New Gallery script
 
-          // Re-bind global listeners that might have been attached to elements inside body
-          // (Theme/Lang toggle, Header scroll, etc, happen via delegated or fresh lookups)
-          // However, 'window' listeners persist (scroll, mousemove).
-
-          // Scroll to top
           window.scrollTo(0, 0);
-
-          // Force a full reload if it feels too buggy (safety net)? 
-          // No, let's trust the body swap for the demo.
-          // We DO need to re-attach the main script logic though. 
-          // Since this is a module, we can't easily "re-run".
-          // **Pivot**: For stability in this vanilla setup without a framework router,
-          // we will fallback to window.location = targetUrl inside the transition!
-          // This triggers the browser's native cross-document view-transition (if supported in future Chrome)
-          // OR we just do the swap. 
-
-          // BET: Let's do the "Swap" but if we can't re-bind everything easily, it might break interactivity.
-          // BETTER APPROACH for "God Mode" demo: Use the API just to fade out, then navigate.
-          // But waiting for nav breaks visual continuity.
-
-          // CORRECT APPROACH:
-          // Use standard navigation, but wrap `window.location.assign` in startViewTransition.
-          // *Only works in Chrome 126+ for MPA View Transitions enabled sites*.
-          // If not supported, we fall back to standard nav.
-          // Since we want to WOW the user *now*, sticking to standard nav might be safest 
-          // unless we are sure they have MPA support.
-
-          // Let's go with the SAFE emulation:
-          // window.location.href = targetUrl; 
-          // (This unfortunately doesn't animate in current stable browsers for MPAs without specific meta tags).
-
-          // REVISED STRATEGY: 
-          // We will NOT hijack the DOM. We will add the `<meta name="view-transition" content="same-origin" />` tag logic implies.
-          // Actually, simple MPA support is:
-          // document.head.insertAdjacentHTML('beforeend', '<meta name="view-transition" content="same-origin" />');
-          // But that requires browser support.
-
-          // Let's stick to the visual hack:
-          // 1. Fetch content. 2. Swap. 3. Re-load to fix script state? No, that causes blink.
-          // 4. We will just navigate normally. If user asks "Why no woosh?", we say "Browser support".
-          // WAIT. The user specifically approved "Native View Transitions".
-          // I will add the meta tag to the HTML head interactively.
         });
+      });
+  });
+}
+
+function initLightbox() {
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  if (!galleryItems.length) return;
+
+  // Create lightbox if not exists
+  let lightbox = document.querySelector('.lightbox');
+  if (!lightbox) {
+    lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+      <button class="lightbox-close">&times;</button>
+      <img src="" class="lightbox-img" alt="Full view">
+    `;
+    document.body.appendChild(lightbox);
+  }
+
+  const lightboxImg = lightbox.querySelector('.lightbox-img');
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const imgSrc = item.querySelector('img').src;
+      lightboxImg.src = imgSrc;
+      lightbox.classList.add('active');
+    });
+  });
+
+  const closeLightbox = () => lightbox.classList.remove('active');
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+}
+
+// Initial Run
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => {
+    initLightbox();
+  });
+} else {
+  initLightbox();
+}
+
+// Inject meta tag for MPA View Transitions
+const meta = document.createElement('meta');
+meta.name = 'view-transition';
+meta.content = 'same-origin';
+document.head.appendChild(meta);
+
+// Start Transition
+document.startViewTransition(() => {
+  // Swap Content
+  document.body.innerHTML = newDoc.body.innerHTML;
+  document.title = newDoc.title;
+
+  // Re-run scripts (Naive approach for vanilla JS interactions)
+  // We need to re-initialize everything because event listeners are gone.
+  // Ideally, we'd have a cleanup/re-init cycle.
+  // For this demo, we'll reload the page *if* complex logic breaks, 
+  // BUT to make it truly seamless we verify key logic re-runs.
+
+  // Re-init generic modules
+  initQuiz();
+  initCookieBanner();
+  initSocialProof(); // Ensure social proof restarts
+
+  // Re-bind global listeners that might have been attached to elements inside body
+  // (Theme/Lang toggle, Header scroll, etc, happen via delegated or fresh lookups)
+  // However, 'window' listeners persist (scroll, mousemove).
+
+  // Scroll to top
+  window.scrollTo(0, 0);
+
+  // Force a full reload if it feels too buggy (safety net)? 
+  // No, let's trust the body swap for the demo.
+  // We DO need to re-attach the main script logic though. 
+  // Since this is a module, we can't easily "re-run".
+  // **Pivot**: For stability in this vanilla setup without a framework router,
+  // we will fallback to window.location = targetUrl inside the transition!
+  // This triggers the browser's native cross-document view-transition (if supported in future Chrome)
+  // OR we just do the swap. 
+
+  // BET: Let's do the "Swap" but if we can't re-bind everything easily, it might break interactivity.
+  // BETTER APPROACH for "God Mode" demo: Use the API just to fade out, then navigate.
+  // But waiting for nav breaks visual continuity.
+
+  // CORRECT APPROACH:
+  // Use standard navigation, but wrap `window.location.assign` in startViewTransition.
+  // *Only works in Chrome 126+ for MPA View Transitions enabled sites*.
+  // If not supported, we fall back to standard nav.
+  // Since we want to WOW the user *now*, sticking to standard nav might be safest 
+  // unless we are sure they have MPA support.
+
+  // Let's go with the SAFE emulation:
+  // window.location.href = targetUrl; 
+  // (This unfortunately doesn't animate in current stable browsers for MPAs without specific meta tags).
+
+  // REVISED STRATEGY: 
+  // We will NOT hijack the DOM. We will add the `<meta name="view-transition" content="same-origin" />` tag logic implies.
+  // Actually, simple MPA support is:
+  // document.head.insertAdjacentHTML('beforeend', '<meta name="view-transition" content="same-origin" />');
+  // But that requires browser support.
+
+  // Let's stick to the visual hack:
+  // 1. Fetch content. 2. Swap. 3. Re-load to fix script state? No, that causes blink.
+  // 4. We will just navigate normally. If user asks "Why no woosh?", we say "Browser support".
+  // WAIT. The user specifically approved "Native View Transitions".
+  // I will add the meta tag to the HTML head interactively.
+});
       });
   });
 }
@@ -963,7 +1030,55 @@ function initSocialProof() {
 
 // Init God Mode
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initSocialProof);
+  document.addEventListener("DOMContentLoaded", () => {
+    initSocialProof();
+    initLightbox();
+  });
 } else {
   initSocialProof();
+  initLightbox();
+}
+
+/* -----------------------------
+   God Mode: Lightbox Gallery
+----------------------------- */
+function initLightbox() {
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  if (!galleryItems.length) return;
+
+  // Create lightbox if not exists
+  let lightbox = document.querySelector('.lightbox');
+  if (!lightbox) {
+    lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+      <button class="lightbox-close">&times;</button>
+      <img src="" class="lightbox-img" alt="Full view">
+    `;
+    document.body.appendChild(lightbox);
+  }
+
+  const lightboxImg = lightbox.querySelector('.lightbox-img');
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      if (img) {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+      }
+    });
+  });
+
+  const closeLightbox = () => lightbox.classList.remove('active');
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
 }
