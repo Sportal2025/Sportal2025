@@ -1751,8 +1751,9 @@ body.light-mode .step-connector {
   font-size: 0.9rem;
 }
 
-color: var(--text-muted);
-font-size: 0.8rem;
+.sp-info {
+  color: var(--text-muted);
+  font-size: 0.8rem;
 }
 
 /* 
