@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | Sportal Corporate</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <div class="ambient-glow"></div>
+    <div class="noise-overlay"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container nav">
+            <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.8rem; text-decoration: none;">
+                <div class="logo-container">
+                    <img src="public/logo-final.jpg" alt="Sportal Corporate Logo"
+                        style="height: 48px; border-radius: 50%;">
+                </div>
+                <div style="line-height: 1; display: flex; flex-direction: column;">
+                    <span style="font-size: 1.25rem;">Sportal</span>
+                    <span style="color: var(--color-accent); font-size: 1.25rem;">Corporate</span>
+                </div>
+            </a>
+            <button class="hamburger-menu" aria-label="Toggle Navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li class="dropdown">
+                    <a href="/#about" class="nav-link">About Us <i class="fa-solid fa-chevron-down"
+                            style="font-size: 0.8rem;"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/founder.html">Founder Profile</a></li>
+                    </ul>
+                </li>
+                <li><a href="/partners.html" class="nav-link">Partners</a></li>
+                <li><a href="/courses.html" class="nav-link">Courses</a></li>
+                <li><a href="/quiz.html" class="nav-link">Career Quiz</a></li>
+                <li><a href="/gallery.html" class="nav-link active">Gallery</a></li>
+                <li><a href="/#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="btn btn-primary magnetic-btn" onclick="window.location.href='/#contact'">
+                <span class="btn-text">Get Started</span>
+                <span class="btn-sheen"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="section-padding" style="padding-top: 150px; padding-bottom: 2rem;">
+        <div class="container text-center">
+            <h1 class="reveal-text" style="font-size: clamp(3rem, 6vw, 5rem);">Impact <span
+                    class="text-gradient">Gallery</span></h1>
+            <p class="reveal-text" style="margin: 0 auto; margin-top: 1rem;">
+                Witness the journey, the events, and the transformations happening at Sportal Corporate.
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="section-padding" style="padding-top: 0;">
+        <div class="container">
+            <div class="gallery-grid">
+
+                <!-- Image 1 -->
+                <div class="gallery-item glass-card">
+                    <img src="/public/gallery/ai_presentation_1.jpg" alt="AI Presentation" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 style="color:white; margin-bottom:0.5rem;">AI in Sports</h4>
+                        <p class="sp-info">Presentation Session</p>
+                    </div>
+                </div>
+
+                <!-- Image 2 -->
+                <div class="gallery-item glass-card">
+                    <img src="/public/gallery/award_ceremony.jpg" alt="Award Ceremony" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 style="color:white; margin-bottom:0.5rem;">Awards Night</h4>
+                        <p class="sp-info">Celebrating Excellence</p>
+                    </div>
+                </div>
+
+                <!-- Image 3 -->
+                <div class="gallery-item glass-card">
+                    <img src="/public/gallery/group_photo.jpg" alt="Group Photo" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 style="color:white; margin-bottom:0.5rem;">Batch 2024</h4>
+                        <p class="sp-info">Future Leaders</p>
+                    </div>
+                </div>
+
+                <!-- Image 4 -->
+                <div class="gallery-item glass-card">
+                    <img src="/public/gallery/valencia_cf.jpg" alt="Valencia CF Visit" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 style="color:white; margin-bottom:0.5rem;">Valencia CF</h4>
+                        <p class="sp-info">International Exposure</p>
+                    </div>
+                </div>
+
+                <!-- Image 5 -->
+                <div class="gallery-item glass-card">
+                    <img src="/public/gallery/workshop_1.jpg" alt="Workshop Session" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 style="color:white; margin-bottom:0.5rem;">Hands-on Workshop</h4>
+                        <p class="sp-info">Practical Learning</p>
+                    </div>
+                </div>
+
+                <!-- Image 6 -->
+                <div class="gallery-item glass-card">
+                    <img src="/public/gallery/f1_track_visit.jpg" alt="F1 Track Visit" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 style="color:white; margin-bottom:0.5rem;">F1 Track Visit</h4>
+                        <p class="sp-info">Field Trip</p>
+                    </div>
+                </div>
+
+                <!-- Image 7 -->
+                <div class="gallery-item glass-card">
+                    <img src="/public/gallery/panel_discussion.jpg" alt="Panel Discussion" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 style="color:white; margin-bottom:0.5rem;">Expert Panel</h4>
+                        <p class="sp-info">Industry Insights</p>
+                    </div>
+                </div>
+
+                <!-- Image 8 -->
+                <div class="gallery-item glass-card">
+                    <img src="/public/gallery/yoga_day.jpg" alt="Yoga Day" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 style="color:white; margin-bottom:0.5rem;">International Yoga Day</h4>
+                        <p class="sp-info">Wellness & Balance</p>
+                    </div>
+                </div>
+
+                <!-- Image 9 -->
+                <div class="gallery-item glass-card">
+                    <img src="/public/gallery/cap_ceremony.jpg" alt="Cap Ceremony" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 style="color:white; margin-bottom:0.5rem;">Graduation</h4>
+                        <p class="sp-info">Cap Ceremony</p>
+                    </div>
+                </div>
+
+                <!-- Image 10 -->
+                <div class="gallery-item glass-card">
+                    <img src="/public/gallery/partnership_meeting.jpg" alt="Partnership Meeting" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 style="color:white; margin-bottom:0.5rem;">Global Partners</h4>
+                        <p class="sp-info">Signing MOU</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Sportal Corporate</h4>
+                    <p style="color: #94A3B8; margin-bottom: 1rem;">
+                        Redefining sports education and wellness through innovation and research.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/courses.html">Courses</a></li>
+                        <li><a href="/gallery.html">Gallery</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Sportal Corporate. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
