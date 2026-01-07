@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sports Courses & Certifications | Sportal Corporate</title>
+    <meta name="description"
+        content="Explore certified courses in Gen AI, Sports Analytics, Yoga, and Sports Management. Elevate your career with Sportal Corporate.">
+    <meta name="keywords"
+        content="Gen AI Course, Sports Analytics Certification, Yoga Instructor Course, Sports Management Diploma, Sportal Courses">
+
+    <!-- Course Schema (List) -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Certification on Gen AI" },
+      { "@type": "ListItem", "position": 2, "name": "Diploma in Sports Analytics" },
+      { "@type": "ListItem", "position": 3, "name": "Certified Yoga Instructor" }
+    ]
+  }
+  </script>
+
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+    <div class="ambient-glow"></div>
+    <div class="noise-overlay"></div>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay">
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="close-modal" aria-label="Close modal">&times;</button>
+
+            <div class="modal-body">
+                <div id="form-section">
+                    <h2 class="section-title text-center" style="font-size: 2rem; margin-bottom: 0.5rem;">Get in Touch
+                    </h2>
+                    <p class="text-center" style="color: var(--text-muted); margin-bottom: 2rem;">Fill in your details
+                        for more information.</p>
+
+                    <form id="lead-form" action="https://formsubmit.co/reachsportal@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_subject" value="New Inquiry from Courses Page">
+                        <input type="hidden" name="_next" value="">
+
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required class="form-input">
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91..." required
+                                    class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp No.</label>
+                                <input type="tel" id="whatsapp" name="whatsapp" placeholder="+91..." class="form-input">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required
+                                class="form-input">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary magnetic-btn"
+                            style="width: 100%; justify-content: center; margin-top: 1rem;">
+                            <span class="btn-text">Submit Request</span>
+                            <span class="btn-sheen"></span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Success Msg -->
+                <div id="success-message" style="display: none; text-align: center; padding: 2rem 0;">
+                    <div style="font-size: 4rem; color: var(--color-success); margin-bottom: 1rem;">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem;">Thank You!</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">
+                        We have received your request.<br>Our team will contact you shortly.
+                    </p>
+                    <button class="btn btn-secondary magnetic-btn" id="close-success-btn"
+                        style="margin-top: 2rem;">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container nav">
+            <a href="/index.html" class="logo"
+                style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+                <img src="logo-final.jpg" alt="Sportal Corporate Logo" style="height: 48px; border-radius: 8px;">
+                <div style="line-height: 1; display: flex; flex-direction: column;">
+                    <span style="font-size: 1.25rem;">Sportal</span>
+                    <span style="color: var(--color-accent); font-size: 1.25rem;">Corporate</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="/index.html#home" class="nav-link">Home</a></li>
+                <li class="nav-item-dropdown">
+                    <div class="dropdown-trigger">
+                        <a href="/index.html#about" class="nav-link">About Us</a>
+                        <i class="fa-solid fa-chevron-down dropdown-icon" style="color: var(--text-muted);"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="/founder.html" class="dropdown-link">Founder Profile</a>
+                    </div>
+                </li>
+                <li><a href="/partners.html" class="nav-link">Partners</a></li>
+                <li><a href="/courses.html" class="nav-link active">Courses</a></li>
+                <li><a href="/quiz.html" class="nav-link">Career Quiz</a></li>
+                <li><a href="/index.html#services" class="nav-link">Services</a></li>
+                <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <!-- Open modal instead of jumping to #contact -->
+            <button class="btn btn-primary magnetic-btn js-open-modal">
+                <span class="btn-text">Get Started</span>
+                <span class="btn-sheen"></span>
+                <i class="fa-solid fa-arrow-right btn-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main style="padding-top: 120px; padding-bottom: 80px;">
+        <div class="container">
+            <h1 class="section-title text-center" style="margin-bottom: 1rem;">Course Announcements</h1>
+            <p class="text-center" style="max-width: 600px; margin: 0 auto 4rem auto; color: var(--text-muted);">
+                Explore our upcoming certification programs, diploma courses, and specialized workshops designed to
+                elevate your career in sports.
+            </p>
+
+            <div class="bento-grid" id="course-grid">
+
+                <!-- Gen AI Course -->
+                <div class="bento-item span-12 course-card glitch-card"
+                    style="border: 1px solid var(--color-primary); background: linear-gradient(135deg, rgba(20,20,20,0.9), rgba(5,5,5,0.95)); box-shadow: 0 0 30px rgba(217, 119, 6, 0.15);">
+                    <div class="course-badge"
+                        style="background: var(--color-glow); color: black; font-weight:800; letter-spacing:1px; box-shadow: 0 0 10px var(--color-glow);">
+                        Coming Soon
+                    </div>
+
+                    <h2 class="feature-title" style="font-size: 1.8rem; margin-top: 0.5rem;">
+                        <span class="text-gradient glitch-text" data-text="Certification on Gen AI">Certification on Gen
+                            AI</span><br>
+                        AI Course for Teachers and Learners
+                    </h2>
+
+                    <div class="course-meta">
+                        <span><i class="fa-solid fa-robot"></i> AI Powered</span>
+                        <span><i class="fa-solid fa-rocket"></i> Future Ready</span>
+                    </div>
+
+                    <p class="feature-description" style="max-width: 800px;">
+                        A pioneering certification designed to bridge the gap between traditional education and the AI
+                        revolution.
+                        Master prompt engineering, automated content creation, and data-driven teaching strategies
+                        tailored for the sports and education sector.
+                    </p>
+
+                    <button class="btn btn-primary js-open-modal" style="margin-top: 1rem;">
+                        Get Notified & Enquire <i class="fa-solid fa-paper-plane" style="margin-left:8px;"></i>
+                    </button>
+                </div>
+
+                <!-- Course 1 -->
+                <div class="bento-item span-6 course-card">
+                    <div class="course-badge">New</div>
+                    <h3 class="feature-title">Diploma in Sports Analytics</h3>
+                    <div class="course-meta">
+                        <span><i class="fa-regular fa-clock"></i> 6 Months</span>
+                        <span><i class="fa-solid fa-video"></i> Hybrid Mode</span>
+                    </div>
+                    <p class="feature-description">
+                        Master the art of data in sports. Learn to interpret player performance, game strategy, and
+                        injury prediction algorithms.
+                    </p>
+                    <button class="btn text-accent hover-underline js-open-modal" style="margin-top: auto; padding: 0;">
+                        Enquire for Details <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="bento-item span-6 course-card">
+                    <h3 class="feature-title">Certified Yoga Instructor</h3>
+                    <div class="course-meta">
+                        <span><i class="fa-regular fa-clock"></i> 3 Months</span>
+                        <span><i class="fa-solid fa-location-dot"></i> On-Campus</span>
+                    </div>
+                    <p class="feature-description">
+                        A comprehensive program covering traditional yoga techniques, anatomy, and teaching
+                        methodologies alongside modern wellness practices.
+                    </p>
+                    <button class="btn text-accent hover-underline js-open-modal" style="margin-top: auto; padding: 0;">
+                        Enquire for Details <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="bento-item span-4 course-card">
+                    <h3 class="feature-title">Sports Event Management</h3>
+                    <div class="course-meta">
+                        <span><i class="fa-regular fa-clock"></i> 6 Weeks</span>
+                        <span><i class="fa-solid fa-laptop"></i> Online</span>
+                    </div>
+                    <p class="feature-description">
+                        Learn to plan, execute, and manage large-scale sporting events.
+                    </p>
+                    <button class="btn text-accent hover-underline js-open-modal" style="margin-top: auto; padding: 0;">
+                        Enquire for Details <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Course 4 -->
+                <div class="bento-item span-8 course-card"
+                    style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('/corporate_banner.jpg') no-repeat center/cover; position: relative;">
+                    <h3 class="feature-title" style="position: relative; z-index: 2;">Executive Program in Sports
+                        Leadership</h3>
+                    <div class="course-meta" style="position: relative; z-index: 2;">
+                        <span><i class="fa-regular fa-clock"></i> 1 Year</span>
+                        <span><i class="fa-solid fa-building-columns"></i> Executive</span>
+                    </div>
+                    <p class="feature-description" style="position: relative; z-index: 2;">
+                        Designed for professionals aiming for leadership roles in sports federations, clubs, and
+                        corporate sports divisions.
+                    </p>
+                    <button class="btn text-accent hover-underline js-open-modal"
+                        style="margin-top: auto; padding: 0; position: relative; z-index: 2;">
+                        Enquire for Brochure <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Trust & Value -->
+            <div class="section-padding" style="margin-top: 4rem;">
+                <div class="section-header text-center" style="margin-bottom: 3rem;">
+                    <span class="section-subtitle"
+                        style="color: var(--color-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">Trust
+                        & Value</span>
+                    <h2 class="section-title">Industry Recognized Credentials</h2>
+                </div>
+
+                <div class="cert-showcase glass-card"
+                    style="display: flex; flex-direction: column; gap: 3rem; padding: 3rem; align-items: center; border: 1px solid var(--glass-border);">
+                    <div class="cert-image" style="flex: 1; width: 100%;">
+                        <img src="/certificate_mockup.png" alt="Sportal Certificate Sample"
+                            style="width: 100%; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); transform: perspective(1000px) rotateY(-5deg) rotateX(5deg); transition: transform 0.3s ease;">
+                    </div>
+                    <div class="cert-details" style="flex: 1;">
+                        <h3 style="font-size: 2rem; margin-bottom: 1.5rem;">Valid. Verifiable. Valued.</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">
+                            Your achievement deserves to be showcased. Our certificates are not just paper; they are a
+                            testament to your hands-on training and expertise.
+                        </p>
+                        <ul class="cert-features" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <li style="display: flex; align-items: center; gap: 1rem; color: var(--text-light);">
+                                <i class="fa-solid fa-medal"
+                                    style="color: var(--color-accent); font-size: 1.25rem;"></i>
+                                <span>Accredited by 50+ Corporate Partners</span>
+                            </li>
+                            <li style="display: flex; align-items: center; gap: 1rem; color: var(--text-light);">
+                                <i class="fa-solid fa-qrcode"
+                                    style="color: var(--color-accent); font-size: 1.25rem;"></i>
+                                <span>Unique QR Code for Instant Verification</span>
+                            </li>
+                            <li style="display: flex; align-items: center; gap: 1rem; color: var(--text-light);">
+                                <i class="fa-solid fa-file-pdf"
+                                    style="color: var(--color-accent); font-size: 1.25rem;"></i>
+                                <span>Digital & Hard Copy Provided</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer" id="contact">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3 style="font-size: 1.5rem; color: white; margin-bottom: 1rem;">Sportal Corporate</h3>
+                <p style="color: var(--text-muted); max-width: 300px;">
+                    Redefining sports education and wellness through innovation and research.
+                </p>
+                <div class="social-links" style="margin-top: 1.5rem;">
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://www.facebook.com/sportalcorp" target="_blank" aria-label="Facebook"><i
+                                class="fa-brands fa-facebook"></i></a>
+                        <a href="https://instagram.com/sportal.corporate/" target="_blank" aria-label="Instagram"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/sportal-corporate-private-limited/about/?viewAsMember=true"
+                            target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4 style="color: white; margin-bottom: 1.5rem;">Quick Links</h4>
+                <ul style="display: flex; flex-direction: column; gap: 0.8rem;">
+                    <ul class="footer-links">
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/courses.html">Courses</a></li>
+                        <li><a href="/partners.html">Partners</a></li>
+                        <li><a href="/index.html#contact">Contact</a></li>
+                        <li><a href="/legal.html">Privacy & Terms</a></li>
+                    </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4 style="color: white; margin-bottom: 1.5rem;">Contact</h4>
+                <p style="margin-bottom: 0.5rem;"><i class="fa-solid fa-envelope"
+                        style="margin-right: 10px; color: var(--color-accent);"></i> director@sportalcorporate.org</p>
+                <p style="margin-bottom: 0.5rem;"><i class="fa-solid fa-phone"
+                        style="margin-right: 10px; color: var(--color-accent);"></i> +91 8400888885</p>
+                <p><i class="fa-solid fa-location-dot" style="margin-right: 10px; color: var(--color-accent);"></i> S
+                    208,
+                    SHIVALIK NAGAR, HARIDWAR, U.K 249403 India</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2024 Sportal Corporate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Page-only styling -->
+    <style>
+        .course-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .course-badge {
+            background: var(--color-accent);
+            color: black;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .course-meta i {
+            color: var(--color-accent);
+        }
+
+        .hover-underline:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify Certificate | Sportal Corporate</title>
+
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Optional but recommended for sharing -->
+    <link rel="canonical" href="https://sportalcorporate.netlify.app/verify.html" />
+    <meta name="description" content="Verify a Sportal Corporate certificate using the unique Certificate ID." />
+
+    <style>
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="container nav">
+            <a href="/index.html" class="logo"
+                style="display:flex; align-items:center; gap:0.8rem; text-decoration:none;">
+                <div class="logo-container">
+                    <img src="logo-final.jpg" alt="Sportal Corporate Logo" style="height:48px; border-radius:8px;">
+                </div>
+                <div style="line-height:1; display:flex; flex-direction:column;">
+                    <span style="font-size:1.25rem;">Sportal</span>
+                    <span style="color: var(--color-accent); font-size:1.25rem;">Corporate</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="/index.html" class="nav-link">Home</a></li>
+                <li><a href="/courses.html" class="nav-link">Courses</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container"
+        style="padding-top:140px; padding-bottom:80px; min-height:80vh; display:flex; flex-direction:column; align-items:center;">
+        <h1 class="section-title text-center" style="margin-bottom:1rem;">Certificate Verification</h1>
+
+        <p class="text-center" style="color: var(--text-muted); max-width:600px; margin-bottom:3rem;">
+            Authenticate a Sportal Corporate certification. Enter the unique Certificate ID provided on the document.
+        </p>
+
+        <div class="glass-card" style="padding:3rem; width:100%; max-width:500px; text-align:center;">
+            <div style="margin-bottom:2rem;">
+                <i class="fa-solid fa-shield-halved" style="font-size:4rem; color: var(--color-primary);"></i>
+            </div>
+
+            <div class="form-group" style="margin-bottom:1.5rem; text-align:left;">
+                <label for="cert-id" style="display:block; margin-bottom:0.5rem; color: var(--text-light);">
+                    Certificate ID
+                </label>
+
+                <input type="text" id="cert-id" placeholder="e.g. SPORT-2024" autocomplete="off" spellcheck="false"
+                    style="width:100%; padding:1rem; border-radius:8px; border:1px solid var(--glass-border); background: rgba(255,255,255,0.05); color:white; font-size:1.1rem;" />
+            </div>
+
+            <button id="verify-btn" class="btn btn-primary" style="width:100%;">Verify Now</button>
+
+            <div id="result-message" aria-live="polite" style="margin-top:1.5rem; min-height:24px;"></div>
+        </div>
+
+        <!-- Success Result -->
+        <div id="success-result" class="glass-card"
+            style="margin-top:2rem; padding:2rem; width:100%; max-width:700px; display:none; border-left:4px solid #25D366; animation: slideUp 0.5s ease;">
+            <div style="display:flex; gap:1.5rem; align-items:center;">
+                <div
+                    style="width:80px; height:80px; background: rgba(37, 211, 102, 0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                    <i class="fa-solid fa-check" style="font-size:2.5rem; color:#25D366;"></i>
+                </div>
+
+                <div>
+                    <h3 style="margin-bottom:0.5rem; font-size:1.5rem;">Certificate Verified</h3>
+                    <p style="color: var(--text-light); margin-bottom:0.2rem;">
+                        <strong>Holder:</strong> <span id="res-name">—</span>
+                    </p>
+                    <p style="color: var(--text-light); margin-bottom:0.2rem;">
+                        <strong>Course:</strong> <span id="res-course">—</span>
+                    </p>
+                    <p style="color: var(--text-muted); font-size:0.9rem;">
+                        Issued: <span id="res-date">—</span> | Status:
+                        <span style="color:#25D366; font-weight:bold;">Active</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer" style="padding:2rem 0;">
+        <div class="container text-center">
+            <p style="color: var(--text-muted);">&copy; 2024 Sportal Corporate | <a href="/legal.html"
+                    style="color: var(--text-light); text-decoration:none;">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="close-modal" type="button" aria-label="Close">&times;</button>
+
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; font-size: 2rem;">
+                <a href="https://www.facebook.com/sportalcorp" target="_blank" aria-label="Facebook"
+                    style="color: var(--text-light);"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://instagram.com/sportal.corporate/" target="_blank" aria-label="Instagram"
+                    style="color: var(--text-light);"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/sportal-corporate-private-limited/about/?viewAsMember=true"
+                    target="_blank" aria-label="LinkedIn" style="color: var(--text-light);"><i
+                        class="fa-brands fa-linkedin"></i></a>
+            </div>
+            <div class="modal-body">
+                <!-- Quiz Teaser -->
+                <section class="quiz-teaser-section">
+                    <div class="quiz-teaser-content">
+                        <span
+                            style="color: var(--color-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">
+                            Career Matcher
+                        </span>
+
+                        <h2 style="font-size: 3rem; margin-bottom: 1.5rem;" data-en="Unsure Which Path to Choose?"
+                            data-hi="अपना सही करियर पथ चुनें?">
+                            Unsure Which Path to Choose?
+                        </h2>
+
+                        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem;"
+                            data-en="Take our 1-minute AI-powered assessment to discover the perfect sports career for your personality."
+                            data-hi="अपनी पसंद के अनुसार सही खेल करियर खोजने के लिए हमारा १-मिनट का AI असेसमेंट लें।">
+                            Take our 1-minute AI-powered assessment to discover the perfect sports career for your
+                            personality.
+                        </p>
+
+                        <a href="/quiz.html" class="btn btn-primary"
+                            style="text-decoration:none; display:inline-flex; align-items:center; gap:0.75rem;"
+                            data-en="Find My Career Path" data-hi="मेरा करियर खोजें">
+                            <span class="btn-text">Find My Career Path</span>
+                            <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                            <div class="btn-sheen"></div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Form Section -->
+                <section id="contact-form-section" style="margin-top: 2.5rem;">
+                    <h2 class="section-title text-center" style="font-size: 2rem; margin-bottom: 0.5rem;">Get in Touch
+                    </h2>
+                    <p class="text-center" style="color: var(--text-muted); margin-bottom: 2rem;">
+                        Fill in your details and we'll contact you personally.
+                    </p>
+
+                    <form id="lead-form" action="https://formsubmit.co/reachsportal@gmail.com" method="POST">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_subject" value="New Lead from Sportal Corporate Website">
+                        <input type="hidden" name="_next" value="">
+
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required class="form-input">
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required
+                                    class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp No.</label>
+                                <input type="tel" id="whatsapp" name="whatsapp" placeholder="+91 98765 43210"
+                                    class="form-input">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required
+                                class="form-input">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary magnetic-btn"
+                            style="width: 100%; justify-content: center; margin-top: 1rem;">
+                            <span class="btn-text">Submit Request</span>
+                            <span class="btn-sheen"></span>
+                        </button>
+                    </form>
+
+                    <!-- Success Message Section (Hidden by default) -->
+                    <div id="success-message" style="display: none; text-align: center; padding: 2rem 0;">
+                        <div style="font-size: 4rem; color: var(--color-success); margin-bottom: 1rem;">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Thank You!</h2>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">
+                            We have received your information.<br>
+                            Our team will reach out to you personally very soon.
+                        </p>
+                        <button class="btn btn-secondary magnetic-btn" id="close-success-btn" type="button"
+                            style="margin-top: 2rem;">
+                            Close
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Your global JS -->
+    <script type="module" src="/src/main.js"></script>
+
+    <!-- Verification Logic (Clean + Extensible) -->
+    <script>
+        // Mock database
+        const CERT_DB = {
+            "SPORT-2024": {
+                name: "John Doe",
+                course: "Diploma in Sports Analytics",
+                date: "Dec 15, 2024"
+            }
+        };
+
+        const input = document.getElementById('cert-id');
+        const btn = document.getElementById('verify-btn');
+        const msgDiv = document.getElementById('result-message');
+        const resultDiv = document.getElementById('success-result');
+
+        const resName = document.getElementById('res-name');
+        const resCourse = document.getElementById('res-course');
+        const resDate = document.getElementById('res-date');
+
+        function setMessage(html, colorVar = 'var(--text-muted)') {
+            msgDiv.innerHTML = html;
+            msgDiv.style.color = colorVar;
+        }
+
+        function verify() {
+            // Robust cleaning
+            const rawId = input.value || '';
+            // Remove all non-alphanumeric chars for loose matching (optional) or just trim
+            const id = rawId.trim().toUpperCase();
+
+            resultDiv.style.display = 'none';
+
+            if (!id) {
+                setMessage('<i class="fa-solid fa-triangle-exclamation"></i> Please enter a Certificate ID.', '#fbbf24');
+                return;
+            }
+
+            btn.disabled = true;
+            setMessage('<i class="fa-solid fa-spinner fa-spin"></i> Verifying...', 'var(--text-muted)');
+
+            setTimeout(() => {
+                try {
+                    // Robust lookup: Check exact match first
+                    let cert = CERT_DB[id];
+
+                    // Fallback: Check if any key matches trimmed/cleaned version if exact fails
+                    if (!cert) {
+                        const foundKey = Object.keys(CERT_DB).find(k => k.trim().toUpperCase() === id);
+                        if (foundKey) cert = CERT_DB[foundKey];
+                    }
+
+                    if (cert) {
+                        setMessage('');
+                        resName.textContent = cert.name;
+                        resCourse.textContent = cert.course;
+                        resDate.textContent = cert.date;
+                        resultDiv.style.display = 'block';
+                    } else {
+                        setMessage(
+                            `<i class="fa-solid fa-circle-xmark"></i> Invalid Certificate ID. Please check and try again.`,
+                            '#ef4444'
+                        );
+                    }
+                } catch (err) {
+                    setMessage(
+                        `<i class="fa-solid fa-bug"></i> Error: ${err.message}`,
+                        '#ef4444'
+                    );
+                }
+
+                btn.disabled = false;
+            }, 800);
+        }
+
+        btn.addEventListener('click', verify);
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') verify();
+        });
+    </script>
+</body>
+
+</html>

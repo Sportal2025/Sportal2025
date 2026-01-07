@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sportal Corporate | Redefining Sports Education</title>
+  <!-- Meta Tags for AI & Search Ranking -->
+  <link rel="canonical" href="https://sportalcorporate.org/" />
+  <meta name="description"
+    content="India's #1 AI-Powered Sports Education Platform. Official NEP 2020 aligned Partner. Specialized courses in Gen AI for Sports, Analytics, and Management. Founded by Dr. Gaurav Pant.">
+  <meta name="keywords"
+    content="Sports Education India, Gen AI in Sports, Sports Analytics Course, Dr. Gaurav Pant, Sportal Corporate, Physical Education NEP 2020, Sports Management Career, AI Sports Certification">
+  <meta name="author" content="Sportal Corporate">
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#D97706">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered: ', registration);
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sportalcorporate.org/">
+  <meta property="og:title" content="Sportal Corporate | AI-Driven Sports Education">
+  <meta property="og:description"
+    content="Join the revolution in Sports Education. Learn Gen AI, Analytics, and Management from India's top experts.">
+  <meta property="og:image" content="/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://sportalcorporate.org/">
+  <meta property="twitter:title" content="Sportal Corporate | AI-Driven Sports Education">
+  <meta property="twitter:description"
+    content="Join the revolution in Sports Education. Learn Gen AI, Analytics, and Management from India's top experts.">
+  <meta property="twitter:image" content="/og-image.jpg">
+
+  <!-- JSON-LD Structured Data (Knowledge Graph) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Sportal Corporate",
+    "url": "https://sportalcorporate.org",
+    "logo": "https://sportalcorporate.org/logo-final.jpg",
+    "sameAs": [
+      "https://www.facebook.com/sportalcorp",
+      "https://www.linkedin.com/company/sportal-corporate-private-limited/",
+      "https://instagram.com/sportal.corporate/"
+    ],
+    "founder": {
+      "@type": "Person",
+      "name": "Dr. Gaurav Pant",
+      "jobTitle": "Founder & Director",
+      "url": "https://sportalcorporate.org/founder.html"
+    },
+    "description": "Premier AI-Powered Sports Education provider in India, offering NEP-aligned curriculum and professional certifications.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "S 208, Shivalik Nagar",
+      "addressLocality": "Haridwar",
+      "addressRegion": "Uttarakhand",
+      "postalCode": "249403",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-8400888885",
+      "contactType": "admissions",
+      "email": "director@sportalcorporate.org"
+    }
+  }
+  </script>
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="loader-logo" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+      <div>
+        <span class="text-glow" style="color: white; font-size: 2rem; font-weight: 800;">Sportal</span>
+        <span class="text-glow" style="color: var(--color-accent); font-size: 2rem; font-weight: 800;">Corporate</span>
+      </div>
+    </div>
+    <div class="loader-progress"></div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-content glass-card">
+      <button class="modal-close" id="close-modal" type="button" aria-label="Close">&times;</button>
+
+      <div class="modal-body">
+        <!-- Quiz Teaser -->
+        <section class="quiz-teaser-section">
+          <div class="quiz-teaser-content">
+            <span
+              style="color: var(--color-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">
+              Career Matcher
+            </span>
+
+            <h2 style="font-size: 3rem; margin-bottom: 1.5rem;" data-en="Unsure Which Path to Choose?"
+              data-hi="अपना सही करियर पथ चुनें?">
+              Unsure Which Path to Choose?
+            </h2>
+
+            <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem;"
+              data-en="Take our 1-minute AI-powered assessment to discover the perfect sports career for your personality."
+              data-hi="अपनी पसंद के अनुसार सही खेल करियर खोजने के लिए हमारा १-मिनट का AI असेसमेंट लें।">
+              Take our 1-minute AI-powered assessment to discover the perfect sports career for your personality.
+            </p>
+
+            <a href="/quiz.html" class="btn btn-primary"
+              style="text-decoration:none; display:inline-flex; align-items:center; gap:0.75rem;"
+              data-en="Find My Career Path" data-hi="मेरा करियर खोजें">
+              <span class="btn-text">Find My Career Path</span>
+              <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+              <div class="btn-sheen"></div>
+            </a>
+          </div>
+        </section>
+
+        <!-- Form Section -->
+        <section id="contact-form-section" style="margin-top: 2.5rem;">
+          <h2 class="section-title text-center" style="font-size: 2rem; margin-bottom: 0.5rem;">Get in Touch</h2>
+          <p class="text-center" style="color: var(--text-muted); margin-bottom: 2rem;">
+            Fill in your details and we'll contact you personally.
+          </p>
+
+          <form id="lead-form" action="https://formsubmit.co/reachsportal@gmail.com" method="POST">
+            <!-- FormSubmit Configuration -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_subject" value="New Lead from Sportal Corporate Website">
+            <input type="hidden" name="_next" value="">
+
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required class="form-input">
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required class="form-input">
+              </div>
+              <div class="form-group">
+                <label for="whatsapp">WhatsApp No.</label>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="+91 98765 43210" class="form-input">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" required class="form-input">
+            </div>
+
+            <button type="submit" class="btn btn-primary magnetic-btn"
+              style="width: 100%; justify-content: center; margin-top: 1rem;">
+              <span class="btn-text">Submit Request</span>
+              <span class="btn-sheen"></span>
+            </button>
+          </form>
+
+          <!-- Success Message Section (Hidden by default) -->
+          <div id="success-message" style="display: none; text-align: center; padding: 2rem 0;">
+            <div style="font-size: 4rem; color: var(--color-success); margin-bottom: 1rem;">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Thank You!</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">
+              We have received your information.<br>
+              Our team will reach out to you personally very soon.
+            </p>
+            <button class="btn btn-secondary magnetic-btn" id="close-success-btn" type="button"
+              style="margin-top: 2rem;">
+              Close
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="ambient-glow"></div>
+  <div class="scroll-progress"></div>
+  <div class="noise-overlay"></div>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container nav">
+      <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.8rem; text-decoration: none;">
+        <div class="logo-container">
+          <img src="logo-final.jpg" alt="Sportal Corporate Logo" style="height: 48px; border-radius: 50%;">
+        </div>
+        <div style="line-height: 1; display: flex; flex-direction: column;">
+          <span style="font-size: 1.25rem;">Sportal</span>
+          <span style="color: var(--color-accent); font-size: 1.25rem;">Corporate</span>
+        </div>
+      </a>
+      <button class="hamburger-menu" aria-label="Toggle Navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li class="dropdown">
+          <a href="#about" class="nav-link">About Us <i class="fa-solid fa-chevron-down"
+              style="font-size: 0.8rem;"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="/founder.html">Founder Profile</a></li>
+          </ul>
+        </li>
+        <li><a href="/partners.html" class="nav-link">Partners</a></li>
+        <li><a href="/courses.html" class="nav-link">Courses</a></li>
+        <li><a href="/quiz.html" class="nav-link">Career Quiz</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li>
+          <button id="lang-toggle" aria-label="Switch Language" style="
+                        background: rgba(255, 255, 255, 0.1); 
+                        border: 1px solid rgba(255, 255, 255, 0.2); 
+                        color: white; 
+                        padding: 0.4rem 0.8rem; 
+                        border-radius: 20px; 
+                        cursor: pointer; 
+                        font-family: inherit;
+                        font-size: 0.9rem;
+                        transition: all 0.3s ease;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                    ">
+            <i class="fa-solid fa-language"></i> <span id="lang-text">HI</span>
+          </button>
+          <!-- Theme Toggle -->
+          <button id="theme-toggle" aria-label="Toggle Dark Mode" style="
+                        background: rgba(255, 255, 255, 0.1); 
+                        border: 1px solid rgba(255, 255, 255, 0.2); 
+                        color: white; 
+                        width: 36px; 
+                        height: 36px;
+                        border-radius: 50%; 
+                        cursor: pointer; 
+                        font-size: 1rem;
+                        transition: all 0.3s ease;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    ">
+            <i class="fa-solid fa-sun" id="theme-icon"></i>
+          </button>
+        </li>
+      </ul>
+      <button class="btn btn-primary magnetic-btn" id="get-started-btn">
+        <span class="btn-text">Get Started</span>
+        <span class="btn-sheen"></span>
+        <i class="fa-solid fa-arrow-right btn-icon"></i>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <div id="greeting"
+        style="font-family: var(--font-display); font-size: 1.5rem; color: var(--color-glow); margin-bottom: 1rem; opacity: 0; transform: translateY(10px); transition: all 1s ease;">
+        Hello, Future Leader</div>
+      <h1 class="reveal-text" data-en="Redefining Sports Education" data-hi="खेल शिक्षा को फिर से परिभाषित करना">
+        Redefining <br><span class="text-gradient">Sports Education</span></h1>
+      <p class="reveal-text"
+        data-en="Combining physical literacy, wellness, and cutting-edge research to empower the next generation of athletes."
+        data-hi="शारीरिक साक्षरता, कल्याण और अत्याधुनिक अनुसंधान को मिलाकर एथलीटों की अगली पीढ़ी को सशक्त बनाना।">
+        Combining physical literacy, wellness, and cutting-edge research to empower the next
+        generation of athletes.
+      </p>
+      <div class="reveal-text" style="display: flex; gap: 1rem;">
+        <button class="btn btn-primary magnetic-btn" onclick="window.location.href='#about'" data-en="Learn More"
+          data-hi="और जानें">Learn More</button>
+        <button class="btn btn-secondary magnetic-btn" onclick="window.location.href='#services'" data-en="Our Services"
+          data-hi="हमारी सेवाएँ">Our
+          Services</button>
+      </div>
+    </div>
+    
+    <div class="scroll-indicator" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite;">
+      <i class="fa-solid fa-chevron-down" style="color: rgba(255,255,255,0.5); font-size: 2rem;"></i>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="section-padding" style="padding-top: 0; padding-bottom: 4rem; position: relative; z-index: 10;">
+    <div class="container">
+      <div class="stats-grid glass-card"
+        style="padding: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; align-items: center; border: 1px solid var(--glass-border);">
+        <!-- Stat 1 -->
+        <div class="stat-item text-center">
+          <div class="stat-number" data-target="12"
+            style="font-size: 3.5rem; font-weight: 800; line-height: 1; color: var(--color-primary); text-shadow: 0 0 20px rgba(217, 119, 6, 0.3);">
+            0+</div>
+          <h4 class="stat-label" style="color: white; font-size: 1.1rem; margin-top: 0.5rem; font-weight: 500;">Years
+            of
+            Experience</h4>
+        </div>
+        <!-- Stat 2 -->
+        <div class="stat-item text-center border-left-stat">
+          <div class="stat-number" data-target="1200"
+            style="font-size: 3.5rem; font-weight: 800; line-height: 1; color: var(--color-primary); text-shadow: 0 0 20px rgba(217, 119, 6, 0.3);">
+            0+</div>
+          <h4 class="stat-label" style="color: white; font-size: 1.1rem; margin-top: 0.5rem; font-weight: 500;">
+            Professionals Trained</h4>
+        </div>
+        <!-- Stat 3 -->
+        <div class="stat-item text-center border-left-stat">
+          <div class="stat-number" data-target="5"
+            style="font-size: 3.5rem; font-weight: 800; line-height: 1; color: var(--color-primary); text-shadow: 0 0 20px rgba(217, 119, 6, 0.3);">
+            0+</div>
+          <h4 class="stat-label" style="color: white; font-size: 1.1rem; margin-top: 0.5rem; font-weight: 500;">
+            University Partners</h4>
+        </div>
+        <!-- Stat 4 -->
+        <div class="stat-item text-center border-left-stat">
+          <div class="stat-number" data-target="100"
+            style="font-size: 3.5rem; font-weight: 800; line-height: 1; color: var(--color-primary); text-shadow: 0 0 20px rgba(217, 119, 6, 0.3);">
+            0%</div>
+          <h4 class="stat-label" style="color: white; font-size: 1.1rem; margin-top: 0.5rem; font-weight: 500;">Career
+            Support</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- "Find Your Path" Quiz Teaser -->
+  <section id="career-quiz" class="quiz-teaser-section">
+    <div class="quiz-teaser-content">
+      <span
+        style="color: var(--color-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">Career
+        Matcher</span>
+      <h2 style="font-size: 3rem; margin-bottom: 1.5rem;" data-en="Unsure Which Path to Choose?"
+        data-hi="अपना सही करियर पथ चुनें?">
+        Unsure Which Path to Choose?
+      </h2>
+      <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem;"
+        data-en="Take our 1-minute AI-powered assessment to discover the perfect sports career for your personality."
+        data-hi="अपनी पसंद के अनुसार सही खेल करियर खोजने के लिए हमारा १-मिनट का AI असेसमेंट लें।">
+        Take our 1-minute AI-powered assessment to discover the perfect sports career for your personality.
+      </p>
+      <a href="/quiz.html" id="start-quiz-btn" class="btn btn-primary"
+        style="text-decoration:none; display:inline-flex;" data-en="Find My Career Path" data-hi="मेरा करियर खोजें">
+        <span class="btn-text">Find My Career Path</span>
+        <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+        <div class="btn-sheen"></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section (Bento) -->
+  <section class="section-padding" id="about">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 3rem;">
+        <span class="section-subtitle" data-en="About Us" data-hi="हमारे बारे में">About Us</span>
+        <h2 class="section-title" data-en="Finding Inspiration in Every Turn" data-hi="हर मोड़ पर प्रेरणा खोजें">
+          Finding Inspiration in Every Turn</h2>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Story (Span 8, Row 2) -->
+        <div class="bento-item span-8 row-span-2">
+          <div>
+            <div class="bento-icon"><i class="fa-solid fa-book-open"></i></div>
+            <h3 class="feature-title">Our Story</h3>
+            <p style="color: var(--color-text-muted); margin-bottom: 1rem;">
+              Our journey began in 2013 with a clear purpose: to redefine the role of Physical Education in schools.
+              What was once treated as a recreational break needed to be recognized as a critical component of
+              holistic
+              child development.
+            </p>
+            <p style="color: var(--color-text-light);">
+              Driven by passionate educators, we created structured sports curricula, scalable training models, and
+              measurable growth systems to embed physical literacy into schools. Our impact now extends to higher
+              education—partnering with top Indian and global universities.
+            </p>
+          </div>
+          <div style="margin-top: 2rem; display: flex; gap: 1rem; align-items: center;">
+            <img src="/founder.jpg"
+              style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-glow);"
+              alt="Founder">
+            <div style="font-size: 0.9rem; color: var(--color-text-muted);">Founded by Dr. Gaurav Pant</div>
+          </div>
+        </div>
+
+        <!-- Vision (Span 4) -->
+        <div class="bento-item span-4">
+          <div class="bento-icon"><i class="fa-regular fa-eye"></i></div>
+          <h3 class="feature-title">Vision</h3>
+          <p style="color: var(--color-text-muted);">
+            To be a global leader in redefining sports and wellness education — creating fit, skilled, and
+            future-ready
+            individuals.
+          </p>
+        </div>
+
+        <!-- Mission (Span 4) -->
+        <div class="bento-item span-4">
+          <div class="bento-icon"><i class="fa-solid fa-bullseye"></i></div>
+          <h3 class="feature-title">Mission</h3>
+          <p style="color: var(--color-text-muted);">
+            To co-design and deliver NEP-aligned, research-driven programs in sports education and wellness sciences.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Offer (Redesigned) -->
+  <section id="services" class="section-padding">
+    <div class="container">
+      <h2 class="text-gradient reveal-text" style="text-align: center; margin-bottom: 4rem;">Redefining Sports
+        Education</h2>
+
+      <!-- Bento Grid Container -->
+      <div id="services-grid" class="bento-grid reveal-stagger">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Career Pathways Section -->
+  <section class="section-padding" style="position: relative;">
+    <div class="container">
+      <h2 class="section-title text-center" style="margin-bottom: 1rem;">Your Path to Greatness</h2>
+      <p class="text-center"
+        style="color: var(--color-text-muted); margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+        See where a Sportal Certification can take you. From classroom to stadium.
+      </p>
+
+      <div class="gallery-grid">
+        <!-- Item 1: Presentations -->
+        <div class="gallery-item">
+          <img src="/gallery/ai_presentation_2.jpg" class="gallery-img" alt="AI in Sports Presentation">
+          <div class="gallery-overlay">
+            <h4 style="color: white; margin-bottom: 0.2rem;">AI in Teaching</h4>
+            <p style="color: var(--color-accent); font-size: 0.9rem;">International Conference</p>
+          </div>
+        </div>
+
+        <!-- Item 2: Workshop Action -->
+        <div class="gallery-item">
+          <img src="/gallery/workshop_1.jpg" class="gallery-img" alt="Interactive Workshop">
+          <div class="gallery-overlay">
+            <h4 style="color: white; margin-bottom: 0.2rem;">Hands-on Learning</h4>
+            <p style="color: var(--color-accent); font-size: 0.9rem;">Interactive Sessions</p>
+          </div>
+        </div>
+
+        <!-- Item 3: Innovation -->
+        <div class="gallery-item">
+          <img src="/gallery/ai_presentation_1.jpg" class="gallery-img" alt="Future of Sports Tech">
+          <div class="gallery-overlay">
+            <h4 style="color: white; margin-bottom: 0.2rem;">Future Tech</h4>
+            <p style="color: var(--color-accent); font-size: 0.9rem;">A.I. Before ChatGPT</p>
+          </div>
+        </div>
+
+        <!-- Item 4: Large Group (Wide) -->
+        <div class="gallery-item" style="grid-column: 1 / -1; aspect-ratio: 21/9;">
+          <img src="/gallery/large_group_outdoor.jpg" class="gallery-img" alt="Student Community">
+          <div class="gallery-overlay">
+            <h4 style="color: white; margin-bottom: 0.2rem;">Our Community</h4>
+            <p style="color: var(--color-accent); font-size: 0.9rem;">Building the Future of Sports</p>
+          </div>
+        </div>
+
+        <!-- Item 5: Awards -->
+        <div class="gallery-item">
+          <img src="/gallery/award_ceremony.jpg" class="gallery-img" alt="Award Ceremony">
+          <div class="gallery-overlay">
+            <h4 style="color: white; margin-bottom: 0.2rem;">Excellence</h4>
+            <p style="color: var(--color-accent); font-size: 0.9rem;">Award Winning Programs</p>
+          </div>
+        </div>
+
+        <!-- Item 6: Panel -->
+        <div class="gallery-item">
+          <img src="/gallery/panel_discussion.jpg" class="gallery-img" alt="Expert Panel">
+          <div class="gallery-overlay">
+            <h4 style="color: white; margin-bottom: 0.2rem;">Thought Leadership</h4>
+            <p style="color: var(--color-accent); font-size: 0.9rem;">Industry Experts</p>
+          </div>
+        </div>
+
+        <!-- Item 7: Workshop 2 -->
+        <div class="gallery-item">
+          <img src="/gallery/workshop_2.jpg" class="gallery-img" alt="Training Session">
+          <div class="gallery-overlay">
+            <h4 style="color: white; margin-bottom: 0.2rem;">Mentorship</h4>
+            <p style="color: var(--color-accent); font-size: 0.9rem;">Guided by Pros</p>
+          </div>
+        </div>
+
+        <!-- NEW BATCH 3 -->
+        <!-- Item 8: Valencia CF -->
+        <div class="gallery-item">
+          <img src="/gallery/valencia_cf.jpg" class="gallery-img" alt="Valencia CF Academy">
+          <div class="gallery-overlay">
+            <h4 style="color: white; margin-bottom: 0.2rem;">Global Exposure</h4>
+            <p style="color: var(--color-accent); font-size: 0.9rem;">Valencia C.F. Academy</p>
+          </div>
+        </div>
+
+        <!-- Item 9: Race Track (Wide) -->
+        <div class="gallery-item" style="grid-column: 1 / -1; aspect-ratio: 21/9;">
+          <img src="/gallery/f1_track_visit.jpg" class="gallery-img" alt="F1 Track Visit">
+          <div class="gallery-overlay">
+            <h4 style="color: white; margin-bottom: 0.2rem;">Field Vision</h4>
+            <p style="color: var(--color-accent); font-size: 0.9rem;">International Circuit Visit</p>
+          </div>
+        </div>
+
+        <!-- Item 10: Yoga Day -->
+        <div class="gallery-item">
+          <img src="/gallery/yoga_day.jpg" class="gallery-img" alt="International Yoga Day">
+          <div class="gallery-overlay">
+            <h4 style="color: white; margin-bottom: 0.2rem;">Wellness</h4>
+            <p style="color: var(--color-accent); font-size: 0.9rem;">International Yoga Day</p>
+          </div>
+        </div>
+
+        <!-- Item 11: Partnership -->
+        <div class="gallery-item">
+          <img src="/gallery/partnership_meeting.jpg" class="gallery-img" alt="Global Partnership">
+          <div class="gallery-overlay">
+            <h4 style="color: white; margin-bottom: 0.2rem;">Alliances</h4>
+            <p style="color: var(--color-accent); font-size: 0.9rem;">Global Partnerships</p>
+          </div>
+        </div>
+
+        <!-- Item 12: Cap Ceremony -->
+        <div class="gallery-item">
+          <img src="/gallery/cap_ceremony.jpg" class="gallery-img" alt="Honoring Leaders">
+          <div class="gallery-overlay">
+            <h4 style="color: white; margin-bottom: 0.2rem;">Leadership</h4>
+            <p style="color: var(--color-accent); font-size: 0.9rem;">Honoring Excellence</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section-padding" style="overflow: hidden;">
+    <div class="container">
+      <h2 class="section-title text-center" style="margin-bottom: 3rem;">Alumni Stories</h2>
+
+      <div class="video-grid"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+
+        <!-- Video Card 1 -->
+        <div class="video-card glass-card"
+          style="position: relative; aspect-ratio: 9/16; overflow: hidden; border-radius: 16px; background: #000; cursor: pointer; transition: transform 0.3s;">
+          <div class="video-bg"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent 60%), url('/video_thumbnail.png') no-repeat center/cover; transition: transform 0.5s;">
+          </div>
+
+          <div class="play-btn"
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.3);">
+            <i class="fa-solid fa-play" style="color: white; font-size: 1.5rem; margin-left: 4px;"></i>
+          </div>
+
+          <div class="video-content"
+            style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem; z-index: 2;">
+            <div class="author-role"
+              style="color: var(--color-accent); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; background: rgba(0,0,0,0.5); display: inline-block; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem;">
+              Sports Analyst</div>
+            <h4 class="author-name" style="color: white; margin: 0 0 0.5rem 0; font-size: 1.25rem;">Anjali Singh</h4>
+            <p class="video-quote" style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.4; margin: 0;">"The
+              structured approach to sports analytics gave me an edge..."</p>
+          </div>
+        </div>
+
+        <!-- Video Card 2 -->
+        <div class="video-card glass-card"
+          style="position: relative; aspect-ratio: 9/16; overflow: hidden; border-radius: 16px; background: #000; cursor: pointer; transition: transform 0.3s;">
+          <div class="video-bg"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent 60%), url('/corporate_banner.jpg') no-repeat center/cover; transition: transform 0.5s;">
+          </div>
+
+          <div class="play-btn"
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.3);">
+            <i class="fa-solid fa-play" style="color: white; font-size: 1.5rem; margin-left: 4px;"></i>
+          </div>
+
+          <div class="video-content"
+            style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem; z-index: 2;">
+            <div class="author-role"
+              style="color: var(--color-accent); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; background: rgba(0,0,0,0.5); display: inline-block; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem;">
+              Ops Manager</div>
+            <h4 class="author-name" style="color: white; margin: 0 0 0.5rem 0; font-size: 1.25rem;">Rahul Verma</h4>
+            <p class="video-quote" style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.4; margin: 0;">
+              "Transitioning from athlete to management was seamless..."</p>
+          </div>
+        </div>
+
+        <!-- Video Card 3 -->
+        <div class="video-card glass-card"
+          style="position: relative; aspect-ratio: 9/16; overflow: hidden; border-radius: 16px; background: #000; cursor: pointer; transition: transform 0.3s;">
+          <div class="video-bg"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent 60%), url('/hero-bg.jpg') no-repeat center/cover; filter: grayscale(50%); transition: transform 0.5s;">
+          </div>
+
+          <div class="play-btn"
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.3);">
+            <i class="fa-solid fa-play" style="color: white; font-size: 1.5rem; margin-left: 4px;"></i>
+          </div>
+
+          <div class="video-content"
+            style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem; z-index: 2;">
+            <div class="author-role"
+              style="color: var(--color-accent); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; background: rgba(0,0,0,0.5); display: inline-block; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem;">
+              Founder</div>
+            <h4 class="author-name" style="color: white; margin: 0 0 0.5rem 0; font-size: 1.25rem;">Dr. Gaurav Pant
+            </h4>
+            <p class="video-quote" style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.4; margin: 0;">"My vision
+              for the future of sports education in India..."</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding" id="faq">
+    <div class="container">
+      <h2 class="section-title text-center" style="margin-bottom: 3rem;">Frequently Asked Questions</h2>
+      <div class="faq-grid" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
+
+        <!-- FAQ Item 1 -->
+        <div class="faq-item glass-card" style="padding: 1.5rem; cursor: pointer; transition: all 0.3s ease;">
+          <div class="faq-question"
+            style="display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem; color: var(--color-text-light);">
+            <span>Do I need a background in sports to join?</span>
+            <i class="fa-solid fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+          </div>
+          <div class="faq-answer"
+            style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--color-text-muted); margin-top: 0;">
+            <p style="margin-top: 1rem;">Not necessarily. While a passion for sports helps, our courses are designed
+              to
+              take you from foundational concepts to advanced application, whether you are a fresher or a professional
+              looking to pivot.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="faq-item glass-card" style="padding: 1.5rem; cursor: pointer; transition: all 0.3s ease;">
+          <div class="faq-question"
+            style="display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem; color: var(--color-text-light);">
+            <span>Are these certifications recognized globally?</span>
+            <i class="fa-solid fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+          </div>
+          <div class="faq-answer"
+            style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--color-text-muted); margin-top: 0;">
+            <p style="margin-top: 1rem;">Yes, our programs are developed in collaboration with leading universities
+              and
+              industry bodies, ensuring the curriculum meets global standards for sports education and management.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="faq-item glass-card" style="padding: 1.5rem; cursor: pointer; transition: all 0.3s ease;">
+          <div class="faq-question"
+            style="display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem; color: var(--color-text-light);">
+            <span>How does the placement support work?</span>
+            <i class="fa-solid fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+          </div>
+          <div class="faq-answer"
+            style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--color-text-muted); margin-top: 0;">
+            <p style="margin-top: 1rem;">We offer 100% placement assistance. Our dedicated career cell connects you
+              with
+              our network of 50+ partners, including sports leagues, schools, and corporate wellness firms.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="faq-item glass-card" style="padding: 1.5rem; cursor: pointer; transition: all 0.3s ease;">
+          <div class="faq-question"
+            style="display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 1.1rem; color: var(--color-text-light);">
+            <span>Can I take these courses alongside my job or college?</span>
+            <i class="fa-solid fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+          </div>
+          <div class="faq-answer"
+            style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--color-text-muted); margin-top: 0;">
+            <p style="margin-top: 1rem;">Absolutely. Many of our programs offer flexible schedules and hybrid learning
+              modules specifically designed for working professionals and full-time students.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Sportal Corporate</h4>
+          <p style="color: #94A3B8; margin-bottom: 1rem;">
+            Redefining sports education and wellness through innovation and research.
+          </p>
+          <div style="display: flex; gap: 1rem;">
+            <a href="https://www.facebook.com/sportalcorp" target="_blank" aria-label="Facebook"><i
+                class="fa-brands fa-facebook"></i></a>
+            <a href="https://instagram.com/sportal.corporate/" target="_blank" aria-label="Instagram"><i
+                class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/sportal-corporate-private-limited/about/?viewAsMember=true"
+              target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="/legal.html">Privacy & Terms</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:director@sportalcorporate.org">director@sportalcorporate.org</a></li>
+            <li><a href="tel:+918400888885">+91 8400888885</a></li>
+            <li style="color: var(--color-text-light);">S 208, SHIVALIK NAGAR,<br>HARIDWAR, U.K 249403 India</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2024 Sportal Corporate. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Quiz Modal -->
+  <div id="quiz-modal" class="quiz-modal">
+    <div class="quiz-container">
+      <button class="modal-close" id="close-quiz">&times;</button>
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+      </div>
+
+      <!-- Steps will be injected by JS -->
+      <div id="quiz-content">
+        <!-- Dynamic Content -->
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" aria-label="Back to Top" style="
+        position: fixed; 
+        bottom: 30px; 
+        right: 30px; 
+        width: 50px; 
+        height: 50px; 
+        border-radius: 50%; 
+        background: var(--color-primary); 
+        color: white; 
+        border: none; 
+        cursor: pointer; 
+        box-shadow: 0 5px 15px rgba(217, 119, 6, 0.4); 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        font-size: 1.2rem; 
+        opacity: 0; 
+        visibility: hidden; 
+        transition: all 0.3s ease; 
+        z-index: 1000;
+    ">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/919045052679" target="_blank" aria-label="Chat on WhatsApp" style="
+        position: fixed;
+        bottom: 90px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background-color: #25D366;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        transition: transform 0.3s ease;
+        text-decoration: none;
+    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</body>
+
+</html>

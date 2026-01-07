@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Sportal Corporate</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Reuse Header -->
+    <header class="header" id="header">
+        <div class="container nav">
+            <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.8rem; text-decoration: none;">
+                <div class="logo-container">
+                    <img src="logo-final.jpg" alt="Sportal Corporate Logo" style="height: 48px; border-radius: 50%;">
+                </div>
+                <div style="line-height: 1; display: flex; flex-direction: column;">
+                    <span style="font-size: 1.25rem;">Sportal</span>
+                    <span style="color: var(--color-accent); font-size: 1.25rem;">Corporate</span>
+                </div>
+            </a>
+            <div style="display: flex; gap: 1rem;">
+                <a href="https://www.facebook.com/sportalcorp" target="_blank" aria-label="Facebook"><i
+                        class="fa-brands fa-facebook"></i></a>
+                <a href="https://instagram.com/sportal.corporate/" target="_blank" aria-label="Instagram"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/sportal-corporate-private-limited/about/?viewAsMember=true"
+                    target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main
+        style="height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle at center, rgba(217, 119, 6, 0.1), transparent 70%);">
+        <div class="container">
+            <i class="fa-solid fa-flag-checkered"
+                style="font-size: 8rem; color: var(--text-muted); margin-bottom: 2rem; opacity: 0.5;"></i>
+            <h1 style="font-size: 5rem; margin-bottom: 0.5rem; line-height: 1;">404</h1>
+            <h2 style="font-size: 2rem; margin-bottom: 1.5rem; color: var(--color-accent);">Out of Bounds!</h2>
+            <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 3rem auto; font-size: 1.2rem;">
+                Looks like you've wandered off the playing field. The page you are looking for doesn't exist or has been
+                moved.
+            </p>
+            <a href="/" class="btn btn-primary">Return to Home Area</a>
+        </div>
+    </main>
+
+    <footer class="footer" style="padding: 2rem 0; background: transparent;">
+        <div class="container text-center">
+            <p style="color: var(--text-muted);">&copy; 2024 Sportal Corporate | <a href="/legal.html"
+                    style="color: var(--text-light); text-decoration:none;">Privacy Policy</a></p>
+        </div>
+    </footer>
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="close-modal" type="button" aria-label="Close">&times;</button>
+
+            <div class="modal-body">
+                <!-- Quiz Teaser -->
+                <section class="quiz-teaser-section">
+                    <div class="quiz-teaser-content">
+                        <span
+                            style="color: var(--color-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">
+                            Career Matcher
+                        </span>
+
+                        <h2 style="font-size: 3rem; margin-bottom: 1.5rem;" data-en="Unsure Which Path to Choose?"
+                            data-hi="अपना सही करियर पथ चुनें?">
+                            Unsure Which Path to Choose?
+                        </h2>
+
+                        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem;"
+                            data-en="Take our 1-minute AI-powered assessment to discover the perfect sports career for your personality."
+                            data-hi="अपनी पसंद के अनुसार सही खेल करियर खोजने के लिए हमारा १-मिनट का AI असेसमेंट लें।">
+                            Take our 1-minute AI-powered assessment to discover the perfect sports career for your
+                            personality.
+                        </p>
+
+                        <a href="/quiz.html" class="btn btn-primary"
+                            style="text-decoration:none; display:inline-flex; align-items:center; gap:0.75rem;"
+                            data-en="Find My Career Path" data-hi="मेरा करियर खोजें">
+                            <span class="btn-text">Find My Career Path</span>
+                            <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                            <div class="btn-sheen"></div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Form Section -->
+                <section id="contact-form-section" style="margin-top: 2.5rem;">
+                    <h2 class="section-title text-center" style="font-size: 2rem; margin-bottom: 0.5rem;">Get in Touch
+                    </h2>
+                    <p class="text-center" style="color: var(--text-muted); margin-bottom: 2rem;">
+                        Fill in your details and we'll contact you personally.
+                    </p>
+
+                    <form id="lead-form" action="https://formsubmit.co/reachsportal@gmail.com" method="POST">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_subject" value="New Lead from Sportal Corporate Website">
+                        <input type="hidden" name="_next" value="">
+
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required class="form-input">
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required
+                                    class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp No.</label>
+                                <input type="tel" id="whatsapp" name="whatsapp" placeholder="+91 98765 43210"
+                                    class="form-input">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required
+                                class="form-input">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary magnetic-btn"
+                            style="width: 100%; justify-content: center; margin-top: 1rem;">
+                            <span class="btn-text">Submit Request</span>
+                            <span class="btn-sheen"></span>
+                        </button>
+                    </form>
+
+                    <!-- Success Message Section (Hidden by default) -->
+                    <div id="success-message" style="display: none; text-align: center; padding: 2rem 0;">
+                        <div style="font-size: 4rem; color: var(--color-success); margin-bottom: 1rem;">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Thank You!</h2>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">
+                            We have received your information.<br>
+                            Our team will reach out to you personally very soon.
+                        </p>
+                        <button class="btn btn-secondary magnetic-btn" id="close-success-btn" type="button"
+                            style="margin-top: 2rem;">
+                            Close
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

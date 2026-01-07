@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Career Matcher Quiz | Sportal Corporate</title>
+    <meta name="description"
+        content="Discover your perfect sports career path with our AI-powered assessment. Tech, Management, or Wellness? Find out in 1 minute.">
+    <meta name="keywords"
+        content="Sports Career Quiz, Career Matcher, Sportal Corporate, Sports Education Path, Career Assessment">
+
+    <!-- SEO / Share -->
+    <link rel="canonical" href="https://sportalcorporate.netlify.app/quiz.html" />
+    <meta property="og:title" content="Career Matcher Quiz | Sportal Corporate" />
+    <meta property="og:description" content="Find your perfect sports career path in 1 minute." />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:type" content="website" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Your global CSS -->
+    <link rel="stylesheet" href="/src/style.css" />
+
+    <style>
+        .quiz-page-container {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background: radial-gradient(circle at top right, rgba(217, 119, 6, 0.1), transparent 40%);
+        }
+
+        .quiz-container {
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container nav">
+            <a href="/index.html" class="logo"
+                style="display:flex; align-items:center; gap:0.8rem; text-decoration:none;">
+                <div class="logo-container">
+                    <img src="logo-final.jpg" alt="Sportal Corporate Logo" style="height:48px; border-radius:50%;">
+                </div>
+                <div style="line-height: 1; display:flex; flex-direction:column;">
+                    <span style="font-size: 1.25rem;">Sportal</span>
+                    <span style="color: var(--color-accent); font-size: 1.25rem;">Corporate</span>
+                </div>
+            </a>
+
+            <button class="hamburger-menu" aria-label="Toggle Navigation">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="/index.html#home" class="nav-link">Home</a></li>
+
+                <li class="nav-item-dropdown">
+                    <div class="dropdown-trigger">
+                        <a href="/index.html#about" class="nav-link">About Us</a>
+                        <i class="fa-solid fa-chevron-down dropdown-icon" style="color: var(--text-muted);"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="/founder.html" class="dropdown-link">Founder Profile</a>
+                    </div>
+                </li>
+
+                <li><a href="/partners.html" class="nav-link">Partners</a></li>
+                <li><a href="/courses.html" class="nav-link">Courses</a></li>
+                <li><a href="/quiz.html" class="nav-link active">Career Quiz</a></li>
+                <li><a href="/index.html#services" class="nav-link">Services</a></li>
+                <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div style="display: flex; gap: 1rem;">
+                <a href="https://www.facebook.com/sportalcorp" target="_blank" aria-label="Facebook"><i
+                        class="fa-brands fa-facebook"></i></a>
+                <a href="https://instagram.com/sportal.corporate/" target="_blank" aria-label="Instagram"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/sportal-corporate-private-limited/about/?viewAsMember=true"
+                    target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="quiz-page-container">
+        <div class="container" style="display:flex; justify-content:center; width:100%;">
+            <div id="dedicated-quiz-container" class="quiz-container">
+                <div style="text-align:center; margin-bottom:2rem;">
+                    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Discover Your Logic</h1>
+                    <p style="color: var(--text-muted);">Answer 4 simple questions to find your ideal sports career.</p>
+                </div>
+
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+                </div>
+
+                <div id="quiz-content" aria-live="polite">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Sportal Corporate</h4>
+                    <p style="color:#94A3B8; margin-bottom:1rem;">
+                        Redefining sports education and wellness through innovation and research.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/courses.html">Courses</a></li>
+                        <li><a href="/quiz.html">Career Quiz</a></li>
+                        <li><a href="/index.html#contact">Contact</a></li>
+                        <li><a href="/legal.html">Privacy & Terms</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:director@sportalcorporate.org">director@sportalcorporate.org</a></li>
+                        <li><a href="tel:+918400888885">+91 8400888885</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                &copy; 2024 Sportal Corporate. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="close-modal" type="button" aria-label="Close">&times;</button>
+
+            <div class="modal-body">
+                <!-- Quiz Teaser -->
+                <section class="quiz-teaser-section">
+                    <div class="quiz-teaser-content">
+                        <span
+                            style="color: var(--color-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">
+                            Career Matcher
+                        </span>
+
+                        <h2 style="font-size: 3rem; margin-bottom: 1.5rem;" data-en="Unsure Which Path to Choose?"
+                            data-hi="अपना सही करियर पथ चुनें?">
+                            Unsure Which Path to Choose?
+                        </h2>
+
+                        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem;"
+                            data-en="Take our 1-minute AI-powered assessment to discover the perfect sports career for your personality."
+                            data-hi="अपनी पसंद के अनुसार सही खेल करियर खोजने के लिए हमारा १-मिनट का AI असेसमेंट लें।">
+                            Take our 1-minute AI-powered assessment to discover the perfect sports career for your
+                            personality.
+                        </p>
+
+                        <a href="/quiz.html" class="btn btn-primary"
+                            style="text-decoration:none; display:inline-flex; align-items:center; gap:0.75rem;"
+                            data-en="Find My Career Path" data-hi="मेरा करियर खोजें">
+                            <span class="btn-text">Find My Career Path</span>
+                            <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                            <div class="btn-sheen"></div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Form Section -->
+                <section id="contact-form-section" style="margin-top: 2.5rem;">
+                    <h2 class="section-title text-center" style="font-size: 2rem; margin-bottom: 0.5rem;">Get in Touch
+                    </h2>
+                    <p class="text-center" style="color: var(--text-muted); margin-bottom: 2rem;">
+                        Fill in your details and we'll contact you personally.
+                    </p>
+
+                    <form id="lead-form" action="https://formsubmit.co/reachsportal@gmail.com" method="POST">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_subject" value="New Lead from Sportal Corporate Website">
+                        <input type="hidden" name="_next" value="">
+
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required class="form-input">
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required
+                                    class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp No.</label>
+                                <input type="tel" id="whatsapp" name="whatsapp" placeholder="+91 98765 43210"
+                                    class="form-input">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required
+                                class="form-input">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary magnetic-btn"
+                            style="width: 100%; justify-content: center; margin-top: 1rem;">
+                            <span class="btn-text">Submit Request</span>
+                            <span class="btn-sheen"></span>
+                        </button>
+                    </form>
+
+                    <!-- Success Message Section (Hidden by default) -->
+                    <div id="success-message" style="display: none; text-align: center; padding: 2rem 0;">
+                        <div style="font-size: 4rem; color: var(--color-success); margin-bottom: 1rem;">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Thank You!</h2>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">
+                            We have received your information.<br>
+                            Our team will reach out to you personally very soon.
+                        </p>
+                        <button class="btn btn-secondary magnetic-btn" id="close-success-btn" type="button"
+                            style="margin-top: 2rem;">
+                            Close
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

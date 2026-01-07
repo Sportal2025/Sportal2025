@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Our Academic Partners | Sportal Corporate</title>
+    <meta name="description"
+        content="Collaborating with top universities like USU Indonesia, LNIPE, and Bharati Vidyapeeth to deliver world-class sports education.">
+    <meta name="keywords"
+        content="Sportal Partners, USU Indonesia, LNIPE, Bharati Vidyapeeth, Sports University Collaborations">
+
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+    <div class="ambient-glow"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container nav">
+            <a href="/index.html" class="logo"
+                style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+                <img src="logo-final.jpg" alt="Sportal Corporate Logo" style="height: 48px; border-radius: 8px;">
+                <div style="line-height: 1; display: flex; flex-direction: column;">
+                    <span style="font-size: 1.25rem;">Sportal</span>
+                    <span style="color: var(--color-accent); font-size: 1.25rem;">Corporate</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="/index.html#home" class="nav-link">Home</a></li>
+
+                <li class="nav-item-dropdown">
+                    <div class="dropdown-trigger">
+                        <a href="/index.html#about" class="nav-link">About Us</a>
+                        <i class="fa-solid fa-chevron-down dropdown-icon" style="color: var(--text-muted);"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="/founder.html" class="dropdown-link">Founder Profile</a>
+                    </div>
+                </li>
+
+                <li><a href="/partners.html" class="nav-link active">Partners</a></li>
+                <li><a href="/courses.html" class="nav-link">Courses</a></li>
+                <li><a href="/quiz.html" class="nav-link">Career Quiz</a></li>
+                <li><a href="/index.html#services" class="nav-link">Services</a></li>
+                <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <!-- If your site uses modal: add class js-open-modal.
+           If not using modal on this page, keep the location jump -->
+            <button class="btn btn-primary js-open-modal" type="button">Get Started</button>
+            <!-- If you DON'T use modal site-wide, replace above with:
+      <button class="btn btn-primary" onclick="window.location.href='/index.html#contact'">Get Started</button>
+      -->
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" style="min-height: 50vh; align-items: flex-end; padding-bottom: 4rem;">
+        <div class="hero-bg"></div>
+        <div class="container text-center" style="z-index: 1;">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem; color:#fff; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
+                Our <span style="color:#fff;">Partners</span>
+            </h1>
+            <p style="color: #e2e8f0; max-width: 700px; margin: 0 auto; font-weight: 500;">
+                Collaborating with leading universities to revolutionize sports education.
+            </p>
+        </div>
+    </section>
+
+    <!-- Partners Grid -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+
+                <!-- USU -->
+                <a href="https://www.usu.ac.id/en" target="_blank" rel="noopener noreferrer"
+                    class="feature-card partner-card">
+                    <img src="/usu_logo.png" alt="Universitas Sumatera Utara" class="partner-logo">
+                    <h3 class="feature-title partner-title">Universitas Sumatera Utara</h3>
+                    <p class="feature-description partner-sub">Partner University</p>
+                    <span class="btn btn-secondary partner-btn">Visit Website</span>
+                </a>
+
+                <!-- LNIPE -->
+                <a href="https://www.lnipe.edu.in/" target="_blank" rel="noopener noreferrer"
+                    class="feature-card partner-card">
+                    <img src="/lnipe_logo.png" alt="Lakshmibai National Institute of Physical Education"
+                        class="partner-logo">
+                    <h3 class="feature-title partner-title">Lakshmibai National Institute of Physical Education</h3>
+                    <p class="feature-description partner-sub">Partner University</p>
+                    <span class="btn btn-secondary partner-btn">Visit Website</span>
+                </a>
+
+                <!-- RRU -->
+                <a href="https://rru.ac.in/" target="_blank" rel="noopener noreferrer"
+                    class="feature-card partner-card">
+                    <img src="/rru_logo.png" alt="Rashtriya Raksha University" class="partner-logo">
+                    <h3 class="feature-title partner-title">Rashtriya Raksha University</h3>
+                    <p class="feature-description partner-sub">Course Collaborator</p>
+                    <span class="btn btn-secondary partner-btn">Visit Website</span>
+                </a>
+
+                <!-- BVU -->
+                <a href="https://www.bvuniversity.edu.in/" target="_blank" rel="noopener noreferrer"
+                    class="feature-card partner-card">
+                    <img src="/bvu_logo.png" alt="Bharati Vidyapeeth University" class="partner-logo">
+                    <h3 class="feature-title partner-title">Bharati Vidyapeeth University</h3>
+                    <p class="feature-description partner-sub">Partner University</p>
+                    <span class="btn btn-secondary partner-btn">Visit Website</span>
+                </a>
+
+                <!-- ITB STIKOM Bali -->
+                <a href="https://stikom-bali.ac.id/" target="_blank" rel="noopener noreferrer"
+                    class="feature-card partner-card">
+                    <img src="/itb_stikom_logo.png" alt="ITB STIKOM Bali" class="partner-logo">
+                    <h3 class="feature-title partner-title">ITB STIKOM Bali</h3>
+                    <p class="feature-description partner-sub">Partner University</p>
+                    <span class="btn btn-secondary partner-btn">Visit Website</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Sportal Corporate</h4>
+                    <p style="color: #94A3B8; margin-bottom: 1rem;">
+                        Redefining sports education and wellness through innovation and research.
+                    </p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://www.facebook.com/sportalcorp" target="_blank" aria-label="Facebook"><i
+                                class="fa-brands fa-facebook"></i></a>
+                        <a href="https://instagram.com/sportal.corporate/" target="_blank" aria-label="Instagram"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/sportal-corporate-private-limited/about/?viewAsMember=true"
+                            target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/courses.html">Courses</a></li>
+                    <li><a href="/partners.html">Partners</a></li>
+                    <li><a href="/index.html#contact">Contact</a></li>
+                    <li><a href="/legal.html">Privacy & Terms</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:director@sportalcorporate.org">director@sportalcorporate.org</a></li>
+                    <li><a href="tel:+918400888885">+91 8400888885</a></li>
+                    <li style="color: var(--color-text-light);">
+                        S 208, SHIVALIK NAGAR,<br>HARIDWAR, U.K 249403 India
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            &copy; 2024 Sportal Corporate. All rights reserved.
+        </div>
+        </div>
+    </footer>
+
+    <!-- Small page-only polish (same theme) -->
+    <style>
+        .partner-card {
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+            min-height: 360px;
+        }
+
+        .partner-logo {
+            height: 120px;
+            width: auto;
+            margin-bottom: 1.5rem;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
+            transition: transform .25s ease;
+        }
+
+        .partner-card:hover .partner-logo {
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        .partner-title {
+            font-size: 1.25rem;
+            color: #fff;
+        }
+
+        .partner-sub {
+            margin-bottom: 1rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .partner-btn {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            font-size: .875rem;
+            padding: .5rem 1rem;
+        }
+    </style>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="close-modal" type="button" aria-label="Close">&times;</button>
+
+            <div class="modal-body">
+                <!-- Quiz Teaser -->
+                <section class="quiz-teaser-section">
+                    <div class="quiz-teaser-content">
+                        <span
+                            style="color: var(--color-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">
+                            Career Matcher
+                        </span>
+
+                        <h2 style="font-size: 3rem; margin-bottom: 1.5rem;" data-en="Unsure Which Path to Choose?"
+                            data-hi="अपना सही करियर पथ चुनें?">
+                            Unsure Which Path to Choose?
+                        </h2>
+
+                        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem;"
+                            data-en="Take our 1-minute AI-powered assessment to discover the perfect sports career for your personality."
+                            data-hi="अपनी पसंद के अनुसार सही खेल करियर खोजने के लिए हमारा १-मिनट का AI असेसमेंट लें।">
+                            Take our 1-minute AI-powered assessment to discover the perfect sports career for your
+                            personality.
+                        </p>
+
+                        <a href="/quiz.html" class="btn btn-primary"
+                            style="text-decoration:none; display:inline-flex; align-items:center; gap:0.75rem;"
+                            data-en="Find My Career Path" data-hi="मेरा करियर खोजें">
+                            <span class="btn-text">Find My Career Path</span>
+                            <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                            <div class="btn-sheen"></div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Form Section -->
+                <section id="contact-form-section" style="margin-top: 2.5rem;">
+                    <h2 class="section-title text-center" style="font-size: 2rem; margin-bottom: 0.5rem;">Get in Touch
+                    </h2>
+                    <p class="text-center" style="color: var(--text-muted); margin-bottom: 2rem;">
+                        Fill in your details and we'll contact you personally.
+                    </p>
+
+                    <form id="lead-form" action="https://formsubmit.co/reachsportal@gmail.com" method="POST">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_subject" value="New Lead from Sportal Corporate Website">
+                        <input type="hidden" name="_next" value="">
+
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required class="form-input">
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required
+                                    class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp No.</label>
+                                <input type="tel" id="whatsapp" name="whatsapp" placeholder="+91 98765 43210"
+                                    class="form-input">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required
+                                class="form-input">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary magnetic-btn"
+                            style="width: 100%; justify-content: center; margin-top: 1rem;">
+                            <span class="btn-text">Submit Request</span>
+                            <span class="btn-sheen"></span>
+                        </button>
+                    </form>
+
+                    <!-- Success Message Section (Hidden by default) -->
+                    <div id="success-message" style="display: none; text-align: center; padding: 2rem 0;">
+                        <div style="font-size: 4rem; color: var(--color-success); margin-bottom: 1rem;">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Thank You!</h2>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">
+                            We have received your information.<br>
+                            Our team will reach out to you personally very soon.
+                        </p>
+                        <button class="btn btn-secondary magnetic-btn" id="close-success-btn" type="button"
+                            style="margin-top: 2rem;">
+                            Close
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
