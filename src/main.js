@@ -8,6 +8,8 @@ gsap.registerPlugin(ScrollTrigger);
 /* -----------------------------
    Helpers
 ----------------------------- */
+import { supabase } from "./config/supabase.js";
+
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
@@ -181,9 +183,6 @@ if (bentoItems.length) {
 }
 
 /* -----------------------------
-   Magnetic buttons
------------------------------ */
-/* -----------------------------
    Magnetic Interactions (Masterpiece)
 ----------------------------- */
 const magneticElements = $$(".magnetic-btn, .nav-link, .modal-close, .bento-icon");
@@ -315,51 +314,17 @@ try {
 setTimeout(enableStatsFallback, 3000);
 
 /* -----------------------------
-   Form submission (FormSubmit)
+   Form submission & Filters (Supabase)
+   Wait for DOM components to be ready
 ----------------------------- */
-if (leadForm && formSection && successMessage) {
-  leadForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+import { initFormSubmit } from "./components/form_backend.js";
+import { initBrochureModal } from "./components/brochure.js";
 
-    const formData = new FormData(leadForm);
-    const submitBtn = leadForm.querySelector('button[type="submit"]');
-    const originalHTML = submitBtn ? submitBtn.innerHTML : "";
-
-    if (submitBtn) {
-      submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
-      submitBtn.disabled = true;
-    }
-
-    fetch("https://formsubmit.co/ajax/reachsportal@gmail.com", {
-      method: "POST",
-      body: formData,
-    })
-      .then((r) => r.json())
-      .then(() => {
-        gsap.to(formSection, {
-          opacity: 0,
-          duration: 0.3,
-          onComplete: () => {
-            formSection.style.display = "none";
-            successMessage.style.display = "block";
-            gsap.from(successMessage, { opacity: 0, y: 20, duration: 0.5 });
-          },
-        });
-      })
-      .catch((err) => {
-        console.log("FormSubmit error:", err);
-        // show success UI anyway (common with free tier/CORS)
-        formSection.style.display = "none";
-        successMessage.style.display = "block";
-      })
-      .finally(() => {
-        if (submitBtn) {
-          submitBtn.innerHTML = originalHTML;
-          submitBtn.disabled = false;
-        }
-      });
-  });
-}
+document.addEventListener("DOMContentLoaded", () => {
+  initFormSubmit();
+  initFilters();
+  initBrochureModal();
+});
 
 /* -----------------------------
    Services render (only on pages that have #services-grid)
@@ -623,79 +588,63 @@ if (progressEl) {
 
 /* -----------------------------
    AI Quiz Logic (Career Matcher)
+   Using new Engine from quizEngine.js
 ----------------------------- */
-const quizData = [
-  {
-    question: "What drives you most in sports?",
-    options: [
-      { text: "Understanding the numbers behind the game", type: "Analyst", weight: 3 },
-      { text: "Leading a team to victory", type: "Manager", weight: 3 },
-      { text: "Optimizing human performance & health", type: "Health", weight: 3 },
-      { text: "Creating new sports products/leagues", type: "Entrepreneur", weight: 3 },
-    ]
-  },
-  {
-    question: "Which task sounds most exciting?",
-    options: [
-      { text: "Analyzing player statistics for a draft", type: "Analyst", weight: 2 },
-      { text: "Organizing a major tournament", type: "Manager", weight: 2 },
-      { text: "Designing a training recovery program", type: "Health", weight: 2 },
-      { text: "Pitching a sports startup idea", type: "Entrepreneur", weight: 2 },
-    ]
-  },
-  {
-    question: "You have a free hour. You watch:",
-    options: [
-      { text: "A documentary on sports data science", type: "Analyst", weight: 1 },
-      { text: "A press conference by a top CEO/Coach", type: "Manager", weight: 1 },
-      { text: "A video on biomechanics/nutrition", type: "Health", weight: 1 },
-      { text: "Shark Tank (Sports Edition)", type: "Entrepreneur", weight: 1 },
-    ]
-  },
-  {
-    question: "Your ideal workspace is:",
-    options: [
-      { text: "Dual monitors, analyzing data feeds", type: "Analyst", weight: 2 },
-      { text: "A boardroom or sideline, directing strategy", type: "Manager", weight: 2 },
-      { text: "A lab, gym, or rehabilitation center", type: "Health", weight: 2 },
-      { text: "Anywhere, as long as I'm building my vision", type: "Entrepreneur", weight: 2 },
-    ]
-  }
-];
+import { QUIZ_CONFIG, CAREER_CATEGORIES } from "./quizConfig.js";
+import { scoreQuiz, persistResult } from "./quizEngine.js";
 
-const scores = { Analyst: 0, Manager: 0, Health: 0, Entrepreneur: 0 };
+// Quiz State
 let currentQuestionIndex = 0;
+let userAnswers = {}; // Store { q1: "A", q2: "B" }
 
 function initQuiz() {
   const quizContent = $("#quiz-content");
   if (!quizContent) return;
 
+  // TEASER STRATEGY: Start Quiz Immediately (skip intro form)
+  // Ensure intro modal is closed if it exists (just in case default CSS shows it)
+  const introModal = $("#intro-modal");
+  if (introModal) introModal.classList.remove("active");
+
+  startQuizSession();
+}
+
+function startQuizSession() {
+  currentQuestionIndex = 0;
+  userAnswers = {};
   renderQuestion();
 }
 
 function renderQuestion() {
   const quizContent = $("#quiz-content");
-  const progress = $("#quiz-progress-bar");
-  const currentQ = quizData[currentQuestionIndex];
+  const progress = $("#quiz-progress-fill"); // Updated ID to match HTML
+  const currentQ = QUIZ_CONFIG.questions[currentQuestionIndex];
 
   // Animation out
   gsap.to(quizContent, {
     opacity: 0, y: -10, duration: 0.3, onComplete: () => {
       // Render
-      const progressPct = ((currentQuestionIndex) / quizData.length) * 100;
+      const totalQs = QUIZ_CONFIG.questions.length;
+      const progressPct = ((currentQuestionIndex) / totalQs) * 100;
       if (progress) progress.style.width = `${progressPct}%`;
 
       quizContent.innerHTML = `
-      <h2 style="font-size: 1.8rem; margin-bottom: 2rem; min-height: 60px;">${currentQ.question}</h2>
-      <div class="quiz-options-grid" style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-        ${currentQ.options.map((opt, i) => `
-          <button class="btn quiz-option-btn glass-card" data-index="${i}" style="width:100%; text-align:left; padding: 1.5rem; justify-content: flex-start; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.1);">
-            <div style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--text-muted); margin-right: 1rem; flex-shrink: 0; display:flex; align-items:center; justify-content:center;">
-              <div class="dot" style="width: 12px; height: 12px; border-radius: 50%; background: var(--color-primary); opacity: 0; transition: 0.2s;"></div>
-            </div>
-            <span style="font-size: 1.1rem;">${opt.text}</span>
-          </button>
-        `).join("")}
+      <div class="animate-fade-in" style="max-width: 800px; margin: 0 auto;">
+          <h2 class="text-glow" style="font-size: 2rem; margin-bottom: 2.5rem; min-height: 60px; text-align:center; font-weight: 700;">${currentQ.prompt}</h2>
+          
+          <div class="quiz-options-grid" style="display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            ${currentQ.options.map((opt) => `
+              <button class="btn quiz-option-btn glass-card glass-card-hover" data-qid="${currentQ.id}" data-oid="${opt.id}" 
+                style="width:100%; text-align:left; padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: flex-start; transition: all 0.3s; border-radius: 16px;">
+                
+                <div style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--text-muted); margin-right: 1.25rem; flex-shrink: 0; display:flex; align-items:center; justify-content:center; transition: all 0.3s;" class="option-check-circle">
+                  <div class="dot" style="width: 14px; height: 14px; border-radius: 50%; background: var(--color-primary); opacity: 0; transform: scale(0); transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);"></div>
+                </div>
+                
+                <span style="font-size: 1.15rem; font-weight: 500; letter-spacing: 0.3px; color: rgba(255, 255, 255, 0.95);">${opt.text}</span>
+              </button>
+            `).join("")}
+          </div>
       </div>
     `;
 
@@ -712,21 +661,32 @@ function renderQuestion() {
 
 function handleAnswer(e) {
   const btn = e.currentTarget;
-  const optIndex = btn.getAttribute("data-index");
-  const option = quizData[currentQuestionIndex].options[optIndex];
+  const qId = btn.getAttribute("data-qid");
+  const oId = btn.getAttribute("data-oid");
 
   // Visual feedback
-  btn.style.borderColor = "var(--color-primary)";
-  btn.style.background = "rgba(168, 85, 247, 0.1)"; // primary color tint
-  $(".dot", btn).style.opacity = "1";
+  const circle = btn.querySelector(".option-check-circle");
 
-  // Score update
-  scores[option.type] += option.weight;
+  btn.style.borderColor = "var(--color-primary)";
+  btn.style.boxShadow = "0 0 20px rgba(255, 183, 0, 0.2)";
+  btn.style.background = "rgba(255, 183, 0, 0.1)"; // gold tint
+  btn.style.transform = "scale(1.02)";
+
+  if (circle) circle.style.borderColor = "var(--color-primary)";
+
+  const dot = $(".dot", btn);
+  if (dot) {
+    dot.style.opacity = "1";
+    dot.style.transform = "scale(1)";
+  }
+
+  // Store Answer
+  userAnswers[qId] = oId;
 
   // Next step
   currentQuestionIndex++;
   setTimeout(() => {
-    if (currentQuestionIndex < quizData.length) {
+    if (currentQuestionIndex < QUIZ_CONFIG.questions.length) {
       renderQuestion();
     } else {
       showResult();
@@ -736,64 +696,219 @@ function handleAnswer(e) {
 
 function showResult() {
   const quizContent = $("#quiz-content");
-  const progress = $("#quiz-progress-bar");
+  const progress = $("#quiz-progress-fill");
 
   if (progress) progress.style.width = "100%";
 
-  // Determine winner
-  const winner = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+  // 1. Score Quiz
+  const resultObj = scoreQuiz(userAnswers);
+  persistResult(resultObj); // Saves to sessionStorage
 
-  const resultsData = {
-    Analyst: { title: "Sports Data Analyst", desc: "You see the hidden patterns in the game. Your analytical mind is perfect for Moneyball-style strategy.", icon: "fa-solid fa-chart-line" },
-    Manager: { title: "Sports Manager/Agent", desc: "You are a natural leader. You understand people, business, and strategy.", icon: "fa-solid fa-user-tie" },
-    Health: { title: "Sports Scientist", desc: "You care about optimizing human potential. A career in physiology or nutrition awaits.", icon: "fa-solid fa-heart-pulse" },
-    Entrepreneur: { title: "Sports Innovator", desc: "You want to change the game. You are destined to build the next big thing in sports.", icon: "fa-solid fa-lightbulb" }
+  // 2. Prepare Display Data
+  const primaryKey = resultObj.primary.key;
+  const secondaryKey = resultObj.secondary ? resultObj.secondary.key : null;
+
+  // Calculate confidence % relative to max possible score (approximate or just standard max)
+  // Or just use the score relative to the total accumulated score for distribution visualization
+  // For the UI, let's use the score itself or normalize it if needed.
+  // The old logic calculated a percentage. Let's replicate a simple percentage for display logic.
+  const totalScore = Object.values(resultObj.scores).reduce((a, b) => a + b, 0);
+  const safeTotal = totalScore > 0 ? totalScore : 1;
+  const primaryConfidence = Math.round((resultObj.primary.score / safeTotal) * 100) || 0;
+  const secondaryConfidence = secondaryKey ? (Math.round((resultObj.secondary.score / safeTotal) * 100) || 0) : 0;
+
+  // Confidence Bands
+  function getConfidenceLabel(percent) {
+    if (percent >= 25) return "Very High Alignment";
+    if (percent >= 15) return "High Alignment";
+    if (percent >= 10) return "Moderate Alignment";
+    return "Exploratory";
+  }
+
+  const primaryLabel = getConfidenceLabel(primaryConfidence);
+  const secondaryLabel = getConfidenceLabel(secondaryConfidence);
+
+  // 3. Athlete Warning Rule
+  let showTransitionWarning = false;
+  if (primaryKey === "ATH" && primaryConfidence < 40) { // Keep threshold logic, maybe adjust if scoring scale changed
+    showTransitionWarning = true;
+  }
+
+  // Content Data (Merged with titles from config mostly, but icons need defining)
+  // We can use CAREER_CATEGORIES titles, but need icons.
+  const categoryIcons = {
+    ATH: "fa-solid fa-medal",
+    COA: "fa-solid fa-whistle",
+    SCI: "fa-solid fa-heart-pulse",
+    MGT: "fa-solid fa-user-tie",
+    ANA: "fa-solid fa-chart-line",
+    FIT: "fa-solid fa-dumbbell",
+    MED: "fa-solid fa-microphone",
+    EDU: "fa-solid fa-graduation-cap",
+    ENT: "fa-solid fa-rocket",
+    PSY: "fa-solid fa-brain",
+    OFF: "fa-solid fa-scale-balanced"
   };
 
-  const result = resultsData[winner];
+  const primaryTitle = CAREER_CATEGORIES[primaryKey]?.title || resultObj.primary.title;
+  const secondaryTitle = secondaryKey ? (CAREER_CATEGORIES[secondaryKey]?.title || resultObj.secondary.title) : "";
+
+  const primaryIcon = categoryIcons[primaryKey] || "fa-solid fa-star";
 
   gsap.to(quizContent, {
     opacity: 0, y: -10, duration: 0.3, onComplete: () => {
       quizContent.innerHTML = `
       <div style="text-align: center; padding: 2rem;">
-        <div style="width: 80px; height: 80px; background: rgba(37, 211, 102, 0.1); border-radius: 50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom: 1.5rem;">
-          <i class="${result.icon}" style="font-size: 2.5rem; color: var(--color-primary);"></i>
-        </div>
-        <h3 style="font-size: 1.5rem; color: var(--text-muted); margin-bottom: 0.5rem;">Your Ideal Match:</h3>
-        <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: #fff;">${result.title}</h2>
-        <p style="font-size: 1.2rem; color: #cbd5e1; max-width: 500px; margin: 0 auto 2.5rem;">${result.desc}</p>
         
-        <div style="display:flex; gap:1rem; justify-content:center; margin-top:1rem;">
-          <button class="btn btn-primary magnetic-btn js-open-modal" id="get-plan-btn">
+        <!-- Primary Result -->
+        <div style="width: 80px; height: 80px; background: rgba(37, 211, 102, 0.1); border-radius: 50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom: 1rem; border:1px solid var(--color-primary);">
+          <i class="${primaryIcon}" style="font-size: 2.5rem; color: var(--color-primary);"></i>
+        </div>
+        <h3 style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 0.2rem;">Primary Match (${primaryConfidence}%)</h3>
+        <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem; color: #fff;">${primaryTitle}</h2>
+        <div style="display:inline-block; padding: 0.3rem 0.8rem; background: rgba(255,255,255,0.1); border-radius: 20px; font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--color-accent); border: 1px solid rgba(255,255,255,0.2);">
+            ${primaryLabel}
+        </div>
+        
+        <!-- Secondary Result -->
+        ${secondaryKey ? `
+        <div style="margin-bottom: 2rem; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 12px; max-width: 500px; margin-left: auto; margin-right: auto;">
+            <p style="margin:0; font-size: 0.95rem; color: var(--text-muted);">
+                <strong>Secondary Match:</strong> ${secondaryTitle} (${secondaryConfidence}% - ${secondaryLabel})
+            </p>
+        </div>` : ''}
+
+        ${showTransitionWarning ? `
+        <div style="margin-bottom: 2rem; padding: 1rem; background: rgba(255, 150, 0, 0.1); border-left: 3px solid orange; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto;">
+            <p style="margin:0; font-size: 0.9rem; color: #ffcc00;">
+                <i class="fa-solid fa-triangle-exclamation"></i> <strong>Note:</strong> Athlete careers are performance-dependent. This roadmap includes parallel pathways to ensure stability.
+            </p>
+        </div>` : ''}
+        
+        <div style="display:flex; gap:1rem; justify-content:center; margin-top:1rem; flex-wrap: wrap;">
+          <button class="btn btn-primary magnetic-btn" id="get-plan-btn">
             <span class="btn-text">Get My Career Plan</span>
-            <i class="fa-solid fa-file-arrow-down btn-icon"></i>
+            <i class="fa-solid fa-arrow-right btn-icon"></i>
           </button>
           
+          <button class="btn btn-secondary magnetic-btn" id="save-badge-btn" style="border:1px solid rgba(255,255,255,0.2);">
+             <span class="btn-text">Save Badge</span>
+             <i class="fa-solid fa-download btn-icon"></i>
+          </button>
+
           <button class="btn btn-secondary magnetic-btn" id="share-linkedin-btn" style="border:1px solid rgba(255,255,255,0.2);">
              <span class="btn-text">Share Result</span>
              <i class="fa-brands fa-linkedin btn-icon" style="color:#0a66c2;"></i>
           </button>
+        </div>
+        
+        <div style="margin-top: 2rem;">
+            <button id="retake-quiz-btn" style="background: transparent; border: none; color: var(--text-muted); font-size: 0.9rem; text-decoration: underline; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--text-muted)'">
+                <i class="fa-solid fa-rotate-left"></i> Retake Quiz
+            </button>
         </div>
       </div>
     `;
 
       // Re-initialize magnetic on new buttons
       const newBtns = quizContent.querySelectorAll(".magnetic-btn");
-      newBtns.forEach(el => { /* reuse global magnetic logic if extracted, or simple fallback */ });
+      newBtns.forEach(el => {
+        // Simple magnetic fallback provided by CSS or if we want JS we'd need to extract the function
+      });
+
+      // Get Plan (Redirect to Roadmap)
+      // Get Plan (Open Lead Modal - Teaser Strategy)
+      const getPlanBtn = $("#get-plan-btn");
+      if (getPlanBtn) {
+        getPlanBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          const modal = $("#contact-modal");
+
+          // Pre-fill hidden fields 
+          const hiddenMatch = $("#career-match-hidden");
+          const hiddenScores = $("#scores-hidden"); // if we want to send full object
+
+          if (hiddenMatch) hiddenMatch.value = primaryKey;
+          if (hiddenScores) hiddenScores.value = JSON.stringify(resultObj);
+
+          // Update modal title for context
+          const modalTitle = $(".section-title", modal);
+          if (modalTitle) modalTitle.innerHTML = `Unlock Your <span style="color:var(--color-primary)">${primaryTitle}</span> Roadmap`;
+
+          if (modal) {
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
+          }
+        });
+      }
+
+      // Badge Logic
+      const saveBadgeBtn = $("#save-badge-btn");
+      if (saveBadgeBtn) {
+        saveBadgeBtn.addEventListener("click", () => {
+          const badge = $("#hidden-square-badge");
+          if (!badge) return;
+
+          // Update badge text
+          const badgeTitle = $(".badge-title", badge);
+          if (badgeTitle) badgeTitle.innerText = primaryTitle;
+
+          // Personalize Name
+          const userName = localStorage.getItem("sportal_user_name");
+          const existingSub = $(".badge-sub", badge);
+          if (userName && existingSub) {
+            existingSub.innerText = `Awarded to ${userName}`;
+            existingSub.style.color = "#fbbf24";
+            existingSub.style.fontWeight = "600";
+          }
+
+          const originalText = saveBadgeBtn.innerHTML;
+          saveBadgeBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
+
+          // 1. Ensure library exists
+          if (typeof html2canvas === 'undefined') {
+            alert("Error: html2canvas library not found. Please add the script tag.");
+            saveBadgeBtn.innerHTML = originalText;
+            return;
+          }
+
+          // 2. Capture
+          window.html2canvas(badge, {
+            scale: 2, // Retinas resolution
+            backgroundColor: "#020617", // Force background color
+            useCORS: true // Allow loading cross-origin images
+          }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = `Sportal-Career-${primaryTitle.replace(/\s+/g, '-')}.png`;
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+            saveBadgeBtn.innerHTML = originalText;
+          }).catch(err => {
+            console.error("Badge generation failed:", err);
+            saveBadgeBtn.innerHTML = "Try Again";
+          });
+        });
+      }
 
       // Share Logic
       const shareBtn = $("#share-linkedin-btn");
       if (shareBtn) {
         shareBtn.addEventListener("click", () => {
-          const text = `I just got matched as a ${result.title} by Sportal Corporate's AI Career Quiz! 🚀 Find your sports career path here: https://sportalcorporate.netlify.app`;
+          const text = `I just got matched as a ${primaryTitle} by Sportal Corporate's AI Career Quiz! 🚀 Find your sports career path here: https://www.sportalcorporate.org`;
           const url = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(text)}`;
           window.open(url, '_blank');
         });
       }
-      gsap.fromTo(quizContent, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" });
 
-      // Re-attach modal trigger manually if needed (though global listener should catch .js-open-modal, dynamic elements sometimes need help or bubbling is fine)
-      // Our global listener is on 'document', so it should work for dynamically added elements too!
+      // 4. Retake Quiz Logic
+      const retakeBtn = $("#retake-quiz-btn");
+      if (retakeBtn) {
+        retakeBtn.addEventListener("click", () => {
+          startQuizSession();
+        });
+      }
+
+      gsap.fromTo(quizContent, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" });
     }
   });
 }
@@ -806,6 +921,7 @@ if (document.readyState === "loading") {
 }
 
 
+
 // Run cookie init
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initCookieBanner);
@@ -813,203 +929,5 @@ if (document.readyState === "loading") {
   initCookieBanner();
 }
 
-/* -----------------------------
-   God Mode: View Transitions (SPA emulation)
------------------------------ */
-function initNativePageTransitions() {
-  // Only if API is supported
-  if (!document.startViewTransition) return;
-
-  window.addEventListener("click", (e) => {
-    const link = e.target.closest("a");
-    if (!link) return;
-
-    // Validation: is it a local link?
-    const href = link.getAttribute("href");
-    if (!href || href.startsWith("#") || href.startsWith("http") || link.target === "_blank") {
-      // Allow hash links to do their smooth scroll thing naturally, or external links to open normally
-      if (href && href.startsWith("#")) return;
-      // If it's a full URL but same origin, we could technically handle it, but stick to relative for safety
-      if (href && href.startsWith("http") && !href.startsWith(window.location.origin)) return;
-    }
-
-    e.preventDefault();
-
-    // Fetch new state
-    // Note: This is a lightweight emulation. In a real framework, you'd use a router.
-    // Here we just fetch HTML and replace body content for the visual effect.
-    const targetUrl = link.href;
-
-    fetch(targetUrl)
-      .then(res => res.text())
-      .then(html => {
-        const parser = new DOMParser();
-        const newDoc = parser.parseFromString(html, "text/html");
-
-        // Start Transition
-        document.startViewTransition(() => {
-          // Swap Content
-          document.body.innerHTML = newDoc.body.innerHTML;
-          document.title = newDoc.title;
-
-          // Re-run scripts
-          initQuiz();
-          initCookieBanner();
-          initSocialProof();
-          initLightbox(); // New Gallery script
-
-          window.scrollTo(0, 0);
-        });
-      });
-  });
-}
-
-function initLightbox() {
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  if (!galleryItems.length) return;
-
-  // Create lightbox if not exists
-  let lightbox = document.querySelector('.lightbox');
-  if (!lightbox) {
-    lightbox = document.createElement('div');
-    lightbox.className = 'lightbox';
-    lightbox.innerHTML = `
-      <button class="lightbox-close">&times;</button>
-      <img src="" class="lightbox-img" alt="Full view">
-    `;
-    document.body.appendChild(lightbox);
-  }
-
-  const lightboxImg = lightbox.querySelector('.lightbox-img');
-  const closeBtn = lightbox.querySelector('.lightbox-close');
-
-  galleryItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const imgSrc = item.querySelector('img').src;
-      lightboxImg.src = imgSrc;
-      lightbox.classList.add('active');
-    });
-  });
-
-  const closeLightbox = () => lightbox.classList.remove('active');
-  closeBtn.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
-}
-
-// Initial Run
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
-    initLightbox();
-  });
-} else {
-  initLightbox();
-}
-
-// Inject meta tag for MPA View Transitions
-const meta = document.createElement('meta');
-meta.name = 'view-transition';
-meta.content = 'same-origin';
-document.head.appendChild(meta);
 
 
-
-/* -----------------------------
-   God Mode: Social Proof (Live Notifications)
------------------------------ */
-function initSocialProof() {
-    const events = [
-      { name: "Rahul S.", location: "Mumbai", action: "viewed Gen AI Course" },
-      { name: "Sarah J.", location: "London", action: "downloaded Course Brochure" },
-      { name: "Amit K.", location: "Bangalore", action: "started Career Quiz" },
-      { name: "Priya M.", location: "Delhi", action: "booked a Counseling Call" },
-      { name: "David R.", location: "Dubai", action: "enrolled in Sports Analytics" }
-    ];
-
-    const toast = document.createElement("div");
-    toast.className = "social-proof-toast";
-    document.body.appendChild(toast);
-
-    function showToast() {
-      if (localStorage.getItem("sportal_cookies_accepted") !== "true") return; // Respect privacy slightly? Nah, it's marketing.
-
-      const evt = events[Math.floor(Math.random() * events.length)];
-      toast.innerHTML = `
-            <div class="sp-avatar"><i class="fa-solid fa-user"></i></div>
-            <div class="sp-content">
-                <span class="sp-name">${evt.name} from ${evt.location}</span>
-                <span class="sp-action">just ${evt.action}</span>
-            </div>
-        `;
-
-      toast.classList.add("visible");
-
-      // Hide after 5s
-      setTimeout(() => {
-        toast.classList.remove("visible");
-      }, 5000);
-
-      // Queue next
-      const nextTime = Math.random() * (45000 - 20000) + 20000; // 20-45s
-      setTimeout(showToast, nextTime);
-    }
-
-    // Start loop after 10s
-    setTimeout(showToast, 10000);
-  }
-
-// Init God Mode
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
-    initSocialProof();
-    initLightbox();
-  });
-} else {
-  initSocialProof();
-  initLightbox();
-}
-
-/* -----------------------------
-   God Mode: Lightbox Gallery
------------------------------ */
-function initLightbox() {
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  if (!galleryItems.length) return;
-
-  // Create lightbox if not exists
-  let lightbox = document.querySelector('.lightbox');
-  if (!lightbox) {
-    lightbox = document.createElement('div');
-    lightbox.className = 'lightbox';
-    lightbox.innerHTML = `
-      <button class="lightbox-close">&times;</button>
-      <img src="" class="lightbox-img" alt="Full view">
-    `;
-    document.body.appendChild(lightbox);
-  }
-
-  const lightboxImg = lightbox.querySelector('.lightbox-img');
-  const closeBtn = lightbox.querySelector('.lightbox-close');
-
-  galleryItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const img = item.querySelector('img');
-      if (img) {
-        lightboxImg.src = img.src;
-        lightbox.classList.add('active');
-      }
-    });
-  });
-
-  const closeLightbox = () => lightbox.classList.remove('active');
-  closeBtn.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox();
-  });
-}

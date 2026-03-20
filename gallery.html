@@ -2,16 +2,72 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HBYEBP1SGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HBYEBP1SGC');
+</script>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gallery | Sportal Corporate</title>
+    <title>Sportal Corporate Gallery | Sports Education Events & Gen AI Workshops</title>
+    <meta name="description"
+        content="View Sportal Corporate Gallery featuring Sports Education Events, Gen AI Workshops in India, Physical Education Summits, and academic engagements.">
+    <meta name="keywords"
+        content="Sportal Corporate Gallery, Sports Education Events, Gen AI Workshops India, Physical Education Summits">
+    <link rel="canonical" href="https://www.sportalcorporate.org/gallery.html">
+    <meta name="robots" content="index,follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sportal Corporate Gallery | Sports Education Events & Gen AI Workshops">
+    <meta property="og:description"
+        content="View Sportal Corporate Gallery featuring Sports Education Events, Gen AI Workshops in India, Physical Education Summits, and academic engagements.">
+    <meta property="og:url" content="https://www.sportalcorporate.org/gallery.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.sportalcorporate.org/og-gallery.jpg">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "ImageGallery",
+            "name": "Sportal Corporate Event Gallery",
+            "description": "Collection of photos from sports education workshops, summits, and training sessions organized by Sportal Corporate.",
+            "provider": {
+                "@type": "EducationalOrganization",
+                "name": "Sportal Corporate"
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://sportalcorporate.org/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Gallery",
+                    "item": "https://sportalcorporate.org/gallery.html"
+                }
+            ]
+        }
+    ]
+    </script>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="./src/style.css">
+    <script type="module" src="/src/main.js"></script>
+    <link rel="stylesheet" href="/src/style.css" />
 </head>
 
 <body>
@@ -25,14 +81,13 @@
     <!-- Header -->
     <header class="header" id="header">
         <div class="container nav">
-            <a href="/" class="logo" style="display: flex; align-items: center; gap: 0.8rem; text-decoration: none;">
+            <a href="/" class="logo">
                 <div class="logo-container">
-                    <img src="public/logo-final.jpg" alt="Sportal Corporate Logo"
-                        style="height: 48px; border-radius: 50%;">
+                    <img src="/logo.jpg" alt="Logo">
                 </div>
-                <div style="line-height: 1; display: flex; flex-direction: column;">
-                    <span style="font-size: 1.25rem;">Sportal</span>
-                    <span style="color: var(--color-accent); font-size: 1.25rem;">Corporate</span>
+                <div class="logo-brand-text">
+                    <span class="main-text">Sportal</span>
+                    <span class="sub-text">Corporate</span>
                 </div>
             </a>
             <button class="hamburger-menu" aria-label="Toggle Navigation">
@@ -44,32 +99,35 @@
             <ul class="nav-links">
                 <li><a href="/" class="nav-link">Home</a></li>
                 <li class="dropdown">
-                    <a href="/#about" class="nav-link">About Us <i class="fa-solid fa-chevron-down"
+                    <a class='nav-link' href='/#about'>About Us <i class="fa-solid fa-chevron-down"
                             style="font-size: 0.8rem;"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/founder.html">Founder Profile</a></li>
+                        <li><a href='/founder'>Founder Profile</a></li>
                     </ul>
                 </li>
-                <li><a href="/partners.html" class="nav-link">Partners</a></li>
-                <li><a href="/courses.html" class="nav-link">Courses</a></li>
-                <li><a href="/quiz.html" class="nav-link">Career Quiz</a></li>
-                <li><a href="/gallery.html" class="nav-link active">Gallery</a></li>
-                <li><a href="/#contact" class="nav-link">Contact</a></li>
+                <li><a class='nav-link' href='/partners'>Partners</a></li>
+                <li><a class='nav-link' href='/courses'>Courses</a></li>
+                <li><a class='nav-link' href='/quiz'>Career Quiz</a></li>
+                <li><a class='nav-link' href='/#services'>Services</a></li>
+                <li><a class='nav-link active' href='/gallery'>Gallery</a></li>
+                <li><a class='nav-link' href='/#contact'>Contact</a></li>
+
             </ul>
-            <button class="btn btn-primary magnetic-btn" onclick="window.location.href='/#contact'">
-                <span class="btn-text">Get Started</span>
-                <span class="btn-sheen"></span>
-            </button>
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="section-padding" style="padding-top: 150px; padding-bottom: 2rem;">
-        <div class="container text-center">
-            <h1 class="reveal-text" style="font-size: clamp(3rem, 6vw, 5rem);">Impact <span
-                    class="text-gradient">Gallery</span></h1>
-            <p class="reveal-text" style="margin: 0 auto; margin-top: 1rem;">
-                Witness the journey, the events, and the transformations happening at Sportal Corporate.
+    <!-- Hero -->
+    <section class="hero gallery-hero">
+        <div class="hero-bg"></div>
+        <div class="container text-center gallery-hero-content">
+            <h1 class="gallery-hero-title">
+                Sports Education Events, Workshops & Summits — Gallery
+            </h1>
+            <p class="gallery-hero-desc">
+                A visual journey through our nationwide impact. Features snaps from our <a href='/course_gen_ai'
+                    style='color: inherit; text-decoration: underline;'>Gen AI Workshops</a>, University MOUs, and <a
+                    href='/partners' style='color: inherit; text-decoration: underline;'>Educational Summits</a>
+                across India.
             </p>
         </div>
     </section>
@@ -79,9 +137,53 @@
         <div class="container">
             <div class="gallery-grid">
 
+                <!-- Recent Highlights -->
+                <div class="gallery-item glass-card">
+                    <img src="/gallery/ardorcomm_award_2025.webp" alt="ArdorComm Award 2025" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 class="gallery-overlay-title">ArdorComm Award</h4>
+                        <p class="sp-info">Excellence in Education</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item glass-card">
+                    <img src="/gallery/education_summit_group.webp" alt="Education Leadership Summit"
+                        class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 class="gallery-overlay-title">Leadership Summit</h4>
+                        <p class="sp-info">Uttarakhand</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item glass-card">
+                    <img src="/gallery/award_presentation_2025.webp" alt="Award Presentation" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 style="color:white; margin-bottom:0.5rem;">Award Presentation</h4>
+                        <p class="sp-info">Honoring Excellence</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item glass-card">
+                    <img src="/gallery/lincoln_university_visit.webp" alt="Lincoln University Visit"
+                        class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 style="color:white; margin-bottom:0.5rem;">Lincoln University</h4>
+                        <p class="sp-info">International Collaboration</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item glass-card">
+                    <img src="/gallery/partnership_active_mind.webp" alt="Partnership Meeting" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h4 style="color:white; margin-bottom:0.5rem;">Project Discussion</h4>
+                        <p class="sp-info">Active Mind Collaboration</p>
+                    </div>
+                </div>
+
+                <!-- Previous Highlights -->
                 <!-- Image 1 -->
                 <div class="gallery-item glass-card">
-                    <img src="/public/gallery/ai_presentation_1.jpg" alt="AI Presentation" class="gallery-img">
+                    <img src="/gallery/ai_presentation_1.webp" alt="AI Presentation" class="gallery-img">
                     <div class="gallery-overlay">
                         <h4 style="color:white; margin-bottom:0.5rem;">AI in Sports</h4>
                         <p class="sp-info">Presentation Session</p>
@@ -90,7 +192,7 @@
 
                 <!-- Image 2 -->
                 <div class="gallery-item glass-card">
-                    <img src="/public/gallery/award_ceremony.jpg" alt="Award Ceremony" class="gallery-img">
+                    <img src="/gallery/award_ceremony.webp" alt="Award Ceremony" class="gallery-img">
                     <div class="gallery-overlay">
                         <h4 style="color:white; margin-bottom:0.5rem;">Awards Night</h4>
                         <p class="sp-info">Celebrating Excellence</p>
@@ -99,7 +201,7 @@
 
                 <!-- Image 3 -->
                 <div class="gallery-item glass-card">
-                    <img src="/public/gallery/group_photo.jpg" alt="Group Photo" class="gallery-img">
+                    <img src="/gallery/group_photo.webp" alt="Group Photo" class="gallery-img">
                     <div class="gallery-overlay">
                         <h4 style="color:white; margin-bottom:0.5rem;">Batch 2024</h4>
                         <p class="sp-info">Future Leaders</p>
@@ -108,7 +210,7 @@
 
                 <!-- Image 4 -->
                 <div class="gallery-item glass-card">
-                    <img src="/public/gallery/valencia_cf.jpg" alt="Valencia CF Visit" class="gallery-img">
+                    <img src="/gallery/valencia_cf.webp" alt="Valencia CF Visit" class="gallery-img">
                     <div class="gallery-overlay">
                         <h4 style="color:white; margin-bottom:0.5rem;">Valencia CF</h4>
                         <p class="sp-info">International Exposure</p>
@@ -117,7 +219,7 @@
 
                 <!-- Image 5 -->
                 <div class="gallery-item glass-card">
-                    <img src="/public/gallery/workshop_1.jpg" alt="Workshop Session" class="gallery-img">
+                    <img src="/gallery/workshop_1.webp" alt="Workshop Session" class="gallery-img">
                     <div class="gallery-overlay">
                         <h4 style="color:white; margin-bottom:0.5rem;">Hands-on Workshop</h4>
                         <p class="sp-info">Practical Learning</p>
@@ -126,7 +228,7 @@
 
                 <!-- Image 6 -->
                 <div class="gallery-item glass-card">
-                    <img src="/public/gallery/f1_track_visit.jpg" alt="F1 Track Visit" class="gallery-img">
+                    <img src="/gallery/f1_track_visit.webp" alt="F1 Track Visit" class="gallery-img">
                     <div class="gallery-overlay">
                         <h4 style="color:white; margin-bottom:0.5rem;">F1 Track Visit</h4>
                         <p class="sp-info">Field Trip</p>
@@ -135,7 +237,7 @@
 
                 <!-- Image 7 -->
                 <div class="gallery-item glass-card">
-                    <img src="/public/gallery/panel_discussion.jpg" alt="Panel Discussion" class="gallery-img">
+                    <img src="/gallery/panel_discussion.webp" alt="Panel Discussion" class="gallery-img">
                     <div class="gallery-overlay">
                         <h4 style="color:white; margin-bottom:0.5rem;">Expert Panel</h4>
                         <p class="sp-info">Industry Insights</p>
@@ -144,7 +246,7 @@
 
                 <!-- Image 8 -->
                 <div class="gallery-item glass-card">
-                    <img src="/public/gallery/yoga_day.jpg" alt="Yoga Day" class="gallery-img">
+                    <img src="/gallery/yoga_day.webp" alt="Yoga Day" class="gallery-img">
                     <div class="gallery-overlay">
                         <h4 style="color:white; margin-bottom:0.5rem;">International Yoga Day</h4>
                         <p class="sp-info">Wellness & Balance</p>
@@ -153,7 +255,7 @@
 
                 <!-- Image 9 -->
                 <div class="gallery-item glass-card">
-                    <img src="/public/gallery/cap_ceremony.jpg" alt="Cap Ceremony" class="gallery-img">
+                    <img src="/gallery/cap_ceremony.webp" alt="Cap Ceremony" class="gallery-img">
                     <div class="gallery-overlay">
                         <h4 style="color:white; margin-bottom:0.5rem;">Graduation</h4>
                         <p class="sp-info">Cap Ceremony</p>
@@ -162,7 +264,7 @@
 
                 <!-- Image 10 -->
                 <div class="gallery-item glass-card">
-                    <img src="/public/gallery/partnership_meeting.jpg" alt="Partnership Meeting" class="gallery-img">
+                    <img src="/gallery/partnership_meeting.webp" alt="Partnership Meeting" class="gallery-img">
                     <div class="gallery-overlay">
                         <h4 style="color:white; margin-bottom:0.5rem;">Global Partners</h4>
                         <p class="sp-info">Signing MOU</p>
@@ -174,7 +276,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" id="contact">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
@@ -182,14 +284,40 @@
                     <p style="color: #94A3B8; margin-bottom: 1rem;">
                         Redefining sports education and wellness through innovation and research.
                     </p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://www.facebook.com/sportalcorp" target="_blank" aria-label="Facebook"><i
+                                class="fa-brands fa-facebook"></i></a>
+                        <a href="https://instagram.com/sportal.corporate/" target="_blank" aria-label="Instagram"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/sportal-corporate-private-limited/about/?viewAsMember=true"
+                            target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col" style="flex:1; min-width: 250px;">
+                    <h4 style="color:white; margin-bottom:1rem; font-size:1.1rem;">Quick Links</h4>
+                    <ul class="footer-links" style="list-style:none;">
+                        <li><a href="/" style="color:var(--text-muted); text-decoration:none;">Home</a></li>
+                        <li><a href='/courses' style='color:var(--text-muted); text-decoration:none;'>Courses</a>
+                        </li>
+                        <li><a href='/partners' style='color:var(--text-muted); text-decoration:none;'>Partners</a>
+                        </li>
+                        <li><a href='/#contact' style='color:var(--text-muted); text-decoration:none;'>Contact</a></li>
+                        <li><a href='/legal' style='color:var(--text-muted); text-decoration:none;'>Privacy
+                                Policy</a></li>
+                        <li><a href='/verify' style='color:var(--text-muted); text-decoration:none;'>Verify
+                                Certificate</a></li>
+                    </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Quick Links</h4>
+                    <h4>Contact</h4>
                     <ul class="footer-links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/courses.html">Courses</a></li>
-                        <li><a href="/gallery.html">Gallery</a></li>
-                        <li><a href="/#contact">Contact</a></li>
+                        <li><a href="mailto:director@sportalcorporate.org">director@sportalcorporate.org</a></li>
+
+                        <li style="color: var(--color-text-light);"><strong>Corporate Office:</strong><br>A-1198 Indira
+                            Nagar<br>Lucknow, U.P 226016</li>
+                        <li style="color: var(--color-text-light); margin-top: 0.8rem;"><strong>Branch
+                                Office:</strong><br>S 208,
+                            SHIVALIK NAGAR,<br>HARIDWAR, U.K 249403 India</li>
                     </ul>
                 </div>
             </div>
@@ -199,7 +327,6 @@
         </div>
     </footer>
 
-    <script type="module" src="/src/main.js"></script>
 </body>
 
 </html>

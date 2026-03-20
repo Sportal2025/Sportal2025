@@ -2,45 +2,91 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HBYEBP1SGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HBYEBP1SGC');
+</script>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Dr. Gaurav Pant | Founder – Sportal Corporate</title>
+    <title>Dr. Gaurav Pant | Sports Education Expert & Founder of Sportal Corporate</title>
+    <!-- SEO & Sharing -->
     <meta name="description"
-        content="Meet Dr. Gaurav Pant, Founder of Sportal Corporate — a leader in sports education, physical literacy, and Gen AI training for sports professionals.">
+        content="Dr. Gaurav Pant is India's leading Sports Education Expert and Founder of Sportal Corporate. He specializes in Physical Literacy, NEP 2020 Policy, and AI for Sports Professionals.">
     <meta name="keywords"
-        content="Dr. Gaurav Pant, Sportal Corporate Founder, Sports Education India, Physical Education Expert, Gen AI in Sports">
+        content="Dr. Gaurav Pant, Sports Education Expert India, Sportal Corporate Founder, Physical Literacy India, AI in Sports Education, Sports Management Consultant">
+    <link rel="canonical" href="https://www.sportalcorporate.org/founder.html">
+    <meta name="robots" content="index,follow" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/src/style.css">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Dr. Gaurav Pant | Founder – Sportal Corporate">
-    <meta property="og:description" content="Visionary leader in Sports Education, Physical Literacy, and Gen AI.">
-    <meta property="og:image" content="/founder.jpg">
+    <meta property="og:title" content="Dr. Gaurav Pant | Sports Education Expert | Sportal Corporate Founder">
+    <meta property="og:description"
+        content="Dr. Gaurav Pant is a Sports Education Expert and Sportal Corporate Founder focused on Physical Literacy India, research, and AI in Sports Education.">
+    <meta property="og:url" content="https://www.sportalcorporate.org/founder.html">
+    <meta property="og:type" content="profile">
+    <meta property="og:image" content="https://www.sportalcorporate.org/founder.jpg">
 
-    <!-- Person Schema -->
+    <!-- Structured Data -->
     <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Dr. Gaurav Pant",
-    "jobTitle": "Founder & Director",
-    "affiliation": {
-      "@type": "Organization",
-      "name": "Sportal Corporate"
-    },
-    "url": "https://sportalcorporate.com/founder.html",
-    "image": "https://sportalcorporate.com/founder.jpg",
-    "sameAs": [
-      "https://www.linkedin.com/in/dr-gaurav-pant-2674483b/"
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Dr. Gaurav Pant",
+            "jobTitle": "Founder & Director",
+            "affiliation": {
+                "@type": "Organization",
+                "name": "Sportal Corporate",
+                "url": "https://sportalcorporate.org"
+            },
+            "url": "https://sportalcorporate.org/founder.html",
+            "image": "https://sportalcorporate.org/founder.jpg",
+            "description": "Dr. Gaurav Pant is a leading expert in sports education and physical literacy, pioneering the use of Generative AI to transform how sports professionals teach and manage programs.",
+            "knowsAbout": ["Sports Management", "Physical Literacy", "Generative AI", "Curriculum Design", "Sports Analytics"],
+            "sameAs": [
+                "https://www.linkedin.com/in/dr-gaurav-pant-2674483b/",
+                "https://www.facebook.com/sportalcorp"
+            ]
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://sportalcorporate.org/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "About Us",
+                    "item": "https://sportalcorporate.org/#about"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Founder Profile",
+                    "item": "https://sportalcorporate.org/founder.html"
+                }
+            ]
+        }
     ]
-  }
-  </script>
+    </script>
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script type="module" src="/src/main.js"></script>
+    <link rel="stylesheet" href="/src/style.css" />
 </head>
 
 <body>
@@ -49,107 +95,322 @@
     <!-- Header -->
     <header class="header" id="header">
         <div class="container nav">
-            <a href="/index.html" class="logo" style="display:flex;align-items:center;gap:0.8rem;text-decoration:none;">
-                <img src="logo-final.jpg" alt="Sportal Corporate Logo" style="height:48px;border-radius:50%;">
-                <div>
-                    <div style="font-size:1.25rem;">Sportal</div>
-                    <div style="font-size:1.25rem;color:var(--color-accent);">Corporate</div>
+            <a href="/" class="logo">
+                <div class="logo-container">
+                    <img src="/logo.jpg" alt="Logo">
+                </div>
+                <div class="logo-brand-text">
+                    <span class="main-text">Sportal</span>
+                    <span class="sub-text">Corporate</span>
                 </div>
             </a>
+            <button class="hamburger-menu" aria-label="Toggle Navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
 
             <ul class="nav-links">
-                <li><a href="/index.html#home" class="nav-link">Home</a></li>
-                <li><a href="/index.html#about" class="nav-link">About Us</a></li>
-                <li><a href="/partners.html" class="nav-link">Partners</a></li>
-                <li><a href="/courses.html" class="nav-link">Courses</a></li>
-                <li><a href="/quiz.html" class="nav-link">Career Quiz</a></li>
-                <li><a href="/index.html#services" class="nav-link">Services</a></li>
-                <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
-            </ul>
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li class="dropdown">
+                    <a class='nav-link' href='/#about'>About Us <i class="fa-solid fa-chevron-down"
+                            style="font-size: 0.8rem;"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href='/founder'>Founder Profile</a></li>
+                    </ul>
+                </li>
+                <li><a class='nav-link' href='/partners'>Partners</a></li>
+                <li><a class='nav-link' href='/courses'>Courses</a></li>
+                <li><a class='nav-link' href='/quiz'>Career Quiz</a></li>
+                <li><a class='nav-link' href='/#services'>Services</a></li>
+                <li><a class='nav-link' href='/gallery'>Gallery</a></li>
+                <li><a class='nav-link' href='/blog'>Blog</a></li>
+                <li><a class='nav-link' href='/#contact'>Contact</a></li>
 
-            <button class="btn btn-primary js-open-modal">Get Started</button>
+            </ul>
         </div>
     </header>
 
     <!-- Hero -->
-    <section class="hero" style="min-height:50vh;padding-bottom:4rem;">
+    <section class="hero founder-hero">
         <div class="hero-bg"></div>
-        <div class="container text-center">
-            <h1 class="text-gradient" style="font-size:3.5rem;">Leadership</h1>
-            <p style="color:var(--text-muted);max-width:600px;margin:0 auto;">
-                Meet the visionary behind Sportal Corporate.
-            </p>
-        </div>
-    </section>
-
-    <!-- Founder Bio -->
-    <section class="section-padding">
         <div class="container">
-            <div style="display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start;">
+            <div class="founder-grid">
 
-                <!-- Image -->
-                <div>
-                    <img src="/founder.jpg" alt="Dr. Gaurav Pant" style="width:100%;border-radius:12px;">
-                    <div style="background:var(--color-accent);color:white;padding:1rem;text-align:center;">
-                        <h2 style="margin:0;">Dr. Gaurav Pant</h2>
-                        <p style="margin:0;font-size:0.9rem;">Founder & Director</p>
+                <!-- Text Content -->
+                <div class="reveal-stagger">
+                    <div class="award-badge-unified">
+                        <i class="fa-solid fa-certificate"></i>
+                        <span>15+ Years of Excellence</span>
                     </div>
-
-                    <a href="https://www.linkedin.com/in/dr-gaurav-pant-2674483b/" target="_blank"
-                        rel="noopener noreferrer" class="btn btn-primary" style="width:100%;margin-top:1.5rem;">
-                        <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
-                    </a>
+                    <h1 class="text-gradient founder-title">Dr. Gaurav
+                        Pant</h1>
+                    <p class="founder-role">
+                        Sports Educator • Entrepreneur • Curriculum Specialist
+                    </p>
+                    <p class="founder-bio">
+                        A seasoned expert bridging the gap between <strong style="color:var(--color-primary)">academic
+                            policy</strong> and <strong style="color:var(--color-primary)">industry reality</strong>.
+                        Widely recognized for his work in NEP 2020–aligned sports education, teacher capacity building,
+                        and driving the AI revolution in sports.
+                    </p>
+                    <div style="display:flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="#experience" class="btn btn-primary magnetic-btn">
+                            <span class="btn-text">View Journey</span>
+                            <span class="btn-sheen"></span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dr-gaurav-pant-2674483b/" target="_blank"
+                            class="btn btn-secondary magnetic-btn">
+                            <i class="fa-brands fa-linkedin"></i> Connect
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Content -->
-                <div>
-                    <h2 class="section-title">A Visionary in Sports Education</h2>
+                <!-- Image -->
+                <div class="founder-img-container">
+                    <div class="founder-glow">
+                    </div>
+                    <img src="/founder.webp" alt="Dr. Gaurav Pant" class="founder-img">
 
-                    <p>
-                        Dr. Gaurav Pant is a distinguished sports educator, entrepreneur, and the driving force behind
-                        <strong>Sportal Corporate</strong>. His work focuses on redefining sports education through
-                        research,
-                        innovation, and policy-aligned programs.
-                    </p>
-
-                    <h3 class="text-gradient">Professional Background</h3>
-                    <p>
-                        Holding a Ph.D. in Physical Education with specialization in yoga and anxiety management,
-                        Dr. Pant bridges academic research with real-world application. He previously served as an
-                        Associate Professor at Bharati Vidyapeeth Deemed University, Pune.
-                    </p>
-
-                    <h3 class="text-gradient">Impact & Innovation</h3>
-                    <p>
-                        Author of 30+ research papers and multiple books, Dr. Pant also holds patents in sports wellness
-                        innovation, contributing to the evolving intersection of sports, health, and technology.
-                    </p>
-
-                    <blockquote style="margin:2rem 0;">
-                        “Sports is not just competition; it is a catalyst for holistic human development.”
-                    </blockquote>
-
-                    <h3 class="text-gradient">Areas of Expertise</h3>
-                    <ul style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;list-style:none;">
-                        <li><i class="fa-solid fa-check"></i> Sports Management</li>
-                        <li><i class="fa-solid fa-check"></i> Academic Leadership</li>
-                        <li><i class="fa-solid fa-check"></i> Curriculum Design</li>
-                        <li><i class="fa-solid fa-check"></i> Entrepreneurship</li>
-                        <li><i class="fa-solid fa-check"></i> Gen AI Training</li>
-                    </ul>
-
-                    <a href="/index.html#contact" class="btn btn-secondary" style="margin-top:2rem;">
-                        Invite for Keynote / Consultation
-                    </a>
+                    <!-- Floating Stat Card -->
+                    <div class="glass-panel stat-card-floating">
+                        <div class="stat-card-row">
+                            <div class="stat-icon-large"><i class="fa-solid fa-user-graduate"></i></div>
+                            <div>
+                                <div class="stat-value-large">100+</div>
+                                <div class="stat-label-small">
+                                    Scholars Mentored</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Stats Section -->
+    <section class="section-padding" style="padding-top:0;">
         <div class="container">
-            <p>&copy; 2024 Sportal Corporate. All rights reserved.</p>
+            <div class="glass-panel founder-stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number stat-number-big" data-target="15">0+</div>
+                    <div class="stat-label">
+                        Years Experience</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number stat-number-big" data-target="40">0+</div>
+                    <div class="stat-label">
+                        Research Papers</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number stat-number-big" data-target="6">0</div>
+                    <div class="stat-label">
+                        Books Authored</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number stat-number-big" data-target="2">0</div>
+                    <div class="stat-label">
+                        Patents / IP</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience (Timeline) -->
+    <section class="timeline-section timeline-bg" id="experience">
+        <div class="container">
+            <div class="section-header text-center" style="margin-bottom: 5rem;">
+                <span class="section-subtitle">Professional Journey</span>
+                <h2 class="section-title">Leadership & Impact</h2>
+            </div>
+
+            <div style="position: relative; max-width: 1000px; margin: 0 auto;">
+                <div class="timeline-line"></div>
+
+                <!-- Current Role -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2013-Present</div>
+                    <div class="timeline-content hover-glass">
+                        <h3 style="color: var(--color-primary); margin-bottom: 0.2rem;">Director & Managing Director
+                        </h3>
+                        <h4 style="font-size: 1rem; color: white; margin-bottom: 1rem; opacity: 0.8;">Sportal Corporate
+                            Pvt. Ltd. & Devbhumi Sportal Foundation</h4>
+                        <ul
+                            style="list-style: disc; padding-left: 1.2rem; color: var(--text-muted); font-size: 0.95rem;">
+                            <li>Leading strategic vision for large-scale sports education initiatives.</li>
+                            <li>Designed NEP 2020–aligned curricula for schools and institutions.</li>
+                            <li>Established partnerships with <strong>Rashtriya Raksha University (Gujarat)</strong>,
+                                <strong>Universitas Sumatera Utara (Indonesia)</strong>, <strong>LNIPE Gwalior</strong>,
+                                and <strong>KIT Raipur</strong>.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Associate Professor -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2022-2023</div>
+                    <div class="timeline-content hover-glass">
+                        <h3 style="color: var(--color-primary); margin-bottom: 0.2rem;">Associate Professor</h3>
+                        <h4 style="font-size: 1rem; color: white; margin-bottom: 1rem; opacity: 0.8;">Bharati Vidyapeeth
+                            University, Pune</h4>
+                        <ul
+                            style="list-style: disc; padding-left: 1.2rem; color: var(--text-muted); font-size: 0.95rem;">
+                            <li>Coordinator: Erasmus+ SPIRIT Project (India-Indonesia-Sri Lanka).</li>
+                            <li>Head: Research & Advanced Studies.</li>
+                            <li>Director: Entrepreneurship Cell and IQAC / NAAC activities.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Assistant Professor -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">2010-2022</div>
+                    <div class="timeline-content hover-glass">
+                        <h3 style="color: var(--color-primary); margin-bottom: 0.2rem;">Assistant Professor</h3>
+                        <h4 style="font-size: 1rem; color: white; margin-bottom: 1rem; opacity: 0.8;">Bharati Vidyapeeth
+                            University, Pune</h4>
+                        <ul
+                            style="list-style: disc; padding-left: 1.2rem; color: var(--text-muted); font-size: 0.95rem;">
+                            <li>Taught UG/PG programs in Sports Sciences.</li>
+                            <li>Mentored 100+ Ph.D., M.Phil., and M.P.Ed. scholars.</li>
+                            <li>Spearheaded curriculum innovation and student leadership programs.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications (Bento Style) -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header text-center" style="margin-bottom: 4rem;">
+                <h2 class="section-title">Academic & Global Learning</h2>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Education -->
+                <div class="bento-item span-6">
+                    <div class="bento-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3 class="feature-title" style="margin-bottom: 1.5rem;">Academic Credentials</h3>
+
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="education-item">
+                            <span class="edu-degree">Ph.D. (Physical Education)</span>
+                            <span class="edu-place">Bharati Vidyapeeth, 2013</span>
+                        </div>
+                        <div class="education-item">
+                            <span class="edu-degree">MBA (Marketing)</span>
+                            <span class="edu-place">Madurai Kamaraj Univ, 2016</span>
+                        </div>
+                        <div class="education-item">
+                            <span class="edu-degree">M.Phil. (Physical Education)</span>
+                            <span class="edu-place">Univ of Pune, 2010</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; padding-bottom:0.5rem;">
+                            <span class="edu-degree">M.P.Ed. & B.P.Ed.</span>
+                            <span class="edu-place">LNIPE Gwalior, 2002-07</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="bento-item span-6">
+                    <div class="bento-icon"><i class="fa-solid fa-globe"></i></div>
+                    <h3 class="feature-title" style="margin-bottom: 1.5rem;">Global Certifications</h3>
+                    <div class="cert-grid">
+                        <div class="glass-panel cert-item">
+                            <div class="cert-univ">UPenn (USA)</div>
+                            <div class="cert-name">Entrepreneurship</div>
+                        </div>
+                        <div class="glass-panel cert-item">
+                            <div class="cert-univ">Northwestern (USA)</div>
+                            <div class="cert-name">Sports Marketing</div>
+                        </div>
+                        <div class="glass-panel cert-item">
+                            <div class="cert-univ">Yonsei (Korea)</div>
+                            <div class="cert-name">Entertainment & Sports</div>
+                        </div>
+                        <div class="glass-panel cert-item">
+                            <div class="cert-univ">UAB (Spain)</div>
+                            <div class="cert-name">Sports Sponsorship</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Skills -->
+                <div class="bento-item span-12">
+                    <h3 class="feature-title" style="margin-bottom: 1rem;">Core Expertise</h3>
+                    <div style="display:flex; flex-wrap:wrap; gap: 0.8rem;">
+                        <span class="skill-tag">Curriculum Development</span>
+                        <span class="skill-tag">Academic Governance</span>
+                        <span class="skill-tag">Sports Management</span>
+                        <span class="skill-tag">Faculty Training</span>
+                        <span class="skill-tag">NEP 2020 Policy</span>
+                        <span class="skill-tag">International Relations</span>
+                        <span class="skill-tag">Start-up Incubation</span>
+                        <span class="skill-tag">Research & IP</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Sportal Corporate</h4>
+                    <p style="color: #94A3B8; margin-bottom: 1rem;">
+                        Redefining sports education and wellness through innovation and research.
+                    </p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="https://www.facebook.com/sportalcorp" target="_blank" aria-label="Facebook"><i
+                                class="fa-brands fa-facebook"></i></a>
+                        <a href="https://instagram.com/sportal.corporate/" target="_blank" aria-label="Instagram"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/sportal-corporate-private-limited/about/?viewAsMember=true"
+                            target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col" style="flex:1; min-width: 250px;">
+                    <h4 style="color:white; margin-bottom:1rem; font-size:1.1rem;">Quick Links</h4>
+                    <ul class="footer-links" style="list-style:none;">
+                        <li><a href="/" style="color:var(--text-muted); text-decoration:none;">Home</a></li>
+                        <li><a href='/courses' style='color:var(--text-muted); text-decoration:none;'>Courses</a>
+                        </li>
+                        <li><a href='/partners' style='color:var(--text-muted); text-decoration:none;'>Partners</a>
+                        </li>
+                        <li><a href='/#contact' style='color:var(--text-muted); text-decoration:none;'>Contact</a></li>
+                        <li><a href='/legal' style='color:var(--text-muted); text-decoration:none;'>Privacy
+                                Policy</a></li>
+                        <li><a href='/verify' style='color:var(--text-muted); text-decoration:none;'>Verify
+                                Certificate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:director@sportalcorporate.org">director@sportalcorporate.org</a></li>
+
+                        <li style="color: var(--color-text-light);"><strong>Corporate Office:</strong><br>A-1198 Indira
+                            Nagar<br>Lucknow, U.P 226016</li>
+                        <li style="color: var(--color-text-light); margin-top: 0.8rem;"><strong>Branch
+                                Office:</strong><br>S 208,
+                            SHIVALIK NAGAR,<br>HARIDWAR, U.K 249403 India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Sportal Corporate. All rights reserved.
+            </div>
         </div>
     </footer>
 
@@ -182,9 +443,8 @@
                 personality.
             </p>
 
-            <a href="/quiz.html" class="btn btn-primary"
-                style="text-decoration:none; display:inline-flex; align-items:center; gap:0.75rem;"
-                data-en="Find My Career Path" data-hi="मेरा करियर खोजें">
+            <a class='btn btn-primary' data-en='Find My Career Path' data-hi='मेरा करियर खोजें' href='/quiz'
+                style='text-decoration:none; display:inline-flex; align-items:center; gap:0.75rem;'>
                 <span class="btn-text">Find My Career Path</span>
                 <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
                 <div class="btn-sheen"></div>
@@ -258,7 +518,6 @@
     </div>
     </div>
 
-    <script type="module" src="/src/main.js"></script>
 </body>
 
 </html>

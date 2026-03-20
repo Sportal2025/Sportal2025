@@ -2,65 +2,81 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HBYEBP1SGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HBYEBP1SGC');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legal Information | Sportal Corporate</title>
 
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.jpg" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <style>
-        .legal-content h2 {
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            color: white;
-            font-size: 1.8rem;
-        }
+    <!-- SEO & Sharing -->
+    <meta name="description"
+        content="Read Sportal Corporate's Privacy Policy, Terms of Use, and other legal information regarding data protection and user rights.">
+    <meta name="keywords" content="Privacy Policy, Terms of Use, Legal, Data Protection, Sportal Corporate">
+    <link rel="canonical" href="https://www.sportalcorporate.org/legal.html">
+    <meta name="robots" content="noindex, nofollow" />
 
-        .legal-content h3 {
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--color-accent);
-            font-size: 1.25rem;
-        }
+    <!-- Open Graph -->
+    <meta property="og:title" content="Legal Information | Sportal Corporate">
+    <meta property="og:description"
+        content="Read Sportal Corporate's Privacy Policy, Terms of Use, and other legal information regarding data protection and user rights.">
+    <meta property="og:url" content="https://www.sportalcorporate.org/legal.html">
+    <meta property="og:type" content="website">
 
-        .legal-content p,
-        .legal-content ul {
-            margin-bottom: 1rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
-
-        .legal-content ul {
-            padding-left: 1.5rem;
-        }
-
-        .legal-content li {
-            margin-bottom: 0.5rem;
-        }
-    </style>
+    <script type="module" src="/src/main.js"></script>
+    <link rel="stylesheet" href="/src/style.css" />
 </head>
 
 <body>
     <!-- Header -->
     <header class="header" id="header">
         <div class="container nav">
-            <a href="/index.html" class="logo"
-                style="display:flex; align-items:center; gap:0.8rem; text-decoration:none;">
+            <a href="/" class="logo">
                 <div class="logo-container">
-                    <img src="logo-final.jpg" alt="Sportal Corporate Logo" style="height:48px; border-radius:8px;">
+                    <img src="/logo.jpg" alt="Logo">
                 </div>
-                <div style="line-height:1; display:flex; flex-direction:column;">
-                    <span style="font-size:1.25rem;">Sportal</span>
-                    <span style="color: var(--color-accent); font-size:1.25rem;">Corporate</span>
+                <div class="logo-brand-text">
+                    <span class="main-text">Sportal</span>
+                    <span class="sub-text">Corporate</span>
                 </div>
             </a>
+            <button class="hamburger-menu" aria-label="Toggle Navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
 
             <ul class="nav-links">
-                <li><a href="/index.html" class="nav-link">Home</a></li>
-                <li><a href="/courses.html" class="nav-link">Courses</a></li>
-                <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li class="dropdown">
+                    <a class='nav-link' href='/#about'>About Us <i class="fa-solid fa-chevron-down"
+                            style="font-size: 0.8rem;"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href='/founder'>Founder Profile</a></li>
+                    </ul>
+                </li>
+                <li><a class='nav-link' href='/partners'>Partners</a></li>
+                <li><a class='nav-link' href='/courses'>Courses</a></li>
+                <li><a class='nav-link' href='/quiz'>Career Quiz</a></li>
+                <li><a class='nav-link' href='/#services'>Services</a></li>
+                <li><a class='nav-link' href='/gallery'>Gallery</a></li>
+                <li><a class='nav-link' href='/blog'>Blog</a></li>
+                <li><a class='nav-link' href='/#contact'>Contact</a></li>
+                <li>
+                    <button id="lang-toggle" aria-label="Switch Language" class="lang-toggle-btn">
+                        <i class="fa-solid fa-language"></i> <span id="lang-text">HI</span>
+                    </button>
+                </li>
             </ul>
         </div>
     </header>
@@ -70,7 +86,7 @@
         <div class="hero-bg"></div>
         <div class="container hero-content" style="padding-top: 100px;">
             <h1 class="reveal-text">Legal <span class="text-gradient">Information</span></h1>
-            <p class="reveal-text" style="max-width: 600px;">Transparency and trust are at the core of our educational
+            <p class="reveal-text legal-hero-desc">Transparency and trust are at the core of our educational
                 mission. Please review our policies below.</p>
         </div>
     </section>
@@ -78,9 +94,8 @@
     <!-- Privacy Policy -->
     <section class="section-padding" id="privacy">
         <div class="container">
-            <div class="glass-card legal-content" style="padding: 3rem;">
-                <h1
-                    style="font-size: 2.5rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">
+            <div class="glass-card legal-content legal-card">
+                <h1 class="legal-h1">
                     Privacy Policy</h1>
                 <p><strong>Last Updated: December 14, 2024</strong></p>
 
@@ -132,11 +147,10 @@
     </section>
 
     <!-- Terms of Use -->
-    <section class="section-padding" id="terms" style="padding-top: 0;">
+    <section class="section-padding padding-top-0" id="terms">
         <div class="container">
-            <div class="glass-card legal-content" style="padding: 3rem;">
-                <h1
-                    style="font-size: 2.5rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">
+            <div class="glass-card legal-content legal-card">
+                <h1 class="legal-h1">
                     Terms of Use</h1>
 
                 <h2>1. Agreement to Terms</h2>
@@ -165,6 +179,7 @@
     </section>
 
     <!-- Footer -->
+    <!-- Footer -->
     <footer class="footer" id="contact">
         <div class="container">
             <div class="footer-grid">
@@ -182,33 +197,40 @@
                             target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="/index.html">Home</a></li>
-                        <li><a href="/course.html">Courses</a></li>
-                        <li><a href="/index.html#contact">Contact</a></li>
-                        <li><a href="/legal.html#privacy">Privacy Policy</a></li>
+                <div class="footer-col" style="flex:1; min-width: 250px;">
+                    <h4 style="color:white; margin-bottom:1rem; font-size:1.1rem;">Quick Links</h4>
+                    <ul class="footer-links" style="list-style:none;">
+                        <li><a href="/" style="color:var(--text-muted); text-decoration:none;">Home</a></li>
+                        <li><a href='/courses' style='color:var(--text-muted); text-decoration:none;'>Courses</a>
+                        </li>
+                        <li><a href='/partners' style='color:var(--text-muted); text-decoration:none;'>Partners</a>
+                        </li>
+                        <li><a href='/#contact' style='color:var(--text-muted); text-decoration:none;'>Contact</a></li>
+                        <li><a href='/legal' style='color:var(--text-muted); text-decoration:none;'>Privacy
+                                Policy</a></li>
+                        <li><a href='/verify' style='color:var(--text-muted); text-decoration:none;'>Verify
+                                Certificate</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <ul class="footer-links">
                         <li><a href="mailto:director@sportalcorporate.org">director@sportalcorporate.org</a></li>
-                        <li><a href="tel:+918400888885">+91 8400888885</a></li>
-                        <li style="color: var(--color-text-light);">S 208, SHIVALIK NAGAR,<br>HARIDWAR, U.K 249403 India
-                        </li>
+
+                        <li style="color: var(--color-text-light);"><strong>Corporate Office:</strong><br>A-1198 Indira
+                            Nagar<br>Lucknow, U.P 226016</li>
+                        <li style="color: var(--color-text-light); margin-top: 0.8rem;"><strong>Branch
+                                Office:</strong><br>S 208,
+                            SHIVALIK NAGAR,<br>HARIDWAR, U.K 249403 India</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2024 Sportal Corporate. All rights reserved. | <a href="/legal.html"
-                    style="color: var(--text-muted); text-decoration: none;">Legal</a>
+                &copy; 2024 Sportal Corporate. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <script type="module" src="/src/main.js"></script>
 </body>
 
 </html>
