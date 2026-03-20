@@ -28,7 +28,7 @@
         content="21 Specialized Learning Components. One Complete Solution for Modern Physical Education.">
     <meta property="og:url" content="https://www.sportalcorporate.org/active-mind-sports-kit.html">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.sportalcorporate.org/public/gallery/partnership_active_mind.webp">
+    <meta property="og:image" content="/public/gallery/active_mind_kit_hero.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script type="module" src="/src/main.js"></script>
@@ -41,13 +41,14 @@
         }
         .component-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
         }
         .component-card {
-            padding: 2rem;
+            padding: 2.5rem;
             transition: transform 0.3s ease;
+            height: 100%;
         }
         .component-card:hover {
             transform: translateY(-5px);
@@ -70,13 +71,30 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 3rem;
-            padding: 4rem;
+            gap: 4rem;
+            padding: 5rem;
         }
         @media (min-width: 768px) {
             .flex-md-row {
                 flex-direction: row;
             }
+        }
+        .section-spacer {
+            margin-top: 8rem;
+        }
+        .list-unstyled {
+            list-style: none;
+            padding: 0;
+        }
+        .list-unstyled li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .list-unstyled i {
+            color: var(--color-primary);
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -131,122 +149,167 @@
                     <i class="fa-solid fa-box-open"></i>
                     <span>ACTIVE MIND SPORTS KIT™</span>
                 </div>
-                <h1 class="section-title" style="font-size: 3.5rem; margin-bottom: 1.5rem;">Unbox the <span class="text-gradient">Future of PE</span></h1>
-                <p class="section-subtitle" style="max-width: 700px; margin: 0 auto;">21 Specialized Learning Components for <strong>Grassroot Level Athletes</strong>. One Complete Solution.</p>
-                <div style="margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;">
-                    <img src="/public/gallery/active_mind_kit_hero.png" alt="ActiveMind Sports Kit Presentation" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                <h1 class="section-title" style="font-size: 4rem; line-height: 1.1; margin-bottom: 2rem;">Unbox the <span class="text-gradient">Future of PE</span></h1>
+                <p class="section-subtitle" style="max-width: 800px; margin: 0 auto; font-size: 1.25rem;">21 Specialized Learning Components for <strong>Grassroot Level Athletes</strong>. One Complete Solution mapping to NEP 2020 & NCERT Guidelines.</p>
+                <div style="margin-top: 4rem; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                    <img src="/public/gallery/active_mind_kit_hero.png" alt="ActiveMind Sports Kit Presentation" style="width: 100%; border-radius: 24px; box-shadow: 0 30px 60px rgba(0,0,0,0.6);">
                 </div>
             </div>
         </section>
 
-        <!-- Mapped to Guidelines -->
-        <section class="section-padding" style="background: rgba(217, 119, 6, 0.05);">
+        <!-- Guidelines Bar -->
+        <section class="section-padding" style="background: rgba(217, 119, 6, 0.08);">
             <div class="container text-center">
-                 <h2 style="font-size: 1.5rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent);">Mapped to NEP 2020 & NCERT Guidelines</h2>
+                 <h2 style="font-size: 1.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent);">Mapped to NEP 2020 & NCERT Guidelines</h2>
             </div>
         </section>
 
         <!-- Components Grid -->
-        <section class="section-padding">
+        <section class="section-padding section-spacer">
             <div class="container">
                 <div class="section-header text-center">
-                    <span class="section-subtitle">What's Inside</span>
+                    <span class="section-subtitle">The Package</span>
                     <h2 class="section-title">21 Specialized Learning Components</h2>
                 </div>
 
                 <div class="component-grid">
                     <div class="glass-card component-card">
                         <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Lesson Plan (Book)</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">Guidebook with structured activity plans mapped to curriculum.</p>
+                        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">Guidebook with structured activity plans mapped to curriculum for seamless teaching.</p>
                     </div>
                     <div class="glass-card component-card">
                         <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Yoga Mat</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">Premium mat for safe yoga and mindfulness activities.</p>
+                        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">Premium mat for safe yoga, stretching, and mindfulness activities.</p>
+                    </div>
+                    <div class="glass-card component-card">
+                        <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Football</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">Standard football for soccer games, skill drills, and team coordinates.</p>
+                    </div>
+                    <div class="glass-card component-card">
+                        <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Softball</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">Soft ball ensuring safety while practicing throwing and catching drills.</p>
                     </div>
                     <div class="glass-card component-card">
                         <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Target Bib & Velcro Ball</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">Wearable target bib with velcro balls for aim and coordination games.</p>
+                        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">Wearable target system for precision, aim, and coordination challenges.</p>
                     </div>
                     <div class="glass-card component-card">
                         <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Modified Snake & Ladder</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">Educational game based on Indian mythology and history.</p>
+                        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">Educational board game based on Indian mythology, history, and values.</p>
+                    </div>
+                    <div class="glass-card component-card">
+                        <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Healthy Habits Tracker</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">Visual chart to foster discipline in movement, nutrition, and self-care routines.</p>
+                    </div>
+                    <div class="glass-card component-card">
+                        <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Progress Tracker Chart</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">Integrated chart to monitor and visualize skill development over the term.</p>
+                    </div>
+                    <div class="glass-card component-card">
+                        <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Plant Seed Hardware</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">Complete hardware kit for students to plant seeds and learn environmental responsibility.</p>
+                    </div>
+                    <div class="glass-card component-card">
+                        <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Speed Ladder</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">Pro-grade ladder for agility, fast footwork, and neurological coordination.</p>
                     </div>
                     <div class="glass-card component-card">
                         <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Pogo Stick</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">Used for balance, bounce, and fun physical activity.</p>
+                        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">Classic tool for balance, explosive power, and pure physical enjoyment.</p>
                     </div>
                     <div class="glass-card component-card">
-                        <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Hardware & Accessories Box</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">Cones, Space Markers, Wrist Bands, Skipping Ropes, Bean Bags, Throwing Rings, and Frisbees.</p>
+                        <h3 style="color: var(--color-primary); margin-bottom: 1rem;">Instruction Cards</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">Guided step-by-step instructions for teachers and students to maximize kit utility.</p>
                     </div>
                 </div>
-                <div class="text-center" style="margin-top: 3rem;">
-                     <p style="color: var(--text-muted);">+ 15 more components including Football, Softball, Healthy Habits Tracker, Speed Ladder, and more.</p>
+                
+                <div class="glass-card" style="margin-top: 3rem; padding: 2.5rem; border: 1px dashed var(--color-primary);">
+                    <h3 style="color: var(--color-accent); margin-bottom: 1rem;">The Hardware & Accessories Box</h3>
+                    <p style="color: var(--text-muted); line-height: 1.8;">Includes all the essentials for varied drills: Cones, Space Markers, Wrist Bands, Skipping Ropes, Bean Bags, Throwing Rings, Frisbees, and Hula Hoops.</p>
                 </div>
             </div>
         </section>
 
         <!-- Whole Child Development -->
-        <section class="section-padding" style="background: rgba(255,255,255,0.02);">
+        <section class="section-padding section-spacer" style="background: rgba(255,255,255,0.02);">
             <div class="container">
                 <div class="section-header text-center">
-                    <span class="section-subtitle">The Impact</span>
+                    <span class="section-subtitle">Holistic Impact</span>
                     <h2 class="section-title">More Than Sports. It Develops the Whole Child.</h2>
                 </div>
 
                 <div class="bento-grid">
-                    <div class="bento-item span-4 glass-card text-center" style="padding: 3rem 2rem;">
+                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
                          <div class="benefit-icon"><i class="fa-solid fa-heart-pulse"></i></div>
                          <h3>Physical Fitness</h3>
-                         <p style="color: var(--text-muted); margin-top: 1rem;">Builds strength, stamina, agility, and coordination through structured play.</p>
+                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Builds strength, stamina, agility, and coordination through structured play.</p>
                     </div>
-                    <div class="bento-item span-4 glass-card text-center" style="padding: 3rem 2rem;">
+                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
                          <div class="benefit-icon"><i class="fa-solid fa-brain"></i></div>
                          <h3>Focus & Attention</h3>
-                         <p style="color: var(--text-muted); margin-top: 1rem;">Supports concentration, classroom readiness, and better engagement.</p>
+                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Supports concentration, classroom readiness, and better academic engagement.</p>
                     </div>
-                    <div class="bento-item span-4 glass-card text-center" style="padding: 3rem 2rem;">
+                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
+                         <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                         <h3>Confidence & Discipline</h3>
+                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Helps children become self-directed, resilient, and responsible leaders.</p>
+                    </div>
+                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
                          <div class="benefit-icon"><i class="fa-solid fa-users"></i></div>
                          <h3>Teamwork & Leadership</h3>
-                         <p style="color: var(--text-muted); margin-top: 1rem;">Develops cooperation, communication, and leadership through participation.</p>
+                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Develops cooperation and communication through active participation.</p>
                     </div>
-                    <div class="bento-item span-6 glass-card text-center" style="padding: 3rem 2rem;">
+                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
                          <div class="benefit-icon"><i class="fa-solid fa-spa"></i></div>
                          <h3>Mental Well-being</h3>
-                         <p style="color: var(--text-muted); margin-top: 1rem;">Encourages calmness, emotional control, mindfulness, and inner balance.</p>
+                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Encourages calmness, mindfulness, and healthy emotional control.</p>
                     </div>
-                    <div class="bento-item span-6 glass-card text-center" style="padding: 3rem 2rem;">
+                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
+                         <div class="benefit-icon"><i class="fa-solid fa-apple-whole"></i></div>
+                         <h3>Healthy Habits</h3>
+                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Promotes movement, self-care, and lifelong wellness practices.</p>
+                    </div>
+                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
+                         <div class="benefit-icon"><i class="fa-solid fa-person-running"></i></div>
+                         <h3>Skill Development</h3>
+                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Improves motor skills, body control, and reaction time.</p>
+                    </div>
+                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
                          <div class="benefit-icon"><i class="fa-solid fa-chart-line"></i></div>
                          <h3>Growth Mindset</h3>
-                         <p style="color: var(--text-muted); margin-top: 1rem;">Encourages progress tracking, self-improvement, and continuous development.</p>
+                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Encourages progress tracking and continuous self-improvement.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Culture & Life Skills -->
-        <section class="section-padding">
+        <section class="section-padding section-spacer">
             <div class="container">
                 <div class="bento-grid">
-                    <div class="bento-item span-12 glass-card flex-md-row">
-                        <div style="flex: 1;">
-                            <h2 class="text-gradient" style="font-size: 2rem; margin-bottom: 1.5rem;">The Ultimate Grassroots Sports Tool</h2>
-                            <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-                                The ActiveMind Sports Kit is a comprehensive solution designed to revolutionize Physical Education and grassroots sports development. Aligned with NEP 2020 standards, it focuses on nurturing fundamental motor skills and athletic foundations in young learners.
-                            </p>
-                            <div style="margin-bottom: 2rem;">
-                                <h3 style="color: var(--color-primary); margin-bottom: 0.5rem;">Ancient Wisdom for Modern Classrooms</h3>
-                                <p style="color: var(--text-muted);">Integrating traditional Indian knowledge systems with modern PE pedagogy.</p>
+                    <div class="bento-item span-12 glass-card flex-md-row" style="background: rgba(217, 119, 6, 0.02); border-color: rgba(217, 119, 6, 0.1);">
+                        <div style="flex: 1.2;">
+                            <h2 class="text-gradient" style="font-size: 2.75rem; margin-bottom: 2rem;">Beyond the Physical: Culture & Life Skills</h2>
+                            <div style="margin-bottom: 3rem;">
+                                <h3 style="color: var(--color-primary); margin-bottom: 1rem; font-size: 1.5rem;">Ancient Wisdom for Modern Classrooms</h3>
+                                <p style="color: var(--text-muted); line-height: 1.8; font-size: 1.1rem;">
+                                    Children engage actively with <strong>Yoga asanas</strong> and ancient strategy board games like <strong>Gyan Chaupar</strong>. We proudly integrate the inspiring stories of Indian mythology, gods, goddesses, and heroes directly into their physical education, bridging the gap between historical wisdom and modern fitness.
+                                </p>
                             </div>
                             <div>
-                                <h3 style="color: var(--color-primary); margin-bottom: 0.5rem;">Nurturing Life, Tracking Progress</h3>
-                                <p style="color: var(--text-muted);">From planting seeds for environmental awareness to tracking daily healthy habits.</p>
+                                <h3 style="color: var(--color-primary); margin-bottom: 1rem; font-size: 1.5rem;">Nurturing Life, Tracking Progress</h3>
+                                <p style="color: var(--text-muted); line-height: 1.8; font-size: 1.1rem;">
+                                    Every kit includes complete seed-planting hardware. Instead of just learning theory, students plant their own seeds, develop responsibility, and mathematically track their physical growth patterns over time, fostering environmental empathy and scientific observation.
+                                </p>
                             </div>
                         </div>
-                        <div style="flex: 1; text-align: center;">
-                             <div class="glass-card" style="padding: 2rem; border: 1px dashed var(--color-primary);">
-                                 <h2 class="text-gradient" style="font-size: 3rem;">NEP 2020</h2>
-                                 <p style="text-transform: uppercase; letter-spacing: 0.2rem; margin-top: 1rem;">Fully Aligned</p>
+                        <div style="flex: 0.8; text-align: center;">
+                             <div class="glass-card" style="padding: 4rem 2rem; border: 2px dashed var(--color-accent); background: rgba(0,0,0,0.2);">
+                                 <h2 class="text-gradient" style="font-size: 5rem; margin-bottom: 1rem;">NEP</h2>
+                                 <h3 style="font-size: 3rem; margin-bottom: 1.5rem; color: white;">2020</h3>
+                                 <p style="text-transform: uppercase; letter-spacing: 0.4rem; font-weight: 700; color: var(--color-accent);">FULLY ALIGNED</p>
+                                 <div style="height: 2px; background: var(--color-accent); width: 80px; margin: 2rem auto;"></div>
+                                 <p style="color: var(--text-muted); font-size: 1rem;">Holistic child development through structured play and cultural integration.</p>
                              </div>
                         </div>
                     </div>
@@ -254,45 +317,103 @@
             </div>
         </section>
 
-        <!-- Target Institutions -->
-        <section class="section-padding" style="background: rgba(255,255,255,0.02);">
+        <!-- A Smarter Way Section -->
+        <section class="section-padding section-spacer" style="background: linear-gradient(to bottom, transparent, rgba(var(--color-primary-rgb), 0.05), transparent);">
             <div class="container">
                 <div class="section-header text-center">
-                    <span class="section-subtitle">Impact Areas</span>
+                    <span class="section-subtitle">Innovation</span>
+                    <h2 class="section-title">A Smarter Way to Deliver Physical Education</h2>
+                </div>
+                <div class="bento-grid" style="margin-top: 4rem;">
+                    <div class="bento-item span-12 glass-card" style="padding: 4rem;">
+                        <ul class="list-unstyled" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+                            <li>
+                                <i class="fa-solid fa-check-double fa-2x"></i>
+                                <div>
+                                    <h4 style="color: white; margin-bottom: 0.5rem; font-size: 1.25rem;">Easy Implementation</h4>
+                                    <p style="color: var(--text-muted);">Designed for seamless integration into existing school schedules without disruption.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-calendar-check fa-2x"></i>
+                                <div>
+                                    <h4 style="color: white; margin-bottom: 0.5rem; font-size: 1.25rem;">Structured Daily Activity</h4>
+                                    <p style="color: var(--text-muted);">Replaces unstructured play with purposeful, curriculum-aligned fitness sessions.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-users-viewfinder fa-2x"></i>
+                                <div>
+                                    <h4 style="color: white; margin-bottom: 0.5rem; font-size: 1.25rem;">Inclusive Participation</h4>
+                                    <p style="color: var(--text-muted);">Ensures every child, regardless of athletic ability, participates and improves.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-gauge-high fa-2x"></i>
+                                <div>
+                                    <h4 style="color: white; margin-bottom: 0.5rem; font-size: 1.25rem;">Measurable Development</h4>
+                                    <p style="color: var(--text-muted);">Strictly monitor student progress with integrated tracking tools and metrics.</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <div style="margin-top: 4rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 3rem;">
+                            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                                Active Mind is built to help schools move from unstructured PE sessions to a more purposeful, measurable, and development-focused model. It is the perfect solution for school partnerships and CSR integration.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Institutional Impact -->
+        <section class="section-padding section-spacer" style="background: rgba(var(--color-accent-rgb), 0.03);">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Strategic Partners</span>
                     <h2 class="section-title">Designed for Institutions That Want Real Impact</h2>
                 </div>
-                <div class="bento-grid">
-                    <div class="bento-item span-3 glass-card institution-card">
-                        <div class="institution-icon"><i class="fa-solid fa-school"></i></div>
-                        <h3>Schools</h3>
+                <div class="bento-grid" style="margin-top: 4rem;">
+                    <div class="bento-item span-6 glass-card institution-card" style="text-align: left; padding: 4rem;">
+                        <div class="institution-icon" style="text-align: center; margin-bottom: 2rem;"><i class="fa-solid fa-school fa-2x"></i></div>
+                        <h3 style="margin-bottom: 1.5rem; color: var(--color-primary); font-size: 1.75rem;">For Schools</h3>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">For institutions that want fit, focused, confident, and active students who are ready to excel in both academics and sports.</p>
                     </div>
-                    <div class="bento-item span-3 glass-card institution-card">
-                         <div class="institution-icon"><i class="fa-solid fa-network-wired"></i></div>
-                         <h3>School Groups</h3>
+                    <div class="bento-item span-6 glass-card institution-card" style="text-align: left; padding: 4rem;">
+                         <div class="institution-icon" style="text-align: center; margin-bottom: 2rem;"><i class="fa-solid fa-network-wired fa-2x"></i></div>
+                         <h3 style="margin-bottom: 1.5rem; color: var(--color-primary); font-size: 1.75rem;">School Groups & Chains</h3>
+                         <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">Scalable implementation models designed for groups and chains to maintain high standards across multiple campuses.</p>
                     </div>
-                    <div class="bento-item span-3 glass-card institution-card">
-                         <div class="institution-icon"><i class="fa-solid fa-landmark"></i></div>
-                         <h3>Govt Programs</h3>
+                    <div class="bento-item span-6 glass-card institution-card" style="text-align: left; padding: 4rem;">
+                         <div class="institution-icon" style="text-align: center; margin-bottom: 2rem;"><i class="fa-solid fa-landmark fa-2x"></i></div>
+                         <h3 style="margin-bottom: 1.5rem; color: var(--color-primary); font-size: 1.75rem;">Government Programs</h3>
+                         <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">For education systems focused on holistic development and inclusive sports protocols at the municipal or state level.</p>
                     </div>
-                    <div class="bento-item span-3 glass-card institution-card">
-                         <div class="institution-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
-                         <h3>CSR & Foundations</h3>
+                    <div class="bento-item span-6 glass-card institution-card" style="text-align: left; padding: 4rem;">
+                         <div class="institution-icon" style="text-align: center; margin-bottom: 2rem;"><i class="fa-solid fa-hand-holding-heart fa-2x"></i></div>
+                         <h3 style="margin-bottom: 1.5rem; color: var(--color-primary); font-size: 1.75rem;">CSR & Foundations</h3>
+                         <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">For organizations investing in child health, education, and social impact through structured physical education.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Final CTA -->
-        <section class="section-padding text-center">
+        <section class="section-padding section-spacer text-center">
             <div class="container">
-                <div class="glass-card" style="max-width: 900px; margin: 0 auto; padding: 5rem 3rem;">
-                    <h2 class="section-title" style="margin-bottom: 1.5rem;">Simple to Start. Powerful in Impact.</h2>
-                    <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 3rem;">Equip your institution with the world's most comprehensive sports education kit.</p>
-                    <button class="btn btn-primary magnetic-btn js-open-modal" style="padding: 1.2rem 3rem; font-size: 1.1rem;">
-                        <span class="btn-text">Request Full Demo Kit</span>
-                        <span class="btn-sheen"></span>
-                    </button>
-                    <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted);">Or email us at <a href="mailto:director@sportalcorporate.org" style="color: var(--color-primary);">director@sportalcorporate.org</a></p>
+                <div class="glass-card" style="max-width: 1000px; margin: 0 auto; padding: 7rem 4rem; background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.1), rgba(var(--color-accent-rgb), 0.1));">
+                    <h2 class="section-title" style="margin-bottom: 2rem; font-size: 3rem;">Simple to Start. Powerful in Impact.</h2>
+                    <p style="color: var(--text-muted); font-size: 1.4rem; margin-bottom: 4rem; line-height: 1.6;">Equip your institution with the world's most comprehensive sports education kit. Forging future leaders through world-class Physical Education.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+                        <button class="btn btn-primary magnetic-btn js-open-modal" style="padding: 1.5rem 4rem; font-size: 1.25rem;">
+                            <span class="btn-text">Request Full Demo Kit</span>
+                            <span class="btn-sheen"></span>
+                        </button>
+                        <button class="btn btn-secondary magnetic-btn js-open-modal" style="padding: 1.5rem 4rem; font-size: 1.25rem; border: 1px solid var(--color-primary);">
+                            <span class="btn-text">Start a Pilot Program</span>
+                        </button>
+                    </div>
+                    <p style="margin-top: 3rem; font-size: 1rem; color: var(--text-muted);">Contact us directly at <a href="mailto:director@sportalcorporate.org" style="color: var(--color-primary); font-weight: 600;">director@sportalcorporate.org</a></p>
                 </div>
             </div>
         </section>
