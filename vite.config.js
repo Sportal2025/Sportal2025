@@ -23,6 +23,7 @@ export default defineConfig({
                 legal: resolve(__dirname, "legal.html"),
                 verify: resolve(__dirname, "verify.html"),
                 roadmap: resolve(__dirname, "roadmap.html"),
+                ams_kit: resolve(__dirname, "active-mind-sports-kit.html"),
                 notfound: resolve(__dirname, "404.html"),
 
                 // Blog Articles
