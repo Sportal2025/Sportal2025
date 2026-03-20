@@ -34,6 +34,9 @@
     <script type="module" src="/src/main.js"></script>
     <link rel="stylesheet" href="/src/style.css" />
     <style>
+        :root {
+            --text-muted: var(--color-text-muted); /* Bridge for consistency */
+        }
         .amsk-hero {
             padding: 15vh 0 10vh;
             text-align: center;
@@ -57,6 +60,12 @@
             font-size: 2.5rem;
             color: var(--color-primary);
             margin-bottom: 1.5rem;
+        }
+        .bento-item {
+            opacity: 1 !important; /* Ensure visibility */
+            transform: none !important;
+            height: auto !important;
+            min-height: 200px;
         }
         .institution-card {
             text-align: center;
@@ -95,6 +104,15 @@
         .list-unstyled i {
             color: var(--color-primary);
             margin-top: 5px;
+        }
+        /* Fix for squashed cards in bento grid */
+        @media (min-width: 1024px) {
+            .span-3 {
+                grid-column: span 3;
+            }
+            .span-6 {
+                grid-column: span 6;
+            }
         }
     </style>
 </head>
@@ -239,45 +257,61 @@
                 </div>
 
                 <div class="bento-grid">
-                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
-                         <div class="benefit-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-                         <h3>Physical Fitness</h3>
-                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Builds strength, stamina, agility, and coordination through structured play.</p>
+                    <div class="bento-item span-6 glass-card" style="display: flex; flex-direction: row; align-items: center; gap: 2rem; padding: 2.5rem;">
+                         <div class="benefit-icon" style="margin-bottom: 0; min-width: 60px; text-align: center;"><i class="fa-solid fa-heart-pulse"></i></div>
+                         <div>
+                             <h3 style="margin-bottom: 0.5rem; color: var(--color-primary);">Physical Fitness</h3>
+                             <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Builds strength, stamina, agility, and coordination through structured play.</p>
+                         </div>
                     </div>
-                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
-                         <div class="benefit-icon"><i class="fa-solid fa-brain"></i></div>
-                         <h3>Focus & Attention</h3>
-                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Supports concentration, classroom readiness, and better academic engagement.</p>
+                    <div class="bento-item span-6 glass-card" style="display: flex; flex-direction: row; align-items: center; gap: 2rem; padding: 2.5rem;">
+                         <div class="benefit-icon" style="margin-bottom: 0; min-width: 60px; text-align: center;"><i class="fa-solid fa-brain"></i></div>
+                         <div>
+                             <h3 style="margin-bottom: 0.5rem; color: var(--color-primary);">Focus & Attention</h3>
+                             <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Supports concentration, classroom readiness, and better academic engagement.</p>
+                         </div>
                     </div>
-                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
-                         <div class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                         <h3>Confidence & Discipline</h3>
-                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Helps children become self-directed, resilient, and responsible leaders.</p>
+                    <div class="bento-item span-6 glass-card" style="display: flex; flex-direction: row; align-items: center; gap: 2rem; padding: 2.5rem;">
+                         <div class="benefit-icon" style="margin-bottom: 0; min-width: 60px; text-align: center;"><i class="fa-solid fa-shield-halved"></i></div>
+                         <div>
+                             <h3 style="margin-bottom: 0.5rem; color: var(--color-primary);">Confidence & Discipline</h3>
+                             <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Helps children become self-directed, resilient, and responsible leaders.</p>
+                         </div>
                     </div>
-                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
-                         <div class="benefit-icon"><i class="fa-solid fa-users"></i></div>
-                         <h3>Teamwork & Leadership</h3>
-                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Develops cooperation and communication through active participation.</p>
+                    <div class="bento-item span-6 glass-card" style="display: flex; flex-direction: row; align-items: center; gap: 2rem; padding: 2.5rem;">
+                         <div class="benefit-icon" style="margin-bottom: 0; min-width: 60px; text-align: center;"><i class="fa-solid fa-users"></i></div>
+                         <div>
+                             <h3 style="margin-bottom: 0.5rem; color: var(--color-primary);">Teamwork & Leadership</h3>
+                             <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Develops cooperation and communication through active participation.</p>
+                         </div>
                     </div>
-                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
-                         <div class="benefit-icon"><i class="fa-solid fa-spa"></i></div>
-                         <h3>Mental Well-being</h3>
-                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Encourages calmness, mindfulness, and healthy emotional control.</p>
+                    <div class="bento-item span-6 glass-card" style="display: flex; flex-direction: row; align-items: center; gap: 2rem; padding: 2.5rem;">
+                         <div class="benefit-icon" style="margin-bottom: 0; min-width: 60px; text-align: center;"><i class="fa-solid fa-spa"></i></div>
+                         <div>
+                             <h3 style="margin-bottom: 0.5rem; color: var(--color-primary);">Mental Well-being</h3>
+                             <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Encourages calmness, mindfulness, and healthy emotional control.</p>
+                         </div>
                     </div>
-                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
-                         <div class="benefit-icon"><i class="fa-solid fa-apple-whole"></i></div>
-                         <h3>Healthy Habits</h3>
-                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Promotes movement, self-care, and lifelong wellness practices.</p>
+                    <div class="bento-item span-6 glass-card" style="display: flex; flex-direction: row; align-items: center; gap: 2rem; padding: 2.5rem;">
+                         <div class="benefit-icon" style="margin-bottom: 0; min-width: 60px; text-align: center;"><i class="fa-solid fa-apple-whole"></i></div>
+                         <div>
+                             <h3 style="margin-bottom: 0.5rem; color: var(--color-primary);">Healthy Habits</h3>
+                             <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Promotes movement, self-care, and lifelong wellness practices.</p>
+                         </div>
                     </div>
-                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
-                         <div class="benefit-icon"><i class="fa-solid fa-person-running"></i></div>
-                         <h3>Skill Development</h3>
-                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Improves motor skills, body control, and reaction time.</p>
+                    <div class="bento-item span-6 glass-card" style="display: flex; flex-direction: row; align-items: center; gap: 2rem; padding: 2.5rem;">
+                         <div class="benefit-icon" style="margin-bottom: 0; min-width: 60px; text-align: center;"><i class="fa-solid fa-person-running"></i></div>
+                         <div>
+                             <h3 style="margin-bottom: 0.5rem; color: var(--color-primary);">Skill Development</h3>
+                             <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Improves motor skills, body control, and reaction time.</p>
+                         </div>
                     </div>
-                    <div class="bento-item span-3 glass-card text-center" style="padding: 3rem 2rem;">
-                         <div class="benefit-icon"><i class="fa-solid fa-chart-line"></i></div>
-                         <h3>Growth Mindset</h3>
-                         <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem;">Encourages progress tracking and continuous self-improvement.</p>
+                    <div class="bento-item span-6 glass-card" style="display: flex; flex-direction: row; align-items: center; gap: 2rem; padding: 2.5rem;">
+                         <div class="benefit-icon" style="margin-bottom: 0; min-width: 60px; text-align: center;"><i class="fa-solid fa-chart-line"></i></div>
+                         <div>
+                             <h3 style="margin-bottom: 0.5rem; color: var(--color-primary);">Growth Mindset</h3>
+                             <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Encourages progress tracking and continuous self-improvement.</p>
+                         </div>
                     </div>
                 </div>
             </div>
