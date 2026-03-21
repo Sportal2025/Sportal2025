@@ -96,8 +96,22 @@ export function initBrochureModal() {
                 message: `Brochure download request from ${page}`,
             };
 
-            const { error } = await supabase.from(LEADS_TABLE).insert([payload]);
-            if (error) throw error;
+            // 1. Send via email (FormSubmit)
+            const formResponse = await fetch("https://formsubmit.co/ajax/director@sportalcorporate.org", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (!formResponse.ok) throw new Error("Email forwarding failed.");
+
+            // 2. Backup to Supabase
+            try {
+                await supabase.from(LEADS_TABLE).insert([payload]);
+            } catch(e) {}
 
             // Non-blocking analytics
             try {

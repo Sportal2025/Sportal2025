@@ -67,12 +67,24 @@ Qualification: ${qualification || 'N/A'}
                 if (errorBox) errorBox.style.display = "none";
 
                 try {
-                    // 3. Insert into Supabase
-                    const { error } = await supabase
-                        .from('leads')
-                        .insert([leadData]);
+                    // 3. Insert into FormSubmit for direct Email Routing
+                    const formResponse = await fetch("https://formsubmit.co/ajax/director@sportalcorporate.org", {
+                        method: "POST",
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(leadData)
+                    });
 
-                    if (error) throw error;
+                    if (!formResponse.ok) throw new Error("Email forwarding failed.");
+
+                    // Backup to Supabase silently
+                    try {
+                        await supabase.from('leads').insert([leadData]);
+                    } catch(e) {
+                        console.warn("Database backup failed, but email was sent.");
+                    }
 
                     // 4. Success UI
                     leadForm.style.display = "none";
