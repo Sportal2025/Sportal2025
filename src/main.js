@@ -930,3 +930,37 @@ if (document.readyState === "loading") {
 
 
 
+
+/* -----------------------------
+   Floating Demo CTA
+----------------------------- */
+const demoBtn = document.createElement('a');
+demoBtn.href = "./#contact";
+demoBtn.innerHTML = '<i class="fa-solid fa-calendar-check"></i> <span style="font-weight: 600; margin-left: 0.5rem;">Book Free Demo</span>';
+demoBtn.className = "magnetic-btn";
+demoBtn.style.cssText = `
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: #0f172a;
+  padding: 1rem 1.5rem;
+  border-radius: 30px;
+  box-shadow: 0 10px 25px rgba(255, 183, 0, 0.4);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+`;
+demoBtn.addEventListener('mouseenter', () => {
+    demoBtn.style.transform = 'translateY(-5px) scale(1.05)';
+    demoBtn.style.boxShadow = '0 15px 35px rgba(255, 183, 0, 0.6)';
+});
+demoBtn.addEventListener('mouseleave', () => {
+    demoBtn.style.transform = 'translateY(0) scale(1)';
+    demoBtn.style.boxShadow = '0 10px 25px rgba(255, 183, 0, 0.4)';
+});
+document.body.appendChild(demoBtn);
